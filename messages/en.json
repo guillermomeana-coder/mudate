@@ -1,0 +1,113 @@
+{
+  "nav": {
+    "properties": "Properties",
+    "villamaria": "Villa María",
+    "invest": "Invest",
+    "blog": "Blog",
+    "publish": "List a property"
+  },
+  "home": {
+    "label": "Argentina",
+    "title": "Find your next property",
+    "subtitle": "Houses, apartments and land across Argentina",
+    "searchPlaceholder": "Search by city, neighborhood or type...",
+    "searchBtn": "Search",
+    "quickFilters": "Quick filters",
+    "featured": "Featured properties",
+    "featuredSub": "A curated selection of the best opportunities in the Argentine market",
+    "viewAll": "View all properties",
+    "stats": {
+      "properties": "properties",
+      "cities": "cities",
+      "provinces": "provinces"
+    },
+    "types": {
+      "casa": "Houses",
+      "departamento": "Apartments",
+      "terreno": "Land"
+    }
+  },
+  "propiedades": {
+    "title": "Properties in Argentina",
+    "label": "Argentina",
+    "available": "{count} properties available",
+    "results": "{count} results",
+    "noResults": "No properties found with those filters."
+  },
+  "filters": {
+    "filters": "Filters",
+    "operation": "Operation",
+    "type": "Type",
+    "province": "Province",
+    "city": "City",
+    "price": "Price",
+    "all": "All",
+    "allF": "All",
+    "todo": "All",
+    "venta": "For Sale",
+    "alquiler": "For Rent",
+    "sale": "For sale",
+    "rent": "For rent",
+    "house": "House",
+    "apartment": "Apartment",
+    "land": "Land",
+    "office": "Office",
+    "local": "Commercial",
+    "anyCity": "City: all",
+    "anyPrice": "Price: any",
+    "list": "List",
+    "map": "Map",
+    "previous": "Previous",
+    "next": "Next"
+  },
+  "card": {
+    "sale": "FOR SALE",
+    "rent": "FOR RENT",
+    "rooms": "{n} rooms",
+    "beds": "{n} beds",
+    "baths": "{n} baths",
+    "sqm": "{n} m²"
+  },
+  "property": {
+    "description": "Description",
+    "features": "Features",
+    "rooms": "Rooms",
+    "beds": "Bedrooms",
+    "baths": "Bathrooms",
+    "surface": "Covered area",
+    "location": "Location",
+    "contact": "Enquire about this property",
+    "share": "Share",
+    "back": "Back to properties"
+  },
+  "map": {
+    "properties": "properties",
+    "viewProperties": "View properties →"
+  },
+  "invest": {
+    "title": "Invest in Argentina",
+    "label": "Investments"
+  },
+  "blog": {
+    "title": "Real estate blog",
+    "label": "Blog",
+    "readMore": "Read article"
+  },
+  "footer": {
+    "tagline": "Your next property, all in one place.",
+    "properties": "Properties",
+    "invest": "Investments",
+    "blog": "Blog",
+    "copyright": "© {year} Mudate. All rights reserved."
+  },
+  "meta": {
+    "home": {
+      "title": "Mudate — Properties in Argentina",
+      "description": "Argentine real estate portal. Houses, apartments and land for sale and rent in Córdoba, Buenos Aires, Mendoza, Rosario and across Argentina."
+    },
+    "propiedades": {
+      "title": "Properties in Argentina — Houses, Apartments and Land",
+      "description": "Find properties for sale and rent across Argentina. Houses, apartments, land and more in Córdoba, Buenos Aires, Mendoza, Rosario and beyond."
+    }
+  }
+}

@@ -1,0 +1,113 @@
+{
+  "nav": {
+    "properties": "Propiedades",
+    "villamaria": "Villa María",
+    "invest": "Invertir",
+    "blog": "Blog",
+    "publish": "Publicar propiedad"
+  },
+  "home": {
+    "label": "Argentina",
+    "title": "Encontrá tu próxima propiedad",
+    "subtitle": "Casas, departamentos y terrenos en toda Argentina",
+    "searchPlaceholder": "Buscar por ciudad, barrio o tipo...",
+    "searchBtn": "Buscar",
+    "quickFilters": "Filtros rápidos",
+    "featured": "Propiedades destacadas",
+    "featuredSub": "Selección de las mejores oportunidades del mercado argentino",
+    "viewAll": "Ver todas las propiedades",
+    "stats": {
+      "properties": "propiedades",
+      "cities": "ciudades",
+      "provinces": "provincias"
+    },
+    "types": {
+      "casa": "Casas",
+      "departamento": "Departamentos",
+      "terreno": "Terrenos"
+    }
+  },
+  "propiedades": {
+    "title": "Propiedades en Argentina",
+    "label": "Argentina",
+    "available": "{count} propiedades disponibles",
+    "results": "{count} resultados",
+    "noResults": "No hay propiedades disponibles con esos filtros."
+  },
+  "filters": {
+    "filters": "Filtros",
+    "operation": "Operación",
+    "type": "Tipo",
+    "province": "Provincia",
+    "city": "Ciudad",
+    "price": "Precio",
+    "all": "Todos",
+    "allF": "Todas",
+    "todo": "Todo",
+    "venta": "Venta",
+    "alquiler": "Alquiler",
+    "sale": "Venta",
+    "rent": "Alquiler",
+    "house": "Casa",
+    "apartment": "Departamento",
+    "land": "Terreno",
+    "office": "Oficina",
+    "local": "Local",
+    "anyCity": "Ciudad: todas",
+    "anyPrice": "Precio: cualquiera",
+    "list": "Lista",
+    "map": "Mapa",
+    "previous": "Anterior",
+    "next": "Siguiente"
+  },
+  "card": {
+    "sale": "VENTA",
+    "rent": "ALQUILER",
+    "rooms": "{n} amb.",
+    "beds": "{n} dorm.",
+    "baths": "{n} baños",
+    "sqm": "{n} m²"
+  },
+  "property": {
+    "description": "Descripción",
+    "features": "Características",
+    "rooms": "Ambientes",
+    "beds": "Dormitorios",
+    "baths": "Baños",
+    "surface": "Superficie cubierta",
+    "location": "Ubicación",
+    "contact": "Consultar propiedad",
+    "share": "Compartir",
+    "back": "Volver a propiedades"
+  },
+  "map": {
+    "properties": "propiedades",
+    "viewProperties": "Ver propiedades →"
+  },
+  "invest": {
+    "title": "Invertí en Argentina",
+    "label": "Inversiones"
+  },
+  "blog": {
+    "title": "Blog inmobiliario",
+    "label": "Blog",
+    "readMore": "Leer artículo"
+  },
+  "footer": {
+    "tagline": "Tu próxima propiedad, en un solo lugar.",
+    "properties": "Propiedades",
+    "invest": "Inversiones",
+    "blog": "Blog",
+    "copyright": "© {year} Mudate. Todos los derechos reservados."
+  },
+  "meta": {
+    "home": {
+      "title": "Mudate — Propiedades en Argentina",
+      "description": "Portal inmobiliario Argentina. Casas, departamentos y terrenos en venta y alquiler en Córdoba, Buenos Aires, Mendoza, Rosario y todo el país."
+    },
+    "propiedades": {
+      "title": "Propiedades en Argentina — Casas, Departamentos y Terrenos",
+      "description": "Encontrá propiedades en venta y alquiler en toda Argentina. Casas, departamentos, terrenos y más en Córdoba, Buenos Aires, Mendoza, Rosario y todo el país."
+    }
+  }
+}

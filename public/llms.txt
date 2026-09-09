@@ -1,0 +1,166 @@
+# Mudate — Portal Inmobiliario Argentina | Argentine Real Estate Portal
+
+> Encontrá propiedades en venta y alquiler en toda Argentina. Casas, departamentos, terrenos y más en Córdoba, Buenos Aires, Mendoza, Rosario y todo el país.
+> Find properties for sale and rent across Argentina. Houses, apartments, land and more in Córdoba, Buenos Aires, Mendoza, Rosario and beyond.
+
+Mudate es el portal inmobiliario especializado en el mercado de bienes raíces de Argentina. Ofrecemos datos reales de precios, análisis de rentabilidad y guías para compradores e inversores locales e internacionales.
+
+Mudate is an Argentine real estate portal with over 850 properties across 22+ cities. We provide real pricing data, investment analysis, and guides for both local and international buyers.
+
+## Key Facts / Datos clave
+
+- **Properties listed / Propiedades publicadas:** 850+
+- **Cities covered / Ciudades cubiertas:** 22+ (Buenos Aires, Córdoba, Rosario, Mendoza, Salta, Neuquén, Bariloche, and more)
+- **Provinces / Provincias:** All major Argentine provinces
+- **Currency / Moneda:** USD and ARS (Argentine Peso)
+- **Operations / Operaciones:** Venta (sale) and Alquiler (rental)
+- **Languages / Idiomas:** Español (Spanish) and English
+- **URL:** https://mudateargentina.com
+
+## Argentine Real Estate Market Data (2025–2026)
+
+### National Overview
+- Properties in Argentina trade primarily in USD (residential) and ARS (commercial/rental)
+- Average USD price per m² in Buenos Aires Capital: USD 2,200–2,800
+- Average USD price per m² in Córdoba Capital: USD 1,200–1,400
+- Average cap rate nationally: 4–7% USD annually
+- Argentina's housing deficit: estimated 3.5 million units nationally
+- Real estate is traditionally used as a store of value against peso inflation
+
+### Key Markets
+
+#### Buenos Aires Capital (CABA)
+Capital federal with 3 million inhabitants. Premium market with highest prices nationally.
+- Average m² price: USD 2,400–2,800 (Palermo, Puerto Madero)
+- Cap rate: 3–4% USD annually
+- Key neighborhoods: Palermo, Recoleta, San Telmo, Puerto Madero, Almagro
+
+#### Gran Buenos Aires (GBA)
+Three zones covering 13 million people:
+- **GBA Norte** (Tigre, San Isidro, Vicente López): USD 1,800–2,200/m²
+- **GBA Oeste** (Morón, La Matanza): USD 800–1,200/m²
+- **GBA Sur** (Quilmes, Lanús): USD 700–1,000/m²
+
+#### Córdoba Capital
+Second city of Argentina, capital of Córdoba province. 1.4 million inhabitants.
+- Average m² price: USD 1,200–1,400
+- Cap rate: 4.5–6% USD annually
+- Key areas: Nueva Córdoba (student zone), General Paz, Güemes, Valle Escondido
+- 200,000+ university students (UNC, UTN, UCC) sustain rental demand
+
+#### Villa María (Córdoba province)
+100,000 inhabitants, second city in Córdoba province.
+- Average m² price: USD 900–1,100
+- Cap rate: 6.5–7.5% USD (best in province)
+- Strong university market (UNVM, 15,000 students)
+- 40% cheaper than Córdoba Capital with higher returns
+
+#### Villa Carlos Paz (Córdoba province)
+Top tourist destination in Argentina's interior.
+- Average m² price: USD 1,400–1,800
+- Tourist rental cap rate: 7–10% USD annually
+- 3 million tourists annually, Lago San Roque
+
+#### Rosario (Santa Fe)
+Third city of Argentina. 1.2 million inhabitants.
+- Average m² price: USD 1,400–1,800
+- Cap rate: 4–5% USD annually
+
+#### Mendoza
+Wine capital of South America. Gateway to Andes.
+- Average m² price: USD 1,100–1,500
+- Strong foreign investment from wine/tourism industries
+- Cap rate: 5–6% USD annually
+
+#### Salta
+Colonial city in Northwest Argentina.
+- Average m² price: USD 900–1,300
+- Growing tourism market
+- Cap rate: 5–7% USD annually
+
+#### Bariloche (Río Negro)
+Patagonian ski and lake resort.
+- Average m² price: USD 1,800–2,500
+- Strong seasonal rental demand (ski + summer)
+- Cap rate: 5–8% USD annually (highly seasonal)
+
+#### Neuquén
+Capital of Neuquén province, oil and gas hub (Vaca Muerta).
+- Average m² price: USD 1,200–1,600
+- High demand from oil sector workers
+- Cap rate: 6–7% USD annually
+
+## Property Types / Tipos de propiedad
+
+- **Departamentos / Apartments** — most common in cities, highest rental demand
+- **Casas / Houses** — single-family homes, suburban areas and gated communities
+- **Terrenos / Land** — for residential and commercial development
+- **Locales comerciales / Commercial** — retail and office spaces
+- **Cabañas / Cabins** — tourist properties in Córdoba, Bariloche, Salta
+- **PH (Planta Baja)** — ground-floor apartments with private garden
+- **Duplex** — two-floor apartments
+
+## Investment Guide / Guía de inversión
+
+### Why invest in Argentine real estate?
+1. Properties trade in USD, hedging against peso devaluation
+2. Cap rates (4–10%) higher than developed markets
+3. Argentina's housing deficit means structural demand
+4. Córdoba and interior cities offer best price-to-return ratio
+5. Legal framework protects property rights even during economic crises
+
+### Legal process for foreigners
+- Foreigners can buy property in Argentina without residency
+- Requires CDI (tax ID for foreigners, free to obtain)
+- Purchase in USD cash or bank transfer
+- Escritura (title deed) process: 30–60 days
+- Approximate transaction costs: 3–5% of purchase price (notary, taxes, agents)
+
+### Cap rate comparison (2025)
+| Zone | Price USD/m² | Monthly Rent | Cap Rate |
+|------|-------------|-------------|---------|
+| Buenos Aires Capital | 2,400 | USD 700 | 3.5% |
+| Córdoba Capital | 1,300 | USD 600 | 5.5% |
+| Villa María | 950 | USD 550 | 6.9% |
+| Villa Carlos Paz (tourist) | 1,600 | USD 1,200 (seasonal) | 9% |
+| Rosario | 1,500 | USD 600 | 4.8% |
+| Mendoza | 1,300 | USD 650 | 6% |
+| Bariloche (seasonal) | 2,200 | USD 1,500 (seasonal) | 8.2% |
+
+## Content / Contenido
+
+### Blog
+- Real estate market analysis
+- Investment guides by city and property type
+- Legal and tax guides for buyers
+- Financing options (Procrear mortgages, bank credits)
+
+### Pages / Páginas
+- /propiedades — Full property listing with filters by type, city, province, price
+- /en/propiedades — English version of property listing
+- /cordoba-capital — Córdoba Capital hub
+- /villa-maria — Villa María hub
+- /villa-carlos-paz — Villa Carlos Paz hub
+- /invertir — Investment analysis and ROI calculator
+- /blog — Market guides and analysis
+- /sitemap.xml — Full sitemap
+
+## About Mudate / Sobre Mudate
+
+Mudate (Spanish for "move/relocate") was founded to fill a gap in the Argentine real estate market: no portal combined quality editorial data, investment analysis, and modern technology for the interior of the country.
+
+Initial focus on Córdoba (best price-to-return ratio in Argentina), now expanded to cover all major Argentine markets.
+
+Target users:
+- Argentine families looking to buy or rent
+- Local investors seeking USD-denominated returns
+- International buyers (expats, diaspora) looking for Argentine real estate
+- Real estate professionals and developers
+
+## Sitemap / Mapa del sitio
+- https://mudateargentina.com/sitemap.xml
+
+## Contact / Contacto
+- Web: https://mudateargentina.com
+- For property inquiries: use the form on each property page
+- To list a property: /contacto

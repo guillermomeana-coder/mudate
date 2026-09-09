@@ -1,44 +1,42 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { MapPin, TrendingUp, Home, Building2, ArrowRight, CheckCircle } from 'lucide-react';
+import { MapPin, TrendingUp, Home, ArrowRight, CheckCircle } from 'lucide-react';
 import PropertyCard, { PropertyCardData } from '@/components/PropertyCard';
 
 export const metadata: Metadata = {
-  title: 'Propiedades en Villa María, Córdoba — Casas y Departamentos',
+  title: 'Propiedades en Villa Carlos Paz — Casas y Departamentos con Vista al Lago',
   description:
-    'Encontrá propiedades en Villa María, Córdoba. Departamento promedio USD 90.721. La segunda ciudad más importante de la provincia con mercado en crecimiento.',
+    'Encontrá propiedades en Villa Carlos Paz. Destino turístico número 1 de Córdoba, con rentabilidades de 7-8% USD para alquiler vacacional.',
 };
 
 const stats = [
-  { label: 'Departamento promedio', value: 'USD 90.721' },
-  { label: '2 ambientes', value: 'USD 70.889' },
-  { label: '3 ambientes', value: 'USD 98.795' },
-  { label: 'Habitantes', value: '100.000+' },
+  { label: 'Casa con lago', value: 'USD 250.000' },
+  { label: 'Departamento 2amb', value: 'USD 95.000' },
+  { label: 'Casa sierras', value: 'USD 180.000' },
+  { label: 'Visitantes/año', value: '3.000.000+' },
 ];
 
 const porqueInvertir = [
-  'Segunda ciudad más importante de Córdoba',
-  'Fuerte polo universitario (UNVM) y comercial',
-  'Precios accesibles vs Córdoba Capital (40% menos)',
-  'Crecimiento sostenido del parque automotor e industria',
-  'Conectividad: RN 158, tren, autopista',
-  'Mercado inmobiliario en expansión 2025-2026',
+  'Destino turístico número 1 de Córdoba — demanda vacacional todo el año',
+  'Capital rentabilidad: alquileres turísticos 7-8% anual en USD',
+  'Precios aún accesibles vs otros destinos de montaña (Bariloche 3x más caro)',
+  'Lago San Roque y sierras — entorno natural inigualable',
+  '3 millones de turistas/año generan demanda constante',
+  'Desarrollo de complejos y cabañas de alto rendimiento',
 ];
 
 const barrios = [
-  { name: 'Centro', desc: 'El corazón comercial', tipo: 'departamentos' },
-  { name: 'Residencial Norte', desc: 'Zona familiar consolidada', tipo: 'casas' },
-  { name: 'Barrio Nuevo', desc: 'Desarrollo moderno', tipo: 'casas / terrenos' },
-  { name: 'Palermo', desc: 'Barrio universitario', tipo: 'departamentos' },
+  { name: 'Costa del Lago', desc: 'La ubicación más buscada para alquiler', tipo: 'casas / complejos' },
+  { name: 'Centro', desc: 'Comercial y con alta rotación turística', tipo: 'departamentos' },
+  { name: 'Las Jarillas', desc: 'Zona residencial consolidada', tipo: 'casas' },
+  { name: 'Cabalango', desc: 'Sierras exclusivas y tranquilidad', tipo: 'chalets' },
 ];
 
 const properties: PropertyCardData[] = [
-  { slug: 'departamento-villa-maria-2-ambientes', title: 'Departamento 2 ambientes — Centro', price: 68000, currency: 'USD', operation: 'venta', type: 'departamento', ciudad: 'Villa María', barrio: 'Centro', ambientes: 2, dormitorios: 1, banos: 1, superficie_cubierta: 58, images: ['https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800&q=80'] },
-  { slug: 'casa-villa-maria-barrio-privado', title: 'Casa en barrio privado — Norte', price: 120000, currency: 'USD', operation: 'venta', type: 'casa', ciudad: 'Villa María', barrio: 'Barrio Privado Norte', ambientes: 4, dormitorios: 3, banos: 2, superficie_cubierta: 165, images: ['https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80'] },
-  { slug: 'departamento-3-ambientes-villa-maria', title: 'Departamento 3 ambientes — Villa María', price: 98000, currency: 'USD', operation: 'venta', type: 'departamento', ciudad: 'Villa María', barrio: 'Centro', ambientes: 3, dormitorios: 2, banos: 1, superficie_cubierta: 82, images: ['https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=800&q=80'] },
+  { slug: 'casa-villa-carlos-paz-lago', title: 'Casa con vista al lago — Zona Centro', price: 250000, currency: 'USD', operation: 'venta', type: 'casa', ciudad: 'Villa Carlos Paz', barrio: 'Zona Centro', ambientes: 5, dormitorios: 4, banos: 3, superficie_cubierta: 220, images: ['https://images.unsplash.com/photo-1510798831971-661eb04b3739?w=800&q=80'] },
 ];
 
-export default function VillaMariaPage() {
+export default function VillaCarlosPazPage() {
   return (
     <div>
       {/* Hero */}
@@ -49,16 +47,16 @@ export default function VillaMariaPage() {
             <span className="text-xs" style={{ letterSpacing: '0.1em', textTransform: 'uppercase' }}>Córdoba, Argentina</span>
           </div>
           <h1 className="text-4xl md:text-6xl font-semibold text-white mb-4" style={{ fontFamily: 'Cinzel, serif' }}>
-            Villa María
+            Villa Carlos Paz
           </h1>
           <p className="text-xl text-white/70 font-light max-w-xl mb-8">
-            La segunda ciudad de Córdoba. Mercado inmobiliario en crecimiento con precios 40% más accesibles que la capital.
+            El destino turístico número 1 de Córdoba. Lago San Roque, sierras y rentabilidades de 7-8% anual en USD.
           </p>
           <div className="flex gap-3">
-            <Link href="/propiedades?ciudad=villa-maria" className="px-6 py-3 rounded-lg text-sm font-semibold text-white cursor-pointer" style={{ background: 'var(--accent)' }}>
+            <Link href="/propiedades?ciudad=villa-carlos-paz" className="px-6 py-3 rounded-lg text-sm font-semibold text-white cursor-pointer" style={{ background: 'var(--accent)' }}>
               Ver propiedades
             </Link>
-            <Link href="/invertir#villa-maria" className="px-6 py-3 rounded-lg text-sm font-semibold cursor-pointer" style={{ background: 'rgba(255,255,255,0.15)', color: 'white', border: '1px solid rgba(255,255,255,0.3)' }}>
+            <Link href="/invertir#villa-carlos-paz" className="px-6 py-3 rounded-lg text-sm font-semibold cursor-pointer" style={{ background: 'rgba(255,255,255,0.15)', color: 'white', border: '1px solid rgba(255,255,255,0.3)' }}>
               Datos de inversión
             </Link>
           </div>
@@ -84,10 +82,10 @@ export default function VillaMariaPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-end justify-between mb-8">
             <div>
-              <p className="text-xs font-light mb-2" style={{ color: 'var(--primary)', letterSpacing: '0.15em', textTransform: 'uppercase' }}>Villa María</p>
+              <p className="text-xs font-light mb-2" style={{ color: 'var(--primary)', letterSpacing: '0.15em', textTransform: 'uppercase' }}>Villa Carlos Paz</p>
               <h2 className="text-2xl md:text-3xl font-semibold" style={{ fontFamily: 'Cinzel, serif', color: 'var(--foreground)' }}>Propiedades disponibles</h2>
             </div>
-            <Link href="/propiedades?ciudad=villa-maria" className="flex items-center gap-2 text-sm cursor-pointer" style={{ color: 'var(--primary)' }}>
+            <Link href="/propiedades?ciudad=villa-carlos-paz" className="flex items-center gap-2 text-sm cursor-pointer" style={{ color: 'var(--primary)' }}>
               Ver todas <ArrowRight size={16} />
             </Link>
           </div>
@@ -104,7 +102,7 @@ export default function VillaMariaPage() {
             <div>
               <p className="text-xs font-light mb-2" style={{ color: 'var(--primary)', letterSpacing: '0.15em', textTransform: 'uppercase' }}>Por qué elegir</p>
               <h2 className="text-2xl md:text-3xl font-semibold mb-6" style={{ fontFamily: 'Cinzel, serif', color: 'var(--foreground)' }}>
-                Invertir en Villa María
+                Invertir en Villa Carlos Paz
               </h2>
               <ul className="flex flex-col gap-3">
                 {porqueInvertir.map((item) => (
@@ -143,18 +141,18 @@ export default function VillaMariaPage() {
           __html: JSON.stringify({
             '@context': 'https://schema.org',
             '@type': 'LocalBusiness',
-            name: 'Mudate — Villa María',
-            description: 'Portal inmobiliario de Villa María, Córdoba Argentina',
+            name: 'Mudate — Villa Carlos Paz',
+            description: 'Portal inmobiliario de Villa Carlos Paz, Córdoba Argentina',
             address: {
               '@type': 'PostalAddress',
-              addressLocality: 'Villa María',
+              addressLocality: 'Villa Carlos Paz',
               addressRegion: 'Córdoba',
               addressCountry: 'AR',
             },
-            url: 'https://mudate.com/villa-maria',
+            url: 'https://mudateargentina.com/villa-carlos-paz',
             areaServed: {
               '@type': 'City',
-              name: 'Villa María',
+              name: 'Villa Carlos Paz',
             },
           }),
         }}

@@ -19,7 +19,7 @@ export interface IProperty extends Document {
   images: string[];
   coordinates?: { lat: number; lng: number };
   source_url?: string;
-  source: 'zonaprop' | 'argenprop' | 'manual';
+  source: 'zonaprop' | 'argenprop' | 'mercadolibre' | 'manual';
   featured: boolean;
   published: boolean;
   createdAt: Date;
@@ -50,7 +50,7 @@ const PropertySchema = new Schema<IProperty>(
     images: [String],
     coordinates: { lat: Number, lng: Number },
     source_url: String,
-    source: { type: String, enum: ['zonaprop', 'argenprop', 'manual'], default: 'manual' },
+    source: { type: String, enum: ['zonaprop', 'argenprop', 'mercadolibre', 'manual'], default: 'manual' },
     featured: { type: Boolean, default: false },
     published: { type: Boolean, default: true },
   },
@@ -60,6 +60,7 @@ const PropertySchema = new Schema<IProperty>(
 PropertySchema.index({ ciudad: 1, operation: 1, type: 1 });
 PropertySchema.index({ price: 1 });
 PropertySchema.index({ featured: 1, published: 1 });
+PropertySchema.index({ title: 'text', barrio: 'text', ciudad: 'text', description: 'text' });
 
 export const Property =
   mongoose.models.Property || mongoose.model<IProperty>('Property', PropertySchema);

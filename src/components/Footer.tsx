@@ -1,15 +1,29 @@
 import Link from 'next/link';
-import { Home, MapPin, Phone, Mail } from 'lucide-react';
+import { Home, MapPin, Mail } from 'lucide-react';
 
 const ciudades = [
-  { href: '/cordoba-capital', label: 'Córdoba Capital' },
-  { href: '/villa-maria', label: 'Villa María' },
-  { href: '/villa-carlos-paz', label: 'Villa Carlos Paz' },
-  { href: '/rio-cuarto', label: 'Río Cuarto' },
+  { href: '/ciudad/cordoba-capital', label: 'Córdoba Capital' },
+  { href: '/ciudad/rosario', label: 'Rosario' },
+  { href: '/ciudad/buenos-aires-capital', label: 'Buenos Aires' },
+  { href: '/ciudad/villa-carlos-paz', label: 'Villa Carlos Paz' },
+  { href: '/ciudad/bariloche', label: 'Bariloche' },
+  { href: '/ciudad/mendoza', label: 'Mendoza' },
+];
+
+const provincias = [
+  { href: '/provincia/buenos-aires', label: 'Buenos Aires' },
+  { href: '/provincia/cordoba', label: 'Córdoba' },
+  { href: '/provincia/mendoza', label: 'Mendoza' },
+  { href: '/provincia/santa-fe', label: 'Santa Fe' },
+  { href: '/provincia/salta', label: 'Salta' },
+  { href: '/provincia/tucuman', label: 'Tucumán' },
+  { href: '/provincia/neuquen', label: 'Neuquén' },
+  { href: '/provincia/rio-negro', label: 'Río Negro' },
 ];
 
 const recursos = [
   { href: '/invertir', label: 'Guía de Inversión' },
+  { href: '/campos', label: 'Campos & Rurales' },
   { href: '/blog', label: 'Blog Inmobiliario' },
   { href: '/tasacion', label: 'Tasación Online' },
   { href: '/contacto', label: 'Contacto' },
@@ -19,7 +33,7 @@ export default function Footer() {
   return (
     <footer style={{ background: 'var(--foreground)', color: 'rgba(255,255,255,0.85)' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-10">
           {/* Brand */}
           <div className="md:col-span-1">
             <div className="flex items-center gap-2 mb-4">
@@ -37,23 +51,42 @@ export default function Footer() {
               </span>
             </div>
             <p className="text-sm leading-relaxed mb-4" style={{ opacity: 0.7 }}>
-              Tu próxima propiedad en Córdoba Argentina. Conectamos compradores, vendedores e
-              inversores con las mejores oportunidades del mercado.
+              Tu próxima propiedad en Argentina. Conectamos compradores, vendedores e inversores
+              con las mejores oportunidades del mercado.
             </p>
             <div className="flex flex-col gap-2 text-sm" style={{ opacity: 0.7 }}>
               <div className="flex items-center gap-2">
                 <MapPin size={14} />
-                <span>Córdoba, Argentina</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Phone size={14} />
-                <span>+54 351 000-0000</span>
+                <span>Argentina</span>
               </div>
               <div className="flex items-center gap-2">
                 <Mail size={14} />
-                <span>hola@mudate.com</span>
+                <a href="mailto:hola@mudateargentina.com" style={{ color: 'inherit', textDecoration: 'none' }}>hola@mudateargentina.com</a>
               </div>
             </div>
+          </div>
+
+          {/* Provincias */}
+          <div>
+            <h4
+              className="text-white font-semibold mb-4 text-sm"
+              style={{ letterSpacing: '0.1em', textTransform: 'uppercase' }}
+            >
+              Provincias
+            </h4>
+            <ul className="flex flex-col gap-2">
+              {provincias.map((p) => (
+                <li key={p.href}>
+                  <Link
+                    href={p.href}
+                    className="text-sm transition-colors duration-150 cursor-pointer hover:text-white"
+                    style={{ opacity: 0.7 }}
+                  >
+                    {p.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
 
           {/* Ciudades */}
