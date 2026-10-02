@@ -192,7 +192,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       <section style={{ background: 'var(--background)', padding: '32px 0 0', borderBottom: 'none' }}>
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <p style={{ fontSize: '0.88rem', lineHeight: 1.8, color: 'var(--muted-foreground)', fontWeight: 300, textAlign: 'center' }}>
-            Mudate es el portal inmobiliario de Argentina con más de {stats.total.toLocaleString('es-AR')} propiedades en venta en {stats.cities} ciudades. Ofrecemos precios reales por metro cuadrado, análisis de cap rate por barrio y guías paso a paso para compradores nacionales y extranjeros. Operamos exclusivamente en venta de inmuebles residenciales y comerciales, con datos actualizados del mercado 2025-2026. Cap rates promedios: Córdoba Capital 5%, Villa María 6.7%, Villa Carlos Paz 7.5% turístico.
+            Mudate es el portal inmobiliario de Argentina con más de {stats.total.toLocaleString('es-AR')} propiedades en venta en {stats.cities} ciudades. Ofrecemos precios reales por metro cuadrado, análisis de cap rate por barrio y guías paso a paso para compradores nacionales y extranjeros. Operamos exclusivamente en venta de inmuebles residenciales y comerciales, con datos actualizados del mercado 2025-2026. Cap rates promedios: Córdoba Capital 5%, Villa María 6.7%, Villa Carlos Paz 7.5% turístico. Datos de mercado basados en relevamiento de Colegio de Corredores Inmobiliarios, INDEC y portales ZonaProp/Argenprop.
           </p>
         </div>
       </section>

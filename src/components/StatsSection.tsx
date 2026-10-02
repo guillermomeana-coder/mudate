@@ -73,9 +73,21 @@ export default function StatsSection({ totalProperties, totalCities }: Props) {
               <p style={{ fontSize: '0.7rem', color: 'rgba(255,255,255,0.4)' }}>
                 {stat.label}
               </p>
+              {stat.label === 'Precio m² Córdoba Capital' || stat.label === 'Precio m² Villa Carlos Paz' ? (
+                <p style={{ fontSize: '0.55rem', color: 'rgba(255,255,255,0.2)', marginTop: 4 }}>
+                  Fuente: Colegio de Corredores Inmobiliarios de Córdoba, Q3 2025
+                </p>
+              ) : stat.label === 'Yield Nueva Córdoba' ? (
+                <p style={{ fontSize: '0.55rem', color: 'rgba(255,255,255,0.2)', marginTop: 4 }}>
+                  Estimación Mudate basada en datos de mercado 2024-2025
+                </p>
+              ) : null}
             </div>
           ))}
         </div>
+        <p style={{ fontSize: '0.6rem', color: 'rgba(255,255,255,0.25)', textAlign: 'center', marginTop: 20 }}>
+          Fuentes: Colegio de Corredores Inmobiliarios de Córdoba, INDEC, relevamiento propio Mudate (Q3 2025)
+        </p>
       </div>
     </section>
   );

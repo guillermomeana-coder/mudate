@@ -474,6 +474,9 @@ export default function InvertirPage() {
             </div>
           ))}
         </div>
+        <p style={{ fontSize: '0.6rem', color: 'rgba(240,253,250,0.3)', textAlign: 'center', marginTop: 12 }}>
+          Fuentes: Colegio de Corredores Inmobiliarios de Córdoba, INDEC, Secretaría de Políticas Universitarias (SPU), relevamiento Mudate H1 2025
+        </p>
       </section>
 
       {/* ── TABLA ROI POR ZONA ── */}
@@ -595,6 +598,11 @@ export default function InvertirPage() {
                 </div>
               </div>
             ))}
+
+            {/* Source attribution */}
+            <p style={{ fontSize: '0.65rem', color: 'var(--muted-foreground)', marginTop: 8, fontStyle: 'italic', padding: '0 28px' }}>
+              Fuente: Colegio de Corredores Inmobiliarios de Córdoba, relevamiento Mudate H1 2025
+            </p>
 
             {/* Legend */}
             <div
@@ -883,6 +891,9 @@ export default function InvertirPage() {
               </div>
             ))}
           </div>
+          <p style={{ fontSize: '0.65rem', color: 'var(--muted-foreground)', marginTop: 8, fontStyle: 'italic' }}>
+            Fuente: Colegio de Corredores Inmobiliarios de Córdoba, relevamiento Mudate H1 2025
+          </p>
         </div>
       </section>
 

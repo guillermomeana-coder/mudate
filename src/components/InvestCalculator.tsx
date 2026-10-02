@@ -274,6 +274,9 @@ export default function InvestCalculator() {
             <p style={{ fontSize: '0.65rem', color: 'rgba(255,255,255,0.25)', marginTop: 16, lineHeight: 1.5 }}>
               * Estimación basada en promedios de mercado. Los resultados reales pueden variar. No constituye asesoramiento financiero.
             </p>
+            <p style={{ fontSize: '0.6rem', color: 'rgba(255,255,255,0.2)', marginTop: 8, lineHeight: 1.5 }}>
+              Datos de precios: Colegio de Corredores Inmobiliarios de cada provincia. Alquileres: relevamiento Mudate sobre ZonaProp y Argenprop (H1 2025). Tipo de cambio referencia: USD/ARS $1.200.
+            </p>
           </div>
         </div>
       </div>
