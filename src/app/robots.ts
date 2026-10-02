@@ -10,6 +10,7 @@ export default function robots(): MetadataRoute.Robots {
       },
       // AI crawlers — permitidos para GEO (Generative Engine Optimization)
       { userAgent: 'GPTBot', allow: ['/'] },
+      { userAgent: 'OAI-SearchBot', allow: ['/'] },
       { userAgent: 'ChatGPT-User', allow: ['/'] },
       { userAgent: 'CCBot', allow: ['/'] },
       { userAgent: 'anthropic-ai', allow: ['/'] },

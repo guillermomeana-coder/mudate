@@ -264,7 +264,15 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
     url: postUrl,
     datePublished: post.publishedAt,
     dateModified: post.publishedAt,
-    author: { '@type': 'Organization', name: 'Mudate', url: BASE },
+    author: [
+      { '@type': 'Organization', name: 'Mudate', url: BASE, '@id': `${BASE}/#organization` },
+      {
+        '@type': 'Person',
+        name: 'Equipo Editorial Mudate',
+        jobTitle: isEn ? 'Real Estate Research Team' : 'Equipo de Investigación Inmobiliaria',
+        worksFor: { '@type': 'Organization', name: 'Mudate', '@id': `${BASE}/#organization` },
+      },
+    ],
     publisher: { '@type': 'Organization', name: 'Mudate', url: BASE, '@id': `${BASE}/#organization` },
     keywords: post.tags.join(', '),
     inLanguage: isEn ? 'en' : 'es-AR',
@@ -282,10 +290,22 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
     ],
   };
 
+  const speakableLd = {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    '@id': `${postUrl}#webpage`,
+    speakable: {
+      '@type': 'SpeakableSpecification',
+      cssSelector: ['h1', 'h2', 'article p'],
+    },
+    url: postUrl,
+  };
+
   return (
     <div style={{ background: 'var(--background)' }}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(blogPostingLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(speakableLd) }} />
       {howToLd && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToLd) }} />}
       {/* Hero */}
       <div className="relative h-72 md:h-96">
@@ -314,6 +334,13 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
           <h1 className="text-2xl md:text-4xl font-semibold text-white" style={{ fontFamily: 'Cinzel, serif' }}>
             {post.title[isEn ? 'en' : 'es']}
           </h1>
+          <div className="flex items-center gap-2 mt-3">
+            <div style={{ width: 28, height: 28, borderRadius: '50%', background: 'var(--primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.6rem', fontWeight: 700, color: '#fff' }}>M</div>
+            <div>
+              <p className="text-xs font-medium text-white/90">{isEn ? 'Mudate Editorial Team' : 'Equipo Editorial Mudate'}</p>
+              <p className="text-xs text-white/50">{isEn ? 'Real Estate Research' : 'Investigación Inmobiliaria'}</p>
+            </div>
+          </div>
         </div>
       </div>
 
