@@ -6,7 +6,7 @@ export interface IProperty extends Document {
   description: string;
   price: number;
   currency: 'USD' | 'ARS';
-  operation: 'venta' | 'alquiler';
+  operation: 'venta';
   type: 'casa' | 'departamento' | 'terreno' | 'local' | 'oficina' | 'campo' | 'cochera' | 'galpon';
   ciudad: string;
   barrio: string;
@@ -33,7 +33,7 @@ const PropertySchema = new Schema<IProperty>(
     description: { type: String, required: true },
     price: { type: Number, required: true },
     currency: { type: String, enum: ['USD', 'ARS'], default: 'USD' },
-    operation: { type: String, enum: ['venta', 'alquiler'], required: true },
+    operation: { type: String, enum: ['venta'], default: 'venta', required: true },
     type: {
       type: String,
       enum: ['casa', 'departamento', 'terreno', 'local', 'oficina', 'campo', 'cochera', 'galpon'],

@@ -1,48 +1,128 @@
 import { getTranslations } from 'next-intl/server';
 import Link from 'next/link';
-import { Search, TrendingUp, MapPin, ArrowRight, Building2, Home, TreePine } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import PropertyGrid from '@/components/PropertyGrid';
+import HeroSection from '@/components/HeroSection';
+import StatsSection from '@/components/StatsSection';
+import CitiesSection from '@/components/CitiesSection';
+import InvestCTA from '@/components/InvestCTA';
+import TestimonialsSection from '@/components/TestimonialsSection';
+import NewsletterCTA from '@/components/NewsletterCTA';
 import { connectDB } from '@/lib/mongodb';
 import { Property } from '@/models/Property';
 import type { PropertyCardData } from '@/components/PropertyCard';
+import type { Metadata } from 'next';
 
-export const dynamic = 'force-dynamic';
+export const revalidate = 3600; // ISR: revalida cada 1 hora
 
-const marketStats = [
-  { label: 'Precio m² Córdoba Capital', value: 'USD 1.350', trend: '+8.5% YoY' },
-  { label: 'Precio m² Villa Carlos Paz', value: 'USD 1.600', trend: '+12% YoY' },
-  { label: 'Yield Nueva Córdoba', value: '6-7%', trend: 'anual bruto' },
-  { label: 'Propiedades activas', value: '+3.000', trend: 'en toda Argentina' },
-];
+const base = 'https://mudateargentina.com';
 
-const ciudades = [
-  {
-    name: 'Córdoba Capital',
-    slug: 'cordoba-capital',
-    img: 'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&q=80',
-    props: '1.800+',
-    desc: 'Nueva Córdoba · General Paz · Valle Escondido',
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  const isEn = locale === 'en';
+  const url = isEn ? `${base}/en` : base;
+  return {
+    title: isEn
+      ? 'Properties for Sale in Argentina — Córdoba, Buenos Aires, Rosario | Mudate'
+      : 'Propiedades en Venta en Argentina — Córdoba, Buenos Aires, Rosario | Mudate',
+    description: isEn
+      ? 'Find houses, apartments and lots for sale in Argentina. Real prices in Córdoba, Buenos Aires, Rosario, Mendoza and 30+ cities. Updated 2025–2026 data.'
+      : 'Encontrá casas, departamentos y terrenos en venta en Argentina. Precios reales en Córdoba, Buenos Aires, Rosario, Mendoza y más de 30 ciudades. Datos actualizados 2025–2026.',
+    keywords: isEn
+      ? ['properties for sale argentina', 'real estate argentina', 'houses cordoba', 'apartments buenos aires', 'invest argentina', 'cap rate argentina']
+      : ['propiedades en venta argentina', 'inmuebles córdoba', 'casas en venta argentina', 'departamentos córdoba', 'invertir en propiedades argentina', 'precio m2 córdoba'],
+    alternates: {
+      canonical: url,
+      languages: { 'es': base, 'en': `${base}/en`, 'x-default': base },
+    },
+    openGraph: {
+      siteName: 'Mudate Argentina',
+      title: isEn
+        ? 'Properties for Sale in Argentina | Mudate'
+        : 'Propiedades en Venta en Argentina | Mudate',
+      description: isEn
+        ? 'Houses, apartments and lots for sale in Argentina. Real prices 2025–2026.'
+        : 'Casas, departamentos y terrenos en venta en Argentina. Precios reales 2025–2026.',
+      url,
+      type: 'website',
+      locale: isEn ? 'en_US' : 'es_AR',
+      images: [{ url: `${base}/opengraph-image`, width: 1200, height: 630, alt: 'Mudate Argentina — Portal Inmobiliario' }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: isEn ? 'Properties for Sale in Argentina | Mudate' : 'Propiedades en Venta en Argentina | Mudate',
+      description: isEn
+        ? 'Houses, apartments and lots in Argentina. Real prices 2025–2026.'
+        : 'Casas, departamentos y terrenos en Argentina. Precios reales 2025–2026.',
+      images: [`${base}/opengraph-image`],
+    },
+  };
+}
+
+// WebSite schema is in layout.tsx (global) — no duplicate here
+
+const speakableSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  '@id': 'https://mudateargentina.com/#webpage',
+  speakable: {
+    '@type': 'SpeakableSpecification',
+    cssSelector: ['h1', 'h2', '.hero-text'],
   },
-  {
-    name: 'Villa María',
-    slug: 'villa-maria',
-    img: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80',
-    props: '178+',
-    desc: 'La segunda ciudad de la provincia',
-  },
-  {
-    name: 'Villa Carlos Paz',
-    slug: 'villa-carlos-paz',
-    img: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80',
-    props: '3.060+',
-    desc: 'Yield turístico hasta 10% anual',
-  },
-];
+  url: 'https://mudateargentina.com',
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: '¿Cómo comprar una propiedad en Argentina?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Para comprar una propiedad en Argentina necesitás CUIL o CUIT, un escribano público y el precio se paga en dólares. El proceso incluye: reserva, boleto de compraventa y escritura. Los gastos de compraventa en Córdoba suman aproximadamente 5-7% del valor del inmueble.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: '¿Cuál es el precio por m² en Córdoba Capital?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'El precio por m² en Córdoba Capital varía por barrio: Nueva Córdoba USD 1.200-1.600/m², Güemes USD 1.000-1.300/m², General Paz USD 1.100-1.400/m². El promedio de la ciudad ronda USD 1.100-1.300/m² para departamentos usados.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: '¿Cuál es el cap rate en Córdoba?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'El cap rate en Córdoba Capital está entre 4.5% y 6% anual en USD dependiendo del barrio. Villa María ofrece cap rates de 6.5-7%, y Villa Carlos Paz para alquiler vacacional puede llegar al 8-9% USD.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: '¿Pueden los extranjeros comprar propiedades en Argentina?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Sí, los extranjeros pueden comprar propiedades en Argentina sin necesidad de residencia. Solo necesitan obtener un CUIL (Código Único de Identificación Laboral) en ANSES y contar con un escribano público para la escrituración.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: '¿En qué ciudad de Argentina conviene invertir en inmuebles?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Las mejores ciudades para invertir en Argentina en 2025 son: Córdoba Capital (mercado líquido, cap rate 5%), Villa María (cap rate 6.5-7%, demanda universitaria), Bariloche (turismo, 8-10% USD), Neuquén (boom Vaca Muerta) y Mendoza (valorización en USD).',
+      },
+    },
+  ],
+};
 
 async function getFeaturedProperties(): Promise<PropertyCardData[]> {
   try {
     await connectDB();
-    const props = await Property.find({ published: true })
+    const props = await Property.find({ published: true, operation: 'venta' })
       .sort({ featured: -1, createdAt: -1 })
       .limit(6)
       .lean();
@@ -52,7 +132,7 @@ async function getFeaturedProperties(): Promise<PropertyCardData[]> {
       title: p.title,
       price: p.price,
       currency: p.currency as 'USD' | 'ARS',
-      operation: p.operation as 'venta' | 'alquiler',
+      operation: 'venta' as const,
       type: p.type,
       ciudad: p.ciudad,
       barrio: p.barrio,
@@ -67,195 +147,51 @@ async function getFeaturedProperties(): Promise<PropertyCardData[]> {
   }
 }
 
+async function getPropertyStats(): Promise<{ total: number; cities: number }> {
+  try {
+    await connectDB();
+    const [total, citiesAgg] = await Promise.all([
+      Property.countDocuments({ published: true }),
+      Property.distinct('ciudad', { published: true }),
+    ]);
+    return { total, cities: citiesAgg.length };
+  } catch {
+    return { total: 3000, cities: 30 };
+  }
+}
+
 export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'home' });
-  const featured = await getFeaturedProperties();
+  const [featured, stats] = await Promise.all([
+    getFeaturedProperties(),
+    getPropertyStats(),
+  ]);
 
   return (
     <>
-      {/* ═══ HERO ═══ */}
-      <section
-        style={{
-          background: 'linear-gradient(135deg, #0D3B37 0%, #0F766E 55%, #0369A1 100%)',
-          minHeight: 640,
-          display: 'flex',
-          alignItems: 'center',
-          position: 'relative',
-          overflow: 'hidden',
-        }}
-      >
-        {/* Decorative blobs */}
-        <div
-          aria-hidden
-          style={{
-            position: 'absolute', inset: 0, pointerEvents: 'none',
-            backgroundImage: `
-              radial-gradient(ellipse 60% 50% at 10% 60%, rgba(20,184,166,0.18) 0%, transparent 70%),
-              radial-gradient(ellipse 40% 40% at 85% 20%, rgba(3,105,161,0.20) 0%, transparent 70%)
-            `,
-          }}
-        />
-        {/* Noise texture */}
-        <div
-          aria-hidden
-          style={{
-            position: 'absolute', inset: 0, opacity: 0.025,
-            backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 256 256\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'n\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.65\' numOctaves=\'3\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23n)\'/%3E%3C/svg%3E")',
-          }}
-        />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(speakableSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      {/* ═══ HERO — KineticGrid + ScrambleText ═══ */}
+      <HeroSection
+        subtitle={t('subtitle')}
+        searchPlaceholder={t('searchPlaceholder')}
+        searchBtn={t('searchBtn')}
+        labelCasa={t('types.casa')}
+        labelDepartamento={t('types.departamento')}
+        labelTerreno={t('types.terreno')}
+      />
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 w-full">
-          <p className="section-label" style={{ color: 'rgba(153,246,228,0.9)', marginBottom: 20 }}>
-            Portal inmobiliario Argentina
-          </p>
+      {/* ═══ STATS — ScrollTrigger reveal ═══ */}
+      <StatsSection totalProperties={stats.total} totalCities={stats.cities} />
 
-          <h1
-            style={{
-              fontFamily: 'Cinzel, serif',
-              fontSize: 'clamp(2.6rem, 7vw, 5.5rem)',
-              fontWeight: 600,
-              color: '#fff',
-              letterSpacing: '-0.03em',
-              lineHeight: 1.05,
-              marginBottom: 24,
-              maxWidth: 700,
-            }}
-          >
-            Tu próxima<br />propiedad,<br />
-            <span style={{ color: '#5EEAD4' }}>en todo el país.</span>
-          </h1>
-
-          <p
-            style={{
-              color: 'rgba(255,255,255,0.65)',
-              fontSize: '1.05rem',
-              fontWeight: 300,
-              maxWidth: 460,
-              marginBottom: 40,
-              lineHeight: 1.7,
-            }}
-          >
-            {t('subtitle')}
-          </p>
-
-          {/* Search form */}
-          <form
-            action="/propiedades"
-            method="get"
-            style={{
-              display: 'flex',
-              gap: 8,
-              maxWidth: 560,
-              background: 'rgba(255,255,255,0.1)',
-              backdropFilter: 'blur(16px)',
-              WebkitBackdropFilter: 'blur(16px)',
-              border: '1px solid rgba(255,255,255,0.18)',
-              borderRadius: 16,
-              padding: 6,
-            }}
-          >
-            <div style={{ flex: 1, display: 'flex', alignItems: 'center', gap: 10, paddingLeft: 12 }}>
-              <Search size={17} color="rgba(255,255,255,0.6)" style={{ flexShrink: 0 }} />
-              <input
-                type="text"
-                name="q"
-                placeholder={t('searchPlaceholder')}
-                style={{
-                  flex: 1,
-                  background: 'transparent',
-                  border: 'none',
-                  outline: 'none',
-                  color: '#fff',
-                  fontSize: '0.9rem',
-                  fontFamily: 'Josefin Sans, sans-serif',
-                }}
-              />
-            </div>
-            <button
-              type="submit"
-              style={{
-                padding: '10px 24px',
-                borderRadius: 12,
-                background: 'var(--accent)',
-                color: '#fff',
-                fontFamily: 'Josefin Sans, sans-serif',
-                fontSize: '0.875rem',
-                fontWeight: 600,
-                cursor: 'pointer',
-                border: 'none',
-                flexShrink: 0,
-              }}
-            >
-              {t('searchBtn')}
-            </button>
-          </form>
-
-          {/* Quick filters */}
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10, marginTop: 20 }}>
-            {[
-              { icon: <Home size={13} />, label: t('types.casa'), href: '/propiedades?type=Casa' },
-              { icon: <Building2 size={13} />, label: t('types.departamento'), href: '/propiedades?type=Departamento' },
-              { icon: <TreePine size={13} />, label: t('types.terreno'), href: '/propiedades?type=Terreno' },
-            ].map((f) => (
-              <Link
-                key={f.label}
-                href={f.href}
-                style={{
-                  display: 'flex', alignItems: 'center', gap: 6,
-                  padding: '7px 16px', borderRadius: 999,
-                  fontSize: '0.8rem', fontWeight: 500,
-                  background: 'rgba(255,255,255,0.08)',
-                  color: 'rgba(255,255,255,0.85)',
-                  border: '1px solid rgba(255,255,255,0.15)',
-                  textDecoration: 'none',
-                  transition: 'background 180ms ease',
-                }}
-              >
-                {f.icon}{f.label}
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ═══ STATS ═══ */}
-      <section style={{ background: 'var(--foreground)', padding: '44px 0' }}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))',
-              gap: '32px 16px',
-            }}
-          >
-            {marketStats.map((stat) => (
-              <div key={stat.label} style={{ textAlign: 'center' }}>
-                <p
-                  style={{
-                    fontFamily: 'Cinzel, serif',
-                    fontSize: '1.75rem',
-                    fontWeight: 700,
-                    color: '#fff',
-                    letterSpacing: '-0.02em',
-                    marginBottom: 4,
-                  }}
-                >
-                  {stat.value}
-                </p>
-                <p style={{ fontSize: '0.7rem', fontWeight: 600, color: '#5EEAD4', letterSpacing: '0.06em', marginBottom: 2 }}>
-                  {stat.trend}
-                </p>
-                <p style={{ fontSize: '0.7rem', color: 'rgba(255,255,255,0.4)' }}>
-                  {stat.label}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ═══ FEATURED PROPERTIES ═══ */}
+      {/* ═══ FEATURED PROPERTIES — PropertyGrid con ScrollTrigger ═══ */}
       {featured.length > 0 && (
         <section style={{ background: 'var(--background)', padding: '80px 0' }}>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -301,81 +237,87 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         </section>
       )}
 
-      {/* ═══ CIUDADES ═══ */}
-      <section style={{ background: 'var(--muted)', padding: '80px 0' }}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div style={{ textAlign: 'center', marginBottom: 48 }}>
-            <p className="section-label" style={{ marginBottom: 8 }}>Por ciudad</p>
-            <h2
-              style={{
-                fontFamily: 'Cinzel, serif',
-                fontSize: 'clamp(1.6rem, 4vw, 2.4rem)',
-                fontWeight: 600,
-                color: 'var(--foreground)',
-                letterSpacing: '-0.02em',
-              }}
-            >
-              Explorá Córdoba
-            </h2>
-          </div>
+      {/* ═══ CIUDADES — stagger scroll reveal ═══ */}
+      <CitiesSection />
 
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
-              gap: 20,
-            }}
-          >
-            {ciudades.map((c) => (
+      {/* ═══ BLOG CTA ═══ */}
+      <section style={{ background: 'var(--muted)', padding: '60px 0' }}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', marginBottom: 32, flexWrap: 'wrap', gap: 12 }}>
+            <div>
+              <p className="section-label" style={{ marginBottom: 8 }}>Editorial</p>
+              <h2 style={{ fontFamily: 'Cinzel, serif', fontSize: 'clamp(1.4rem, 3vw, 2rem)', fontWeight: 600, color: 'var(--foreground)', letterSpacing: '-0.02em' }}>
+                Guías e inversión
+              </h2>
+            </div>
+            <Link href="/blog" style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: '0.85rem', fontWeight: 600, color: 'var(--primary)', textDecoration: 'none' }}>
+              Ver todos los artículos <ArrowRight size={15} />
+            </Link>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              {
+                href: '/blog/cap-rate-cordoba-2025',
+                title: 'Cap Rate en Córdoba 2025: análisis por barrio y ciudad',
+                excerpt: 'Calculamos el retorno real en dólares para los principales barrios de Córdoba. Nueva Córdoba, General Paz, Villa María y más.',
+                label: 'Inversión',
+                coverImage: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=600&q=80',
+              },
+              {
+                href: '/blog/invertir-departamentos-cordoba-vs-caba',
+                title: 'Invertir en departamentos: Córdoba vs CABA — quién gana en 2025',
+                excerpt: 'Comparamos precio del m², rentabilidades y perspectivas de valorización entre Córdoba Capital y Buenos Aires.',
+                label: 'Inversión',
+                coverImage: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&q=80',
+              },
+              {
+                href: '/blog/mejor-ciudad-para-invertir-argentina-2025',
+                title: '¿En qué ciudad de Argentina conviene más invertir en 2025?',
+                excerpt: 'Comparamos 10 ciudades argentinas por precio/m², cap rate, liquidez y potencial de valorización.',
+                label: 'Inversión',
+                coverImage: 'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=600&q=80',
+              },
+              {
+                href: '/blog/mercado-inmobiliario-villa-maria-2025',
+                title: 'Mercado inmobiliario Villa María 2025: precios, tendencias y oportunidades',
+                excerpt: 'Villa María consolida su posición como el mejor mercado alternativo a Córdoba Capital con cap rates sobre el 6%.',
+                label: 'Mercado',
+                coverImage: 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=600&q=80',
+              },
+              {
+                href: '/blog/rentabilidad-villa-carlos-paz',
+                title: 'Inversión en Villa Carlos Paz: rentabilidad turística y cap rates',
+                excerpt: 'Con 3 millones de turistas por año, Villa Carlos Paz ofrece cap rates de 7-8% USD para quien sabe dónde comprar.',
+                label: 'Turismo',
+                coverImage: 'https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=600&q=80',
+              },
+              {
+                href: '/blog/como-comprar-propiedad-argentina-extranjeros',
+                title: 'Cómo comprar una propiedad en Argentina siendo extranjero: guía 2025',
+                excerpt: 'Extranjeros pueden comprar propiedades en Argentina sin residencia. CDI, escritura, impuestos y costos: todo lo que necesitás saber.',
+                label: 'Guía',
+                coverImage: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&q=80',
+              },
+            ].map((post) => (
               <Link
-                key={c.slug}
-                href={`/${c.slug}`}
-                className="group"
-                style={{
-                  position: 'relative',
-                  overflow: 'hidden',
-                  borderRadius: 20,
-                  height: 260,
-                  display: 'block',
-                  textDecoration: 'none',
-                  boxShadow: 'var(--shadow-md)',
-                  transition: 'transform 300ms cubic-bezier(0.34,1.56,0.64,1)',
-                }}
+                key={post.href}
+                href={post.href}
+                className="rounded-xl overflow-hidden cursor-pointer hover:-translate-y-1 transition-all duration-200"
+                style={{ background: 'white', boxShadow: 'var(--shadow-sm)', border: '1px solid var(--border)', display: 'flex', flexDirection: 'column' }}
               >
-                <div
-                  style={{
-                    position: 'absolute', inset: 0,
-                    backgroundImage: `url(${c.img})`,
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-                    transition: 'transform 500ms ease',
-                  }}
-                  className="group-hover:scale-105"
-                />
-                <div
-                  style={{
-                    position: 'absolute', inset: 0,
-                    background: 'linear-gradient(to top, rgba(13,59,55,0.82) 0%, rgba(13,59,55,0.25) 50%, transparent 100%)',
-                  }}
-                />
-                <div style={{ position: 'absolute', bottom: 0, left: 0, padding: '20px 24px' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 5, marginBottom: 4 }}>
-                    <MapPin size={12} color="rgba(255,255,255,0.6)" />
-                    <span style={{ fontSize: '0.72rem', color: 'rgba(255,255,255,0.6)' }}>{c.props} propiedades</span>
-                  </div>
-                  <h3
-                    style={{
-                      fontFamily: 'Cinzel, serif',
-                      fontSize: '1.2rem',
-                      fontWeight: 600,
-                      color: '#fff',
-                      letterSpacing: '-0.01em',
-                      marginBottom: 3,
-                    }}
-                  >
-                    {c.name}
-                  </h3>
-                  <p style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.55)' }}>{c.desc}</p>
+                <div style={{ position: 'relative', width: '100%', paddingTop: '56.25%', overflow: 'hidden' }}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={post.coverImage}
+                    alt={post.title}
+                    loading="lazy"
+                    style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
+                  />
+                </div>
+                <div style={{ padding: '16px 20px 20px', flex: 1, display: 'flex', flexDirection: 'column', gap: 8 }}>
+                  <span className="text-xs px-2 py-0.5 rounded-full font-medium text-white inline-block w-fit" style={{ background: 'var(--primary)' }}>{post.label}</span>
+                  <p className="text-sm font-semibold leading-snug" style={{ fontFamily: 'Cinzel, serif', color: 'var(--foreground)' }}>{post.title}</p>
+                  <p className="text-xs leading-relaxed" style={{ color: 'var(--muted-foreground)' }}>{post.excerpt}</p>
                 </div>
               </Link>
             ))}
@@ -383,74 +325,54 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         </div>
       </section>
 
-      {/* ═══ INVERTIR CTA ═══ */}
-      <section
-        style={{
-          background: 'linear-gradient(135deg, #0D3B37 0%, #0F766E 60%, #0369A1 100%)',
-          padding: '96px 0',
-        }}
-      >
-        <div className="max-w-4xl mx-auto px-4" style={{ textAlign: 'center' }}>
-          <div
-            style={{
-              display: 'inline-flex', alignItems: 'center', gap: 8,
-              padding: '7px 18px', borderRadius: 999, marginBottom: 28,
-              background: 'rgba(255,255,255,0.10)',
-              border: '1px solid rgba(255,255,255,0.15)',
-              fontSize: '0.78rem', fontWeight: 500, color: '#5EEAD4',
-            }}
-          >
-            <TrendingUp size={13} />
-            Córdoba: mercado en expansión 2026
-          </div>
+      {/* ═══ TESTIMONIOS — trust signals ═══ */}
+      <TestimonialsSection />
 
-          <h2
-            style={{
-              fontFamily: 'Cinzel, serif',
-              fontSize: 'clamp(1.8rem, 5vw, 3.5rem)',
-              fontWeight: 600,
-              color: '#fff',
-              letterSpacing: '-0.03em',
-              lineHeight: 1.1,
-              marginBottom: 20,
-            }}
-          >
-            Invertí en bienes raíces<br />
-            <span style={{ color: '#5EEAD4' }}>con datos reales.</span>
-          </h2>
+      {/* ═══ NEWSLETTER — conversión ═══ */}
+      <NewsletterCTA />
 
-          <p
-            style={{
-              color: 'rgba(255,255,255,0.6)',
-              fontSize: '1rem',
-              fontWeight: 300,
-              maxWidth: 440,
-              margin: '0 auto 36px',
-              lineHeight: 1.7,
-            }}
-          >
-            Nueva Córdoba rinde 6-7% anual. Villa Carlos Paz hasta 10% turístico.
-          </p>
-
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12, justifyContent: 'center' }}>
-            <Link href="/invertir" className="btn-ghost">Ver guía de inversión</Link>
-            <Link
-              href="/propiedades"
-              style={{
-                display: 'inline-flex', alignItems: 'center', gap: 8,
-                padding: '12px 28px', borderRadius: 12,
-                background: '#fff', color: 'var(--primary)',
-                fontFamily: 'Josefin Sans, sans-serif',
-                fontSize: '0.875rem', fontWeight: 700,
-                textDecoration: 'none',
-                transition: 'opacity 180ms ease',
-              }}
-            >
-              Ver propiedades
-            </Link>
+      {/* ═══ CIUDADES NACIONALES — internal links SEO ═══ */}
+      <section style={{ background: 'var(--background)', padding: '40px 0', borderTop: '1px solid var(--border)' }}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <p className="section-label" style={{ marginBottom: 16 }}>Propiedades por ciudad</p>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px 12px' }}>
+            {[
+              { href: '/cordoba-capital', label: 'Córdoba Capital' },
+              { href: '/buenos-aires-capital', label: 'Buenos Aires' },
+              { href: '/rosario', label: 'Rosario' },
+              { href: '/mendoza', label: 'Mendoza' },
+              { href: '/bariloche', label: 'Bariloche' },
+              { href: '/salta', label: 'Salta' },
+              { href: '/neuquen', label: 'Neuquén' },
+              { href: '/mar-del-plata', label: 'Mar del Plata' },
+              { href: '/tucuman', label: 'Tucumán' },
+              { href: '/villa-maria', label: 'Villa María' },
+              { href: '/villa-carlos-paz', label: 'Villa Carlos Paz' },
+            ].map((city) => (
+              <Link
+                key={city.href}
+                href={city.href}
+                style={{
+                  fontSize: '0.8rem',
+                  fontWeight: 500,
+                  color: 'var(--muted-foreground)',
+                  textDecoration: 'none',
+                  padding: '4px 10px',
+                  borderRadius: 20,
+                  border: '1px solid var(--border)',
+                  transition: 'color 150ms, border-color 150ms',
+                }}
+                className="hover:text-primary hover:border-primary"
+              >
+                {city.label}
+              </Link>
+            ))}
           </div>
         </div>
       </section>
+
+      {/* ═══ INVERTIR CTA — KineticGrid + MagneticBtn ═══ */}
+      <InvestCTA />
     </>
   );
 }

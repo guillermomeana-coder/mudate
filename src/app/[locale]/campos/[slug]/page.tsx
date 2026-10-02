@@ -6,7 +6,7 @@ import PropertyGrid from '@/components/PropertyGrid';
 import { PropertyCardData } from '@/components/PropertyCard';
 import { PROVINCE_SLUG_MAP } from '@/lib/slugify';
 
-export const dynamic = 'force-dynamic';
+export const revalidate = 3600; // ISR: revalida cada 1 hora
 
 interface PageProps {
   params: Promise<{ locale: string; slug: string }>;
@@ -33,16 +33,30 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const base = 'https://mudateargentina.com';
   const path = `/campos/${slug}`;
 
+  const canonical = isEn ? `${base}/en${path}` : `${base}${path}`;
   return {
     title,
     description: desc,
     alternates: {
-      canonical: isEn ? `${base}/en${path}` : `${base}${path}`,
+      canonical,
       languages: {
         es: `${base}${path}`,
         en: `${base}/en${path}`,
         'x-default': `${base}${path}`,
       },
+    },
+    openGraph: {
+      title,
+      description: desc,
+      url: canonical,
+      type: 'website',
+      images: [{ url: `${base}/opengraph-image`, width: 1200, height: 630, alt: title }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description: desc,
+      images: [`${base}/opengraph-image`],
     },
   };
 }
@@ -68,7 +82,7 @@ async function getRuralByProvince(provinciaName: string): Promise<{ items: Prope
         title: p.title,
         price: p.price,
         currency: p.currency as 'USD' | 'ARS',
-        operation: p.operation as 'venta' | 'alquiler',
+        operation: 'venta' as const,
         type: p.type,
         ciudad: p.ciudad,
         barrio: p.barrio,
@@ -103,12 +117,39 @@ export default async function CamposProvinciaPage({ params }: PageProps) {
 
   const { items: properties, total } = await getRuralByProvince(provinciaName);
 
+  const BASE = 'https://mudateargentina.com';
+  const path = `/campos/${slug}`;
+  const pageUrl = isEn ? `${BASE}/en${path}` : `${BASE}${path}`;
+
+  const breadcrumbLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Inicio', item: BASE },
+      { '@type': 'ListItem', position: 2, name: isEn ? 'Rural Properties' : 'Campos', item: isEn ? `${BASE}/en/campos` : `${BASE}/campos` },
+      { '@type': 'ListItem', position: 3, name: provinciaName, item: pageUrl },
+    ],
+  };
+
+  const collectionPageLd = {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: isEn ? `Rural Properties in ${provinciaName}` : `Campos en ${provinciaName}`,
+    description: isEn
+      ? `Find rural land, farms and agricultural properties in ${provinciaName}, Argentina.`
+      : `Encontrá campos, chacras, fincas y terrenos rurales en ${provinciaName}, Argentina.`,
+    url: pageUrl,
+    inLanguage: isEn ? 'en' : 'es',
+  };
+
   return (
     <div style={{ background: 'var(--background)' }}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionPageLd) }} />
       {/* Hero */}
       <div
         style={{
-          background: 'linear-gradient(135deg, #0D3B37 0%, #0F766E 100%)',
+          background: 'linear-gradient(135deg, #061610 0%, #0A2218 100%)',
           padding: '56px 0',
           position: 'relative',
           overflow: 'hidden',

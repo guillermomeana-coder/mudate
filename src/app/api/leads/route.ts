@@ -36,7 +36,7 @@ export async function POST(req: NextRequest) {
       try {
         await resend.emails.send({
           from: 'leads@mudateargentina.com',
-          to: 'inmocultural@gmail.com',
+          to: ['inmocultural@gmail.com', 'guillermomeana@ulp.edu.ar'],
           subject: `🏠 Nuevo lead: ${propertyTitle ?? propertySlug} — ${ciudad ?? 'sin ciudad'}`,
           html: leadEmailHtml({
             nombre: lead.nombre,

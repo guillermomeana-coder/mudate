@@ -45,9 +45,7 @@
     "allF": "Todas",
     "todo": "Todo",
     "venta": "Venta",
-    "alquiler": "Alquiler",
     "sale": "Venta",
-    "rent": "Alquiler",
     "house": "Casa",
     "apartment": "Departamento",
     "land": "Terreno",
@@ -62,7 +60,6 @@
   },
   "card": {
     "sale": "VENTA",
-    "rent": "ALQUILER",
     "rooms": "{n} amb.",
     "beds": "{n} dorm.",
     "baths": "{n} baños",
@@ -103,11 +100,11 @@
   "meta": {
     "home": {
       "title": "Mudate — Propiedades en Argentina",
-      "description": "Portal inmobiliario Argentina. Casas, departamentos y terrenos en venta y alquiler en Córdoba, Buenos Aires, Mendoza, Rosario y todo el país."
+      "description": "Portal inmobiliario Argentina. Casas, departamentos y terrenos en venta en Córdoba, Buenos Aires, Mendoza, Rosario y todo el país."
     },
     "propiedades": {
       "title": "Propiedades en Argentina — Casas, Departamentos y Terrenos",
-      "description": "Encontrá propiedades en venta y alquiler en toda Argentina. Casas, departamentos, terrenos y más en Córdoba, Buenos Aires, Mendoza, Rosario y todo el país."
+      "description": "Encontrá propiedades en venta en toda Argentina. Casas, departamentos, terrenos y más en Córdoba, Buenos Aires, Mendoza, Rosario y todo el país."
     }
   }
 }

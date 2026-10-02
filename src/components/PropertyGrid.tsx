@@ -1,8 +1,11 @@
 'use client';
-
 import { useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import type { PropertyCardData } from './PropertyCard';
 import PropertyCard from './PropertyCard';
+
+gsap.registerPlugin(ScrollTrigger);
 
 interface Props {
   properties: PropertyCardData[];
@@ -13,30 +16,26 @@ export default function PropertyGrid({ properties }: Props) {
 
   useEffect(() => {
     if (!ref.current || !properties.length) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-    // Respeta prefers-reduced-motion
-    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduced) return;
+    const ctx = gsap.context(() => {
+      gsap.from('.property-card-item', {
+        opacity: 0,
+        scale: 0.92,
+        y: 24,
+        duration: 0.5,
+        stagger: { each: 0.06, from: 'start', grid: 'auto' },
+        ease: 'back.out(1.4)',
+        clearProps: 'all',
+        scrollTrigger: {
+          trigger: ref.current,
+          start: 'top 88%',
+          toggleActions: 'play none none none',
+        },
+      });
+    }, ref);
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    let ctx: any = null;
-
-    import('gsap').then(({ gsap }) => {
-      if (!ref.current) return;
-      ctx = gsap.context(() => {
-        gsap.from('.property-card-item', {
-          opacity: 0,
-          scale: 0.92,
-          y: 24,
-          duration: 0.45,
-          stagger: { each: 0.06, from: 'start', grid: 'auto' },
-          ease: 'back.out(1.4)',
-          clearProps: 'all',
-        });
-      }, ref);
-    });
-
-    return () => { if (ctx) ctx.revert(); };
+    return () => ctx.revert();
   }, [properties]);
 
   return (
@@ -48,8 +47,8 @@ export default function PropertyGrid({ properties }: Props) {
         gap: 24,
       }}
     >
-      {properties.map((p) => (
-        <PropertyCard key={p.slug} property={p} />
+      {properties.map((p, i) => (
+        <PropertyCard key={p.slug} property={p} priority={i < 3} />
       ))}
     </div>
   );

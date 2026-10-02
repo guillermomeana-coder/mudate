@@ -3,7 +3,6 @@
 import { useEffect } from 'react';
 import { MapContainer, TileLayer, CircleMarker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
-import Link from 'next/link';
 
 export interface CityCount {
   ciudad: string;
@@ -60,6 +59,10 @@ function getRadius(count: number) {
   return 9;
 }
 
+function navigate(ciudad: string) {
+  window.location.href = `/propiedades?ciudad=${encodeURIComponent(ciudad)}`;
+}
+
 export default function PropertyMapView({ cities }: Props) {
   useEffect(() => {
     // Fix leaflet icon paths on SSR environments
@@ -91,35 +94,37 @@ export default function PropertyMapView({ cities }: Props) {
           center={[city.lat, city.lng]}
           radius={getRadius(city.count)}
           pathOptions={{
-            fillColor: '#0F766E',
+            fillColor: '#047857',
             fillOpacity: 0.85,
-            color: '#fff',
+            color: '#C49A3C',
             weight: 2,
           }}
         >
           <Popup>
             <div style={{ fontFamily: 'Josefin Sans, sans-serif', minWidth: 160 }}>
-              <p style={{ fontFamily: 'Cinzel, serif', fontSize: '1rem', fontWeight: 600, color: '#134E4A', marginBottom: 2 }}>
+              <p style={{ fontFamily: 'Cinzel, serif', fontSize: '1rem', fontWeight: 600, color: '#0A1F14', marginBottom: 2 }}>
                 {city.ciudad}
               </p>
-              <p style={{ fontSize: '0.75rem', color: '#4A7C78', marginBottom: 8 }}>
+              <p style={{ fontSize: '0.75rem', color: '#6B7260', marginBottom: 8 }}>
                 {city.provincia} · {city.count} propiedades
               </p>
-              <Link
-                href={`/propiedades?ciudad=${encodeURIComponent(city.ciudad)}`}
+              <button
+                onClick={() => navigate(city.ciudad)}
                 style={{
                   display: 'inline-block',
                   padding: '5px 12px',
-                  background: '#0F766E',
+                  background: '#C49A3C',
                   color: '#fff',
                   borderRadius: 6,
                   fontSize: '0.75rem',
                   fontWeight: 600,
+                  border: 'none',
+                  cursor: 'pointer',
                   textDecoration: 'none',
                 }}
               >
                 Ver propiedades →
-              </Link>
+              </button>
             </div>
           </Popup>
         </CircleMarker>

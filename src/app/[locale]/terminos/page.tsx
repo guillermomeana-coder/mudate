@@ -1,16 +1,33 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 
+const BASE = 'https://mudateargentina.com';
+
 export const metadata: Metadata = {
   title: 'Términos y Condiciones — Mudate Argentina',
-  description: 'Términos y condiciones de uso de Mudate Argentina, portal inmobiliario.',
-  robots: 'noindex',
+  description: 'Términos y condiciones de uso de Mudate Argentina, portal inmobiliario de Córdoba y Argentina. Naturaleza del servicio, uso permitido y responsabilidades.',
+  robots: { index: false, follow: false },
+  alternates: {
+    canonical: `${BASE}/terminos`,
+    languages: { es: `${BASE}/terminos`, en: `${BASE}/en/terminos`, 'x-default': `${BASE}/terminos` },
+  },
+  openGraph: {
+    title: 'Términos y Condiciones — Mudate Argentina',
+    description: 'Términos y condiciones de uso de Mudate Argentina, portal inmobiliario.',
+    url: `${BASE}/terminos`,
+    type: 'website',
+    images: [{ url: `${BASE}/opengraph-image`, width: 1200, height: 630, alt: 'Mudate Argentina — Portal Inmobiliario' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: [`${BASE}/opengraph-image`],
+  },
 };
 
 export default function TerminosPage() {
   return (
     <div style={{ background: 'var(--background)', minHeight: '100vh' }}>
-      <div style={{ background: 'linear-gradient(135deg, #134E4A 0%, #0F766E 100%)' }} className="py-10">
+      <div style={{ background: 'linear-gradient(135deg, #061610 0%, #0A2218 100%)' }} className="py-10">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <h1 className="text-2xl md:text-3xl font-semibold text-white" style={{ fontFamily: 'Cinzel, serif' }}>
             Términos y Condiciones
@@ -78,6 +95,9 @@ export default function TerminosPage() {
           <Link href="/" style={{ color: 'var(--primary)', fontSize: '0.875rem', textDecoration: 'none' }}>← Volver al inicio</Link>
         </div>
       </div>
+
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ '@context': 'https://schema.org', '@type': 'WebPage', name: 'Términos y Condiciones — Mudate Argentina', description: 'Términos y condiciones de uso de Mudate Argentina, portal inmobiliario.', url: `${BASE}/terminos`, inLanguage: 'es-AR', isPartOf: { '@type': 'WebSite', url: BASE, name: 'Mudate Argentina' } }) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Inicio', item: BASE }, { '@type': 'ListItem', position: 2, name: 'Términos y Condiciones', item: `${BASE}/terminos` }] }) }} />
     </div>
   );
 }

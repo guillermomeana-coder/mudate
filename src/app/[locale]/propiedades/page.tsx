@@ -6,7 +6,6 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { PropertyCardData } from '@/components/PropertyCard';
 import FilterBar from '@/components/FilterBar';
 import MapWrapper from '@/components/MapWrapper';
-import OperacionToggle from '@/components/OperacionToggle';
 import type { CityCount } from '@/components/PropertyMapView';
 import { connectDB } from '@/lib/mongodb';
 import { Property } from '@/models/Property';
@@ -37,17 +36,35 @@ const CITY_COORDS: Record<string, { lat: number; lng: number; provincia: string 
   'Bariloche':                           { lat: -41.1335, lng: -71.3103, provincia: 'Río Negro' },
 };
 
-export const dynamic = 'force-dynamic';
+export const revalidate = 1800; // ISR: revalida cada 30 min
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'meta.propiedades' });
   const base = 'https://mudateargentina.com';
+  const isEn = locale === 'en';
   return {
     title: t('title'),
     description: t('description'),
+    keywords: isEn
+      ? ['properties for sale argentina', 'houses cordoba', 'apartments buenos aires', 'real estate argentina 2025']
+      : ['propiedades en venta', 'casas en venta córdoba', 'departamentos argentina', 'inmuebles en venta 2025'],
+    openGraph: {
+      siteName: 'Mudate Argentina',
+      title: t('title'),
+      description: t('description'),
+      url: isEn ? `${base}/en/propiedades` : `${base}/propiedades`,
+      type: 'website',
+      images: [{ url: `${base}/opengraph-image`, width: 1200, height: 630, alt: isEn ? 'Properties for sale in Argentina — Mudate' : 'Propiedades en venta en Argentina — Mudate' }],
+    },
+    twitter: {
+      card: 'summary_large_image' as const,
+      title: isEn ? 'Properties for Sale in Argentina | Mudate' : 'Propiedades en Venta en Argentina | Mudate',
+      description: isEn ? 'Houses, apartments and lots in Argentina. Real prices 2025–2026.' : 'Casas, departamentos y terrenos en Argentina. Precios reales 2025–2026.',
+      images: [`${base}/opengraph-image`],
+    },
     alternates: {
-      canonical: locale === 'en' ? `${base}/en/propiedades` : `${base}/propiedades`,
+      canonical: isEn ? `${base}/en/propiedades` : `${base}/propiedades`,
       languages: {
         'es': `${base}/propiedades`,
         'en': `${base}/en/propiedades`,
@@ -60,7 +77,6 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 const PAGE_SIZE = 48;
 
 interface Filters {
-  operation?: string;
   type?: string;
   ciudad?: string;
   provincia?: string;
@@ -69,8 +85,7 @@ interface Filters {
 }
 
 function buildQuery(filters: Filters): Record<string, unknown> {
-  const query: Record<string, unknown> = { published: true };
-  if (filters.operation) query.operation = filters.operation;
+  const query: Record<string, unknown> = { published: true, operation: 'venta' };
   if (filters.type) query.type = new RegExp(`^${filters.type}$`, 'i');
   if (filters.ciudad) query.ciudad = new RegExp(`^${filters.ciudad}$`, 'i');
   if (filters.provincia) query.provincia = new RegExp(`^${filters.provincia}$`, 'i');
@@ -85,13 +100,22 @@ function buildQuery(filters: Filters): Record<string, unknown> {
   return query;
 }
 
-async function getProperties(filters: Filters, page: number): Promise<{ items: PropertyCardData[]; total: number }> {
+function getSortOrder(sort?: string): Record<string, 1 | -1> {
+  switch (sort) {
+    case 'price-asc': return { price: 1 };
+    case 'price-desc': return { price: -1 };
+    case 'newest': return { createdAt: -1 };
+    default: return { featured: -1, createdAt: -1 };
+  }
+}
+
+async function getProperties(filters: Filters, page: number, sort?: string): Promise<{ items: PropertyCardData[]; total: number }> {
   try {
     await connectDB();
     const query = buildQuery(filters);
     const [items, total] = await Promise.all([
       Property.find(query)
-        .sort({ featured: -1, createdAt: -1 })
+        .sort(getSortOrder(sort))
         .skip((page - 1) * PAGE_SIZE)
         .limit(PAGE_SIZE)
         .lean(),
@@ -105,7 +129,7 @@ async function getProperties(filters: Filters, page: number): Promise<{ items: P
         title: p.title,
         price: p.price,
         currency: p.currency as 'USD' | 'ARS',
-        operation: p.operation as 'venta' | 'alquiler',
+        operation: 'venta' as const,
         type: p.type,
         ciudad: p.ciudad,
         barrio: p.barrio,
@@ -147,25 +171,23 @@ async function getCityCounts(): Promise<CityCount[]> {
 interface PageProps {
   params: Promise<{ locale: string }>;
   searchParams: Promise<{
-    operation?: string;
     type?: string;
     ciudad?: string;
     provincia?: string;
     price?: string;
     q?: string;
     page?: string;
+    sort?: string;
   }>;
 }
 
 export default async function PropiedadesPage({ params: paramsPromise, searchParams }: PageProps) {
   const { locale } = await paramsPromise;
   const t = await getTranslations({ locale, namespace: 'propiedades' });
-  const tf = await getTranslations({ locale, namespace: 'filters' });
   const params = await searchParams;
   const page = Math.max(1, parseInt(params.page || '1', 10));
 
   const filters: Filters = {
-    operation: params.operation,
     type: params.type,
     ciudad: params.ciudad,
     provincia: params.provincia,
@@ -174,7 +196,7 @@ export default async function PropiedadesPage({ params: paramsPromise, searchPar
   };
 
   const [{ items: properties, total }, cities] = await Promise.all([
-    getProperties(filters, page),
+    getProperties(filters, page, params.sort),
     getCityCounts(),
   ]);
   const totalPages = Math.ceil(total / PAGE_SIZE);
@@ -190,12 +212,39 @@ export default async function PropiedadesPage({ params: paramsPromise, searchPar
   const filterStr = filterParams.toString();
   const pageBase = filterStr ? `?${filterStr}&page=` : '?page=';
 
+  // JSON-LD ItemList para SEO
+  const BASE = 'https://mudateargentina.com';
+  const itemListLd = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'Propiedades en venta — Argentina',
+    description: `${total} propiedades en venta en Argentina. Casas, departamentos y terrenos.`,
+    numberOfItems: total,
+    itemListElement: properties.slice(0, 10).map((p, i) => ({
+      '@type': 'ListItem',
+      position: (page - 1) * PAGE_SIZE + i + 1,
+      url: `${BASE}/propiedades/${p.slug}`,
+      name: p.title,
+    })),
+  };
+
+  const breadcrumbLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Inicio', item: BASE },
+      { '@type': 'ListItem', position: 2, name: locale === 'en' ? 'Properties' : 'Propiedades', item: locale === 'en' ? `${BASE}/en/propiedades` : `${BASE}/propiedades` },
+    ],
+  };
+
   return (
     <div style={{ background: 'var(--background)' }}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
       {/* Header */}
       <div
         style={{
-          background: 'linear-gradient(135deg, #0D3B37 0%, #0F766E 100%)',
+          background: 'linear-gradient(135deg, #061610 0%, #0A2218 100%)',
           padding: '56px 0',
           position: 'relative',
           overflow: 'hidden',
@@ -232,20 +281,12 @@ export default async function PropiedadesPage({ params: paramsPromise, searchPar
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         <Suspense fallback={null}>
-          <OperacionToggle
-            operation={filters.operation}
-            labelAll={tf('todo')}
-            labelVenta={tf('venta')}
-            labelAlquiler={tf('alquiler')}
-          />
-        </Suspense>
-        <Suspense fallback={null}>
           <FilterBar
-            operation={filters.operation}
             type={filters.type}
             ciudad={filters.ciudad}
             provincia={filters.provincia}
             price={filters.price}
+            sort={params.sort}
           />
         </Suspense>
 

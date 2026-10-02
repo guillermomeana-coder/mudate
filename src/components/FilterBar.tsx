@@ -57,14 +57,14 @@ const selectStyle: React.CSSProperties = {
 };
 
 interface Props {
-  operation?: string;
   type?: string;
   ciudad?: string;
   provincia?: string;
   price?: string;
+  sort?: string;
 }
 
-export default function FilterBar({ operation, type, ciudad, provincia, price }: Props) {
+export default function FilterBar({ type, ciudad, provincia, price, sort }: Props) {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -110,12 +110,6 @@ export default function FilterBar({ operation, type, ciudad, provincia, price }:
         </span>
       </div>
 
-      <select style={selectStyle} value={operation || 'venta'} onChange={(e) => updateParam('operation', e.target.value)}>
-        <option value="venta">Venta</option>
-        <option value="alquiler">Alquiler</option>
-        <option value="">Venta y Alquiler</option>
-      </select>
-
       <select style={selectStyle} value={type || ''} onChange={(e) => updateParam('type', e.target.value)}>
         {TIPOS.map((t) => (
           <option key={t} value={t === 'Todos' ? '' : t}>{t}</option>
@@ -142,6 +136,16 @@ export default function FilterBar({ operation, type, ciudad, provincia, price }:
         <option value="100000-200000">USD 100.000 – 200.000</option>
         <option value="200000-99999999">Más de USD 200.000</option>
       </select>
+
+      <div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: 6 }}>
+        <span style={{ fontSize: '0.72rem', color: 'var(--muted-foreground)', fontWeight: 500 }}>Ordenar:</span>
+        <select style={selectStyle} value={sort || ''} onChange={(e) => updateParam('sort', e.target.value)}>
+          <option value="">Relevancia</option>
+          <option value="price-asc">Precio: menor a mayor</option>
+          <option value="price-desc">Precio: mayor a menor</option>
+          <option value="newest">Más recientes</option>
+        </select>
+      </div>
     </div>
   );
 }

@@ -6,7 +6,7 @@ import PropertyGrid from '@/components/PropertyGrid';
 import { PropertyCardData } from '@/components/PropertyCard';
 import { PROVINCE_SLUG_MAP } from '@/lib/slugify';
 
-export const dynamic = 'force-dynamic';
+export const revalidate = 3600; // ISR: revalida cada 1 hora
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -16,18 +16,35 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { locale } = await params;
   const isEn = locale === 'en';
   const base = 'https://mudateargentina.com';
+  const canonical = isEn ? `${base}/en/campos` : `${base}/campos`;
+  const title = isEn ? 'Rural Properties in Argentina | Mudate' : 'Campos en Argentina | Mudate';
+  const description = isEn
+    ? 'Find rural land, farms, estancias and agricultural properties across Argentina. Invest in Argentine countryside.'
+    : 'Encontrá campos, chacras, fincas y terrenos rurales en toda Argentina. Invertí en el campo argentino.';
   return {
-    title: isEn ? 'Rural Properties in Argentina | Mudate' : 'Campos en Argentina | Mudate',
-    description: isEn
-      ? 'Find rural land, farms, estancias and agricultural properties across Argentina. Invest in Argentine countryside.'
-      : 'Encontrá campos, chacras, fincas y terrenos rurales en toda Argentina. Invertí en el campo argentino.',
+    title,
+    description,
     alternates: {
-      canonical: isEn ? `${base}/en/campos` : `${base}/campos`,
+      canonical,
       languages: {
         es: `${base}/campos`,
         en: `${base}/en/campos`,
         'x-default': `${base}/campos`,
       },
+    },
+    openGraph: {
+      siteName: 'Mudate Argentina',
+      title,
+      description,
+      url: canonical,
+      type: 'website',
+      images: [{ url: `${base}/opengraph-image`, width: 1200, height: 630, alt: isEn ? 'Rural Properties in Argentina — Mudate' : 'Campos en Argentina — Mudate' }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: [`${base}/opengraph-image`],
     },
   };
 }
@@ -53,7 +70,7 @@ async function getRuralProperties(): Promise<{ items: PropertyCardData[]; total:
         title: p.title,
         price: p.price,
         currency: p.currency as 'USD' | 'ARS',
-        operation: p.operation as 'venta' | 'alquiler',
+        operation: 'venta' as const,
         type: p.type,
         ciudad: p.ciudad,
         barrio: p.barrio,
@@ -82,7 +99,7 @@ const investmentReasons = {
     },
     {
       title: 'Rendimientos superiores al promedio',
-      body: 'El alquiler de campos en la región pampeana rinde entre 3% y 5% anual en dólares más la apreciación del capital. En zonas de frontera agrícola, los retornos pueden ser mayores.',
+      body: 'La inversión en campos de la región pampeana rinde entre 3% y 5% anual en dólares más la apreciación del capital. En zonas de frontera agrícola, los retornos pueden ser mayores.',
     },
     {
       title: 'Diversificación de cartera',
@@ -121,12 +138,37 @@ export default async function CamposPage({ params }: PageProps) {
   const { items: properties, total } = await getRuralProperties();
   const reasons = isEn ? investmentReasons.en : investmentReasons.es;
 
+  const BASE = 'https://mudateargentina.com';
+  const pageUrl = isEn ? `${BASE}/en/campos` : `${BASE}/campos`;
+
+  const breadcrumbLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Inicio', item: BASE },
+      { '@type': 'ListItem', position: 2, name: isEn ? 'Rural Properties' : 'Campos', item: pageUrl },
+    ],
+  };
+
+  const collectionPageLd = {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: isEn ? 'Rural Properties in Argentina' : 'Campos en Argentina',
+    description: isEn
+      ? 'Find rural land, farms, estancias and agricultural properties across Argentina.'
+      : 'Encontrá campos, chacras, fincas y terrenos rurales en toda Argentina.',
+    url: pageUrl,
+    inLanguage: isEn ? 'en' : 'es',
+  };
+
   return (
     <div style={{ background: 'var(--background)' }}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionPageLd) }} />
       {/* Hero */}
       <div
         style={{
-          background: 'linear-gradient(135deg, #0D3B37 0%, #0F766E 100%)',
+          background: 'linear-gradient(135deg, #061610 0%, #0A2218 100%)',
           padding: '56px 0',
           position: 'relative',
           overflow: 'hidden',

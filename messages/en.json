@@ -45,9 +45,7 @@
     "allF": "All",
     "todo": "All",
     "venta": "For Sale",
-    "alquiler": "For Rent",
     "sale": "For sale",
-    "rent": "For rent",
     "house": "House",
     "apartment": "Apartment",
     "land": "Land",
@@ -62,7 +60,6 @@
   },
   "card": {
     "sale": "FOR SALE",
-    "rent": "FOR RENT",
     "rooms": "{n} rooms",
     "beds": "{n} beds",
     "baths": "{n} baths",
@@ -103,11 +100,11 @@
   "meta": {
     "home": {
       "title": "Mudate — Properties in Argentina",
-      "description": "Argentine real estate portal. Houses, apartments and land for sale and rent in Córdoba, Buenos Aires, Mendoza, Rosario and across Argentina."
+      "description": "Argentine real estate portal. Houses, apartments and land for sale in Córdoba, Buenos Aires, Mendoza, Rosario and across Argentina."
     },
     "propiedades": {
       "title": "Properties in Argentina — Houses, Apartments and Land",
-      "description": "Find properties for sale and rent across Argentina. Houses, apartments, land and more in Córdoba, Buenos Aires, Mendoza, Rosario and beyond."
+      "description": "Find properties for sale across Argentina. Houses, apartments, land and more in Córdoba, Buenos Aires, Mendoza, Rosario and beyond."
     }
   }
 }

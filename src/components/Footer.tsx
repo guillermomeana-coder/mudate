@@ -1,13 +1,17 @@
 import Link from 'next/link';
-import { Home, MapPin, Mail } from 'lucide-react';
+import { MapPin, Mail } from 'lucide-react';
 
 const ciudades = [
-  { href: '/ciudad/cordoba-capital', label: 'Córdoba Capital' },
-  { href: '/ciudad/rosario', label: 'Rosario' },
-  { href: '/ciudad/buenos-aires-capital', label: 'Buenos Aires' },
-  { href: '/ciudad/villa-carlos-paz', label: 'Villa Carlos Paz' },
-  { href: '/ciudad/bariloche', label: 'Bariloche' },
-  { href: '/ciudad/mendoza', label: 'Mendoza' },
+  { href: '/cordoba-capital', label: 'Córdoba Capital' },
+  { href: '/buenos-aires-capital', label: 'Buenos Aires' },
+  { href: '/rosario', label: 'Rosario' },
+  { href: '/mendoza', label: 'Mendoza' },
+  { href: '/bariloche', label: 'Bariloche' },
+  { href: '/salta', label: 'Salta' },
+  { href: '/neuquen', label: 'Neuquén' },
+  { href: '/villa-carlos-paz', label: 'Villa Carlos Paz' },
+  { href: '/mar-del-plata', label: 'Mar del Plata' },
+  { href: '/tucuman', label: 'Tucumán' },
 ];
 
 const provincias = [
@@ -23,7 +27,11 @@ const provincias = [
 
 const recursos = [
   { href: '/invertir', label: 'Guía de Inversión' },
+  { href: '/casas-en-venta', label: 'Casas en Venta' },
+  { href: '/departamentos-en-venta', label: 'Departamentos' },
+  { href: '/terrenos-en-venta', label: 'Terrenos' },
   { href: '/campos', label: 'Campos & Rurales' },
+  { href: '/comparar', label: 'Comparar Ciudades' },
   { href: '/blog', label: 'Blog Inmobiliario' },
   { href: '/tasacion', label: 'Tasación Online' },
   { href: '/contacto', label: 'Contacto' },
@@ -38,10 +46,18 @@ export default function Footer() {
           <div className="md:col-span-1">
             <div className="flex items-center gap-2 mb-4">
               <div
-                className="w-8 h-8 rounded-lg flex items-center justify-center"
-                style={{ background: 'var(--secondary)' }}
+                style={{
+                  width: 32, height: 32, borderRadius: 9,
+                  background: 'rgba(255,255,255,0.08)',
+                  border: '1px solid rgba(196,154,60,0.4)',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
+                }}
               >
-                <Home size={16} color="white" />
+                <svg width="16" height="14" viewBox="0 0 18 16" fill="none">
+                  <path d="M1 8L9 1L17 8" stroke="#C49A3C" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M3 7V14H15V7" stroke="#C49A3C" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M6.5 14V10.5H11.5V14" stroke="#C49A3C" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
               </div>
               <span
                 className="text-xl font-semibold text-white"
@@ -144,7 +160,7 @@ export default function Footer() {
               Publicá tu propiedad
             </h4>
             <p className="text-sm mb-4" style={{ opacity: 0.7 }}>
-              Llegá a miles de compradores e inversores en toda Córdoba.
+              Llegá a miles de compradores e inversores en todo el país.
             </p>
             <Link
               href="/contacto"

@@ -1,356 +1,17 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { ArrowLeft, Clock, Tag, Calendar } from 'lucide-react';
+import Image from 'next/image';
+import { ArrowLeft, Clock, Tag, Calendar, MapPin } from 'lucide-react';
 import { notFound } from 'next/navigation';
+import { getAllPosts, getAllSlugs, getPostBySlug, type BlogPost } from '@/data/blog';
 
-interface BlogPost {
-  slug: string;
-  title: { es: string; en: string };
-  excerpt: { es: string; en: string };
-  content: { es: string; en: string };
-  cluster: 'A' | 'B' | 'C';
-  ciudad?: string;
-  readTime: number;
-  publishedAt: string;
-  coverImage: string;
-  tags: string[];
-  author: string;
+function formatDate(dateStr: string, locale: string) {
+  const d = new Date(dateStr);
+  return d.toLocaleDateString(locale === 'en' ? 'en-US' : 'es-AR', { day: 'numeric', month: 'long', year: 'numeric' });
 }
 
-const posts: BlogPost[] = [
-  {
-    slug: 'cap-rate-cordoba-2025',
-    title: {
-      es: 'Cap Rate en Córdoba 2025: análisis por barrio y ciudad',
-      en: 'Cap Rate in Córdoba 2025: Analysis by Neighborhood and City',
-    },
-    excerpt: {
-      es: 'Calculamos el retorno real en dólares para los principales barrios de Córdoba. Nueva Córdoba, General Paz, Villa María y más.',
-      en: 'We calculated the real dollar returns for the main neighborhoods in Córdoba. Nueva Córdoba, General Paz, Villa María and more.',
-    },
-    content: {
-      es: `
-## ¿Qué es el cap rate y por qué importa?
-
-El **cap rate** (capitalización rate) es el indicador más usado para medir la rentabilidad de una inversión inmobiliaria. Se calcula dividiendo el ingreso anual neto por el precio de compra del inmueble.
-
-Un cap rate del 6% significa que recuperás tu inversión en aproximadamente 16-17 años, suponiendo que el valor del inmueble no cambia. En la práctica, si el inmueble se valoriza, el retorno total es aún mayor.
-
-## Cap rates en Córdoba Capital (2025)
-
-| Barrio | Precio m² | Alquiler 2amb/mes | Cap rate estimado |
-|--------|-----------|-------------------|-------------------|
-| Nueva Córdoba | USD 1.400 | $350.000 ARS | 4.5% |
-| Güemes | USD 1.100 | $280.000 ARS | 5.2% |
-| General Paz | USD 1.200 | $300.000 ARS | 5.0% |
-| Palermo Norte | USD 950 | $240.000 ARS | 5.5% |
-| Alto Verde | USD 800 | $200.000 ARS | 6.0% |
-
-*Nota: los alquileres se expresan en ARS. El cap rate se calcula convirtiendo a USD al tipo de cambio oficial + 15% de margen.*
-
-## Villa María: la sorpresa del mercado interior
-
-Villa María ofrece los mejores cap rates de la provincia para quienes buscan invertir en mercados emergentes:
-
-- **Centro:** 6.5% cap rate — alta demanda universitaria (UNVM)
-- **Norte:** 6.8% cap rate — zona familiar en expansión
-- **Promedio ciudad:** 6.7% vs 5% de Córdoba Capital
-
-La brecha se explica por precios más accesibles con alquileres que no bajan proporcionalmente, dada la fuerte demanda universitaria.
-
-## Villa Carlos Paz: rentabilidad turística
-
-El destino vacacional número 1 de Córdoba tiene su propia lógica:
-
-- Alquiler anual: cap rate 5.5-6%
-- Alquiler **temporal/turístico** (Airbnb/Booking): cap rate 7-9%
-- La clave está en la gestión activa del alquiler vacacional
-
-## Conclusión: dónde invertir según tu perfil
-
-- **Inversor conservador (baja gestión):** Córdoba Capital, Nueva Córdoba — demanda permanente, sin vacancia
-- **Inversor activo (mayor retorno):** Villa María Centro o Villa Carlos Paz — más gestión, más rentabilidad
-- **Especulativo (valorización):** Güemes y Alberdi en Córdoba — zonas en plena gentrificación
-      `,
-      en: `
-## What is the cap rate and why does it matter?
-
-The **cap rate** (capitalization rate) is the most widely used metric for measuring real estate investment returns. It's calculated by dividing the annual net income by the purchase price of the property.
-
-A cap rate of 6% means you recover your investment in approximately 16-17 years, assuming the property's value stays constant. In practice, if the property appreciates, the total return is even higher.
-
-## Cap Rates in Córdoba Capital (2025)
-
-| Neighborhood | Price/m² | 2-bed rent/month | Estimated cap rate |
-|---|---|---|---|
-| Nueva Córdoba | USD 1,400 | $350,000 ARS | 4.5% |
-| Güemes | USD 1,100 | $280,000 ARS | 5.2% |
-| General Paz | USD 1,200 | $300,000 ARS | 5.0% |
-| Palermo Norte | USD 950 | $240,000 ARS | 5.5% |
-| Alto Verde | USD 800 | $200,000 ARS | 6.0% |
-
-*Note: rents are in ARS. Cap rate is calculated converting to USD at the official exchange rate + 15% margin.*
-
-## Villa María: The Interior Market Surprise
-
-Villa María offers the best cap rates in the province for investors looking at emerging markets:
-
-- **Centro:** 6.5% cap rate — high university demand (UNVM)
-- **Norte:** 6.8% cap rate — growing family residential area
-- **City average:** 6.7% vs 5% in Córdoba Capital
-
-The gap is explained by more accessible prices combined with rents that don't fall proportionally, driven by strong student demand.
-
-## Villa Carlos Paz: Tourism-Driven Yields
-
-Córdoba's top vacation destination follows its own logic:
-
-- Annual rental: 5.5-6% cap rate
-- **Vacation/tourist rental** (Airbnb/Booking): 7-9% cap rate
-- The key is active short-term rental management
-
-## Conclusion: Where to Invest Based on Your Profile
-
-- **Conservative investor (low management):** Córdoba Capital, Nueva Córdoba — permanent demand, near-zero vacancy
-- **Active investor (higher return):** Villa María Centro or Villa Carlos Paz — more management, more returns
-- **Speculative (appreciation):** Güemes and Alberdi in Córdoba — neighborhoods undergoing gentrification
-      `,
-    },
-    cluster: 'A',
-    readTime: 7,
-    publishedAt: '2025-09-01',
-    coverImage: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=1200&q=80',
-    tags: ['inversión', 'cap rate', 'análisis'],
-    author: 'Equipo Mudate',
-  },
-  {
-    slug: 'mercado-inmobiliario-villa-maria-2025',
-    title: {
-      es: 'Mercado inmobiliario Villa María 2025: precios, tendencias y oportunidades',
-      en: 'Villa María Real Estate Market 2025: Prices, Trends and Opportunities',
-    },
-    excerpt: {
-      es: 'Villa María consolida su posición como el mejor mercado alternativo a Córdoba Capital. Departamento promedio USD 90.721 y cap rates sobre el 6%.',
-      en: 'Villa María consolidates its position as the best alternative market to Córdoba Capital. Average apartment at USD 90,721 with cap rates above 6%.',
-    },
-    content: {
-      es: `
-## Villa María: el mercado que el interior de Argentina no conoce
-
-Villa María es la segunda ciudad de la provincia de Córdoba y el principal centro económico del centro-sur de Argentina. Con más de 100.000 habitantes y un polo universitario que suma más de 15.000 estudiantes (UNVM), la demanda de alquileres es estructuralmente alta.
-
-## Precios actuales (Q3 2025)
-
-| Tipo | Superficie | Precio USD |
-|------|-----------|------------|
-| Departamento 1 ambiente | 35-45 m² | USD 45.000-55.000 |
-| Departamento 2 ambientes | 55-70 m² | USD 65.000-75.000 |
-| Departamento 3 ambientes | 75-90 m² | USD 90.000-110.000 |
-| Casa 3 dormitorios | 130-160 m² | USD 110.000-140.000 |
-| Casa en barrio privado | 150-200 m² | USD 130.000-180.000 |
-
-El promedio general de departamentos se ubica en **USD 90.721** según datos de ZonaProp (agosto 2025).
-
-## Por qué Villa María supera las expectativas
-
-### 1. Universidad Nacional de Villa María (UNVM)
-La UNVM es un motor constante de demanda de alquileres. Con 15.000 estudiantes activos, muchos provenientes de ciudades vecinas (San Francisco, Bell Ville, Río Tercero), la vacancia en departamentos céntricos es prácticamente nula.
-
-### 2. Conectividad estratégica
-Villa María está ubicada en el cruce de la Ruta Nacional 158 y la Autopista Córdoba-Rosario. Esta conectividad favorece el crecimiento industrial y logístico que empuja la demanda de vivienda.
-
-### 3. Precios 40% menores que Córdoba Capital
-El mismo departamento que en Nueva Córdoba vale USD 120.000, en Villa María Centro cuesta USD 70.000. Esta brecha de precio no se refleja proporcionalmente en los alquileres, lo que genera mayor rentabilidad.
-
-## Zonas recomendadas para invertir
-
-- **Centro:** mayor demanda, mayor liquidez, menor vacancia
-- **Barrio Palermo:** zona universitaria, alta rotación de inquilinos estudiantes
-- **Norte:** desarrollo residencial para familias, valorización a largo plazo
-
-## Proyección 2026
-
-Se espera que los precios continúen su tendencia alcista, con un crecimiento estimado del 15-20% en USD para 2026, impulsado por el retorno del crédito hipotecario y la mayor demanda de sectores medios.
-      `,
-      en: `
-## Villa María: The Interior Argentine Market Most Don't Know About
-
-Villa María is the second city in Córdoba province and the main economic hub of central-southern Argentina. With over 100,000 residents and a university cluster of more than 15,000 students (UNVM), rental demand is structurally high.
-
-## Current Prices (Q3 2025)
-
-| Type | Size | USD Price |
-|------|------|-----------|
-| Studio apartment | 35-45 m² | USD 45,000-55,000 |
-| 2-bedroom apartment | 55-70 m² | USD 65,000-75,000 |
-| 3-bedroom apartment | 75-90 m² | USD 90,000-110,000 |
-| 3-bedroom house | 130-160 m² | USD 110,000-140,000 |
-| Gated community house | 150-200 m² | USD 130,000-180,000 |
-
-The overall average for apartments sits at **USD 90,721** according to ZonaProp data (August 2025).
-
-## Why Villa María Exceeds Expectations
-
-### 1. National University of Villa María (UNVM)
-The UNVM is a constant driver of rental demand. With 15,000 active students — many from neighboring cities (San Francisco, Bell Ville, Río Tercero) — vacancy in central apartments is practically zero.
-
-### 2. Strategic Connectivity
-Villa María sits at the intersection of National Route 158 and the Córdoba-Rosario Highway. This connectivity drives industrial and logistics growth that pushes housing demand higher.
-
-### 3. Prices 40% Lower than Córdoba Capital
-The same apartment that costs USD 120,000 in Nueva Córdoba can be found in Villa María Centro for USD 70,000. This price gap doesn't translate proportionally to rents, generating higher investment returns.
-
-## Recommended Investment Areas
-
-- **Centro:** highest demand, most liquidity, lowest vacancy
-- **Barrio Palermo:** university zone, high student tenant turnover
-- **Norte:** residential development for families, long-term appreciation potential
-
-## 2026 Outlook
-
-Prices are expected to continue their upward trend, with an estimated 15-20% USD growth for 2026, driven by the return of mortgage credit and growing demand from the middle class.
-      `,
-    },
-    cluster: 'B',
-    ciudad: 'Villa María',
-    readTime: 7,
-    publishedAt: '2025-09-03',
-    coverImage: 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=1200&q=80',
-    tags: ['Villa María', 'mercado', '2025'],
-    author: 'Equipo Mudate',
-  },
-  {
-    slug: 'como-comprar-propiedad-argentina-2025',
-    title: {
-      es: 'Cómo comprar una propiedad en Argentina siendo extranjero en 2025',
-      en: 'How to Buy Property in Argentina as a Foreigner in 2025',
-    },
-    excerpt: {
-      es: 'CUIT/CUIL para extranjeros, escritura en dólares, blanqueo de capitales. La guía completa para no residentes que quieren invertir en el mercado argentino.',
-      en: 'CUIT/CUIL for foreigners, title deeds in dollars, capital repatriation. The complete guide for non-residents looking to invest in the Argentine market.',
-    },
-    content: {
-      es: `
-## ¿Pueden los extranjeros comprar propiedades en Argentina?
-
-Sí. Argentina permite a cualquier extranjero —residente o no residente— comprar propiedades inmuebles. No hay restricciones de nacionalidad ni de monto mínimo de inversión.
-
-## Pasos para comprar como extranjero
-
-### 1. Obtener el CUIT/CUIL
-Todo comprador de inmuebles en Argentina debe tener CUIT (Clave Única de Identificación Tributaria) o CUIL. Como extranjero, podés obtenerlo en la AFIP (Administración Federal de Ingresos Públicos) con tu pasaporte.
-
-### 2. Abrir una cuenta bancaria (opcional pero recomendado)
-Aunque no es obligatorio, facilita las operaciones. Los bancos argentinos aceptan extranjeros con pasaporte y CUIL.
-
-### 3. Encontrar la propiedad y firmar la reserva
-- Reserva: depósito del 1-3% del valor para sacar la propiedad del mercado
-- Boleto de compraventa: contrato con el 30% del precio
-- Escritura: transferencia final del 70% restante ante escribano público
-
-### 4. Pago en dólares
-El mercado argentino opera mayoritariamente en USD billete (dólares físicos). Las operaciones se realizan:
-- En efectivo (el método más común)
-- Mediante transferencia SWIFT desde el exterior
-- Con criptomonedas (cada vez más aceptado)
-
-### 5. Escritura pública
-La escritura la realiza un **escribano público** (notario) designado generalmente por el comprador. Los honorarios representan aproximadamente el 2% del valor de la propiedad.
-
-## Gastos totales al comprar
-
-| Concepto | Porcentaje | Quién paga |
-|----------|-----------|------------|
-| Comisión inmobiliaria | 4% | Comprador (2%) y vendedor (2%) |
-| Honorarios escribano | ~2% | Comprador |
-| Impuesto ITI | 1.5% (si el vendedor no es habitacional) | Vendedor |
-| Sellado provincial | ~1.5% | Ambos |
-| Registro de Propiedad | ~0.5% | Comprador |
-
-**Total gastos del comprador:** aproximadamente **4-5% del precio de venta**.
-
-## Repatriación de fondos
-
-Al momento de vender, el extranjero puede repatriar los fondos con las ganancias. Las regulaciones cambiarias argentinas son variables, por lo que se recomienda asesoramiento legal actualizado al momento de la operación.
-
-## ¿Es seguro invertir en Argentina?
-
-El riesgo soberano de Argentina es real, pero el mercado inmobiliario opera en dólares físicos con respaldo real en metros cuadrados. Las propiedades han mantenido su valor en USD históricamente, incluso durante las crisis de 2001-2002 y 2018-2019.
-      `,
-      en: `
-## Can Foreigners Buy Property in Argentina?
-
-Yes. Argentina allows any foreigner — resident or non-resident — to purchase real estate. There are no nationality restrictions or minimum investment amounts.
-
-## Steps to Buy as a Foreigner
-
-### 1. Obtain a CUIT/CUIL
-Every property buyer in Argentina must have a CUIT (tax ID) or CUIL (social security number). As a foreigner, you can obtain one at AFIP (Argentina's Federal Tax Authority) using your passport.
-
-### 2. Open a Bank Account (optional but recommended)
-While not mandatory, it simplifies transactions. Argentine banks accept foreigners with a passport and CUIL.
-
-### 3. Find the Property and Sign the Reservation
-- Reservation: 1-3% deposit to take the property off the market
-- Purchase contract (boleto de compraventa): binding agreement covering 30% of the price
-- Title deed (escritura): final transfer of the remaining 70% before a public notary
-
-### 4. Payment in Dollars
-The Argentine market operates primarily in USD cash (physical dollars). Transactions are carried out:
-- In cash (the most common method)
-- Via SWIFT transfer from abroad
-- With cryptocurrencies (increasingly accepted)
-
-### 5. Public Title Deed
-The deed is executed by a **public notary** (escribano), typically chosen by the buyer. Fees are approximately 2% of the property value.
-
-## Total Buyer Costs
-
-| Item | Percentage | Who Pays |
-|------|-----------|----------|
-| Real estate commission | 4% | Buyer (2%) and seller (2%) |
-| Notary fees | ~2% | Buyer |
-| ITI transfer tax | 1.5% (if seller's non-primary residence) | Seller |
-| Provincial stamp duty | ~1.5% | Both |
-| Property Registry fee | ~0.5% | Buyer |
-
-**Total buyer costs:** approximately **4-5% of the purchase price**.
-
-## Repatriating Funds
-
-When selling, the foreigner can repatriate funds along with any gains. Argentine foreign exchange regulations change over time, so up-to-date legal advice is recommended at the moment of the transaction.
-
-## Is Investing in Argentina Safe?
-
-Argentina's sovereign risk is real, but the real estate market operates in physical US dollars backed by tangible square meters. Properties have historically maintained their USD value, even during the 2001-2002 and 2018-2019 economic crises.
-      `,
-    },
-    cluster: 'C',
-    readTime: 12,
-    publishedAt: '2025-09-05',
-    coverImage: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1200&q=80',
-    tags: ['extranjeros', 'comprar', 'legal'],
-    author: 'Equipo Mudate',
-  },
-];
-
-const allSlugs = [
-  'cap-rate-cordoba-2025',
-  'invertir-departamentos-cordoba-vs-caba',
-  'retorno-alquiler-villa-carlos-paz',
-  'mejores-barrios-nueva-cordoba',
-  'mercado-inmobiliario-villa-maria-2025',
-  'comprar-departamento-villa-maria',
-  'barrios-villa-maria-donde-invertir',
-  'como-comprar-propiedad-argentina-2025',
-  'escritura-inmueble-argentina',
-  'dolar-propiedades-argentina',
-  'hipotecas-creditos-procrear-cordoba',
-  'gastos-compraventa-inmueble-cordoba',
-];
-
 export async function generateStaticParams() {
-  return allSlugs.map((slug) => ({ slug }));
+  return getAllSlugs().map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({
@@ -359,18 +20,36 @@ export async function generateMetadata({
   params: Promise<{ locale: string; slug: string }>;
 }): Promise<Metadata> {
   const { slug, locale } = await params;
-  const post = posts.find((p) => p.slug === slug);
+  const post = getPostBySlug(slug);
   const isEn = locale === 'en';
   if (!post) return { title: isEn ? 'Article not found — Mudate' : 'Artículo no encontrado — Mudate' };
+  const base = 'https://mudateargentina.com';
+  const path = `/blog/${slug}`;
+  const canonicalOverrides: Record<string, string> = {
+    'como-comprar-propiedad-argentina-2025': '/blog/como-comprar-propiedad-argentina-extranjeros',
+  };
+  const canonicalPath = canonicalOverrides[slug] ?? path;
   return {
     title: `${post.title[isEn ? 'en' : 'es']} — Mudate Blog`,
     description: post.excerpt[isEn ? 'en' : 'es'],
     openGraph: {
       title: post.title[isEn ? 'en' : 'es'],
       description: post.excerpt[isEn ? 'en' : 'es'],
-      images: [post.coverImage],
+      images: [{ url: post.coverImage, width: 1200, height: 630, alt: post.title[isEn ? 'en' : 'es'] }],
       type: 'article',
       publishedTime: post.publishedAt,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      images: [post.coverImage],
+    },
+    alternates: {
+      canonical: isEn ? `${base}/en${canonicalPath}` : `${base}${canonicalPath}`,
+      languages: {
+        es: `${base}${path}`,
+        en: `${base}/en${path}`,
+        'x-default': `${base}${path}`,
+      },
     },
   };
 }
@@ -386,11 +65,6 @@ const clusterLabelsEn: Record<string, { label: string; color: string }> = {
   B: { label: 'Villa María', color: '#0369A1' },
   C: { label: 'Buying in Argentina', color: '#7C3AED' },
 };
-
-function formatDate(dateStr: string, locale: string) {
-  const d = new Date(dateStr);
-  return d.toLocaleDateString(locale === 'en' ? 'en-US' : 'es-AR', { day: 'numeric', month: 'long', year: 'numeric' });
-}
 
 // Render markdown-like content
 function renderContent(content: string) {
@@ -463,7 +137,9 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
   const { slug, locale } = await params;
   const isEn = locale === 'en';
   const clusterLabels = isEn ? clusterLabelsEn : clusterLabelsEs;
-  const post = posts.find((p) => p.slug === slug);
+  const post = getPostBySlug(slug);
+  const allSlugs = getAllSlugs();
+  const posts = getAllPosts();
 
   if (!post) {
     if (!allSlugs.includes(slug)) notFound();
@@ -484,12 +160,136 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
 
   const related = posts.filter((p) => p.slug !== post.slug && p.cluster === post.cluster).slice(0, 2);
 
+  const BASE = 'https://mudateargentina.com';
+  const postUrl = isEn ? `${BASE}/en/blog/${post.slug}` : `${BASE}/blog/${post.slug}`;
+  const clusterSection = (isEn ? clusterLabelsEn : clusterLabelsEs)[post.cluster]?.label ?? 'Real Estate';
+
+  const howToSchemas: Record<string, object> = {
+    'como-comprar-propiedad-argentina-2025': {
+      '@context': 'https://schema.org',
+      '@type': 'HowTo',
+      name: isEn ? 'How to Buy Property in Argentina as a Foreigner in 2025' : 'Cómo comprar una propiedad en Argentina siendo extranjero en 2025',
+      description: isEn
+        ? 'Step-by-step guide for foreigners buying real estate in Argentina: CUIT/CUIL, reservation, title deed, and costs.'
+        : 'Guía paso a paso para extranjeros que compran propiedades en Argentina: CUIT/CUIL, reserva, escritura y costos.',
+      totalTime: 'P45D',
+      step: [
+        { '@type': 'HowToStep', position: 1, name: isEn ? 'Obtain CUIT/CUIL' : 'Obtener el CUIT/CUIL', text: isEn ? 'Any property buyer in Argentina must have a CUIT or CUIL tax ID. As a foreigner, you can obtain it at the AFIP office with your passport.' : 'Todo comprador de inmuebles en Argentina necesita CUIT o CUIL. Como extranjero, se obtiene en AFIP con pasaporte. El trámite es gratuito.' },
+        { '@type': 'HowToStep', position: 2, name: isEn ? 'Find the property and sign reservation' : 'Encontrar la propiedad y firmar la reserva', text: isEn ? 'Pay a 1–3% reservation deposit to take the property off the market and lock in the price.' : 'Se abona una reserva del 1–3% del precio para sacar la propiedad del mercado y fijar el valor.' },
+        { '@type': 'HowToStep', position: 3, name: isEn ? 'Sign the purchase contract (boleto)' : 'Firmar el boleto de compraventa', text: isEn ? 'Sign the private purchase contract and pay 30% of the price. The notary verifies the property title.' : 'Se firma el boleto de compraventa y se paga el 30% del precio. El escribano verifica el título de la propiedad.' },
+        { '@type': 'HowToStep', position: 4, name: isEn ? 'Pay in USD' : 'Pago en dólares', text: isEn ? 'The Argentine market operates primarily in USD cash. Payment can be made in cash, SWIFT transfer, or cryptocurrency.' : 'El mercado opera en USD. El pago puede realizarse en efectivo, transferencia SWIFT desde el exterior o criptomonedas.' },
+        { '@type': 'HowToStep', position: 5, name: isEn ? 'Sign the title deed (escritura)' : 'Firma de la escritura', text: isEn ? 'The notary drafts the public deed. The buyer pays the remaining 70% plus notary fees (~2%) and stamp duties.' : 'El escribano redacta la escritura pública. Se paga el saldo del 70% más honorarios (~2%) e impuestos de sellos.' },
+        { '@type': 'HowToStep', position: 6, name: isEn ? 'Registration in the Property Registry' : 'Inscripción registral', text: isEn ? 'The deed is registered in the Property Registry within 15–30 days. The buyer is legally recognized as the new owner.' : 'La escritura se inscribe en el Registro de la Propiedad (15–30 días). El comprador queda como titular legal.' },
+      ],
+    },
+    'como-comprar-propiedad-argentina-extranjeros': {
+      '@context': 'https://schema.org',
+      '@type': 'HowTo',
+      name: isEn ? 'How to Buy Property in Argentina as a Foreigner: Step-by-Step Guide 2025' : 'Cómo comprar una propiedad en Argentina siendo extranjero: guía paso a paso 2025',
+      description: isEn
+        ? 'Complete process for non-residents buying real estate in Argentina: CDI, boleto, due diligence, title deed, and taxes.'
+        : 'Proceso completo para no residentes que compran inmuebles en Argentina: CDI, boleto, due diligence, escritura e impuestos.',
+      totalTime: 'P60D',
+      step: [
+        { '@type': 'HowToStep', position: 1, name: isEn ? 'Obtain the CDI' : 'Obtener el CDI', text: isEn ? 'The CDI (Clave de Identificación del Contribuyente) is mandatory for any property transaction. Apply at any AFIP office with a valid passport. The process is free and takes 1–2 business days.' : 'El CDI es obligatorio para cualquier operación inmobiliaria. Se tramita en AFIP con pasaporte vigente. El trámite es gratuito y tarda 1–2 días hábiles.' },
+        { '@type': 'HowToStep', position: 2, name: isEn ? 'Open a bank account (optional)' : 'Abrir una cuenta bancaria (opcional)', text: isEn ? 'Not required, but it facilitates transfers. Argentine banks accept foreigners with passport and CDI.' : 'No es obligatorio pero facilita las transferencias. Los bancos argentinos aceptan extranjeros con pasaporte y CDI.' },
+        { '@type': 'HowToStep', position: 3, name: isEn ? 'Sign the boleto and pay deposit' : 'Firmar el boleto y pagar la seña', text: isEn ? 'Sign the private purchase contract (boleto) and pay a 20–30% deposit in USD. The contract is binding for both parties.' : 'Se firma el boleto de compraventa y se paga una seña del 20–30% en USD. El contrato es vinculante para ambas partes.' },
+        { '@type': 'HowToStep', position: 4, name: isEn ? 'Title due diligence' : 'Due diligence del título', text: isEn ? 'The notary verifies ownership, absence of mortgages or liens, and outstanding fees or taxes.' : 'El escribano verifica dominio, ausencia de hipotecas y embargos, y deudas de expensas e impuestos.' },
+        { '@type': 'HowToStep', position: 5, name: isEn ? 'Sign the public deed (escritura)' : 'Firma de la escritura pública', text: isEn ? 'Sign before a notary. Pay the remaining balance in USD cash or bank transfer. The notary files the deed in the Property Registry.' : 'Se firma ante escribano. Se paga el saldo en USD cash o transferencia. El escribano inscribe la escritura en el Registro de la Propiedad.' },
+        { '@type': 'HowToStep', position: 6, name: isEn ? 'Become the legal owner' : 'Quedar como titular legal', text: isEn ? 'Once registered (30–60 days total from boleto), the buyer is the legal owner. The full process costs approximately 4–5% in taxes and fees on top of the purchase price.' : 'Una vez inscripta (30–60 días desde el boleto), el comprador es titular legal. Los gastos totales representan aproximadamente el 4–5% del precio.' },
+      ],
+    },
+    'primer-propiedad-argentina-guia-2026': {
+      '@context': 'https://schema.org',
+      '@type': 'HowTo',
+      name: isEn ? 'How to Buy Your First Property in Argentina: Complete 2026 Guide' : 'Cómo comprar tu primera propiedad en Argentina: guía completa 2026',
+      description: isEn
+        ? 'From saving the initial capital to registering the title deed. Step-by-step guide for first-time buyers in Argentina in 2026.'
+        : 'Desde ahorrar el capital hasta la escritura. Guía paso a paso para compradores primerizos en Argentina en 2026.',
+      totalTime: 'P90D',
+      step: [
+        { '@type': 'HowToStep', position: 1, name: isEn ? 'Define your real budget' : 'Definir el presupuesto real', text: isEn ? 'Calculate 110–115% of the listing price: the property price plus real estate commission (3–4%), notary fees (1.5–2.5%), and an emergency reserve (5–10%).' : 'Calculá 110–115% del precio publicado: precio + comisión inmobiliaria (3–4%) + gastos de escritura (1,5–2,5%) + reserva de emergencia (5–10%).' },
+        { '@type': 'HowToStep', position: 2, name: isEn ? 'Choose city and neighborhood' : 'Elegir ciudad y zona', text: isEn ? 'Define your goal: own home or investment. For investment, prioritize cap rate, structural rental demand (universities, industrial zones), and market liquidity.' : 'Definí el objetivo: vivienda propia o inversión. Para inversión, priorizá cap rate, demanda de alquiler estructural (universidades, polos industriales) y liquidez del mercado.' },
+        { '@type': 'HowToStep', position: 3, name: isEn ? 'Pay the reservation' : 'Pagar la reserva', text: isEn ? 'Pay 1–3% of the asking price to take the property off the market and lock in the price. You will lose this amount if you back out.' : 'Se paga el 1–3% del precio para sacar la propiedad del mercado y fijar el valor. Si te arrepentís, perdés la reserva.' },
+        { '@type': 'HowToStep', position: 4, name: isEn ? 'Sign the purchase contract (boleto)' : 'Firmar el boleto de compraventa', text: isEn ? 'Sign the private contract with a notary and pay 20–30% of the total price. The boleto is binding and protects both parties.' : 'Se firma el contrato privado ante escribano y se paga el 20–30% del precio total. El boleto es vinculante y protege a ambas partes.' },
+        { '@type': 'HowToStep', position: 5, name: isEn ? 'Notarial due diligence' : 'Due diligence notarial', text: isEn ? 'The notary verifies the property title: clean ownership, no mortgages, no liens, no outstanding fees. This takes 2–4 weeks.' : 'El escribano verifica el título: propiedad limpia, sin hipotecas, embargos ni inhibiciones. Tarda 2–4 semanas.' },
+        { '@type': 'HowToStep', position: 6, name: isEn ? 'Sign the title deed and register' : 'Firmar la escritura e inscribir', text: isEn ? 'Sign the public deed before the notary. Pay the remaining 70% plus fees. The deed is registered in the Property Registry within 15–30 days.' : 'Se firma la escritura pública ante el escribano. Se paga el saldo del 70% más gastos. La escritura se inscribe en el Registro de la Propiedad en 15–30 días.' },
+      ],
+    },
+    'comprar-departamento-villa-maria': {
+      '@context': 'https://schema.org',
+      '@type': 'HowTo',
+      name: isEn ? 'How to Buy an Apartment in Villa María: Step-by-Step Guide' : 'Cómo comprar un departamento en Villa María: guía paso a paso',
+      description: isEn
+        ? 'From setting a budget to signing the deed. Everything you need to know to buy an apartment in Villa María safely.'
+        : 'Desde definir el presupuesto hasta firmar la escritura. Todo para comprar tu departamento en Villa María con seguridad.',
+      totalTime: 'P60D',
+      step: [
+        { '@type': 'HowToStep', position: 1, name: isEn ? 'Define total budget' : 'Definir el presupuesto total', text: isEn ? 'Add 5–6% to the property price for real estate commission (3%), notary fees (1.5–2%), stamp duty (1.5%), and registry costs (0.3–0.5%).' : 'Sumá un 5–6% al precio de la propiedad: comisión (3%) + escribano (1,5–2%) + sellado provincial (1,5%) + inscripción registral (0,3–0,5%).' },
+        { '@type': 'HowToStep', position: 2, name: isEn ? 'Search properties in Villa María' : 'Buscar la propiedad en Villa María', text: isEn ? 'Use ZonaProp, MercadoLibre, and local real estate agencies. Prioritize central and university neighborhoods (Palermo, UNVM area) for rental investment.' : 'Usá ZonaProp, MercadoLibre e inmobiliarias locales. Para inversión, priorizá el Centro y barrios universitarios (Palermo, zona UNVM).' },
+        { '@type': 'HowToStep', position: 3, name: isEn ? 'Visit and negotiate' : 'Visita y negociación', text: isEn ? 'Inspect electrical installations, plumbing, humidity, and monthly maintenance fees. In Villa María, negotiating 3–8% off the asking price is normal.' : 'Revisá instalaciones eléctricas, cañerías, humedad y expensas. En Villa María es habitual negociar entre el 3% y el 8% sobre el precio de publicación.' },
+        { '@type': 'HowToStep', position: 4, name: isEn ? 'Pay the reservation' : 'Pagar la reserva', text: isEn ? 'Pay a reservation of 1–3% of the price with a signed receipt from the real estate agency. Keep this receipt.' : 'Se paga la reserva del 1–3% del precio con recibo firmado por la inmobiliaria. Guardá siempre ese recibo.' },
+        { '@type': 'HowToStep', position: 5, name: isEn ? 'Sign the boleto and conduct due diligence' : 'Firmar el boleto y hacer el due diligence', text: isEn ? 'Sign the purchase contract with 30% payment. The notary verifies title, liens, and outstanding fees before the final deed.' : 'Se firma el boleto con el 30% del precio. El escribano verifica título, inhibiciones y deudas de expensas antes de la escritura.' },
+        { '@type': 'HowToStep', position: 6, name: isEn ? 'Sign the public deed' : 'Firma de la escritura pública', text: isEn ? 'Sign before the notary, pay the remaining balance in USD, and pay fees. Registration takes 15–30 days, after which you are the legal owner.' : 'Se firma ante el escribano, se paga el saldo en USD y los honorarios. La inscripción tarda 15–30 días, después sos el titular legal.' },
+      ],
+    },
+    'escritura-inmueble-argentina': {
+      '@context': 'https://schema.org',
+      '@type': 'HowTo',
+      name: isEn ? 'How Property Title Deeds Work in Argentina' : 'Cómo funciona la escritura de inmuebles en Argentina',
+      description: isEn
+        ? 'Step-by-step guide to the title deed process in Argentina: pre-deed preparations, costs for buyer and seller, signing, and registration.'
+        : 'Guía paso a paso del proceso de escritura en Argentina: preparativos previos, costos del comprador y vendedor, firma e inscripción.',
+      totalTime: 'P30D',
+      step: [
+        { '@type': 'HowToStep', position: 1, name: isEn ? 'Assign a notary' : 'Designar al escribano', text: isEn ? 'The buyer generally chooses the notary. The notary is responsible for the title study, drafting the deed, and filing it in the Property Registry.' : 'El comprador generalmente elige al escribano, quien se encarga del estudio de títulos, redacción e inscripción en el Registro de la Propiedad.' },
+        { '@type': 'HowToStep', position: 2, name: isEn ? 'Pre-deed preparation (2–4 weeks)' : 'Pre-escritura (2–4 semanas)', text: isEn ? 'The notary requests certificates from the Property Registry, AFIP, and other agencies verifying ownership, debts, and liens on the property.' : 'El escribano solicita informes al Registro de la Propiedad, AFIP y otros organismos para verificar dominio, deudas e inhibiciones del inmueble.' },
+        { '@type': 'HowToStep', position: 3, name: isEn ? 'Determine the declared value' : 'Determinar el valor escriturado', text: isEn ? 'The declared value determines the tax base for stamp duties and the ITI tax. The current recommendation is to declare the real sale price to avoid future tax issues.' : 'El valor escriturado determina la base imponible para sellos e ITI. La recomendación actual es escriturar al valor real para evitar problemas impositivos futuros.' },
+        { '@type': 'HowToStep', position: 4, name: isEn ? 'Sign the deed' : 'Firma del acto de escritura', text: isEn ? 'Buyer and seller (or their authorized representatives) sign before the notary. The buyer pays the balance in USD. Fees and taxes are paid at this stage.' : 'Comprador y vendedor (o sus apoderados) firman ante el escribano. Se paga el saldo en USD y se abonan honorarios e impuestos en ese acto.' },
+        { '@type': 'HowToStep', position: 5, name: isEn ? 'Pay buyer costs (~3.3–4% of price)' : 'Pagar los gastos del comprador (~3,3–4% del precio)', text: isEn ? 'Buyer pays: notary fees (1.5–2%), provincial stamp duty (1.5%), Property Registry inscription (0.3–0.5%), and certificates (USD 100–200 flat).' : 'El comprador paga: honorarios del escribano (1,5–2%), sellado provincial (1,5%), inscripción registral (0,3–0,5%) y certificados (USD 100–200 fijo).' },
+        { '@type': 'HowToStep', position: 6, name: isEn ? 'Registry inscription and title transfer' : 'Inscripción registral y transferencia del dominio', text: isEn ? 'The notary files the deed in the Property Registry. Within 15–30 days the buyer is officially registered as the legal owner of the property.' : 'El escribano inscribe la escritura en el Registro de la Propiedad. En 15–30 días el comprador queda registrado oficialmente como nuevo titular del inmueble.' },
+      ],
+    },
+  };
+
+  const howToLd = howToSchemas[post.slug] ?? null;
+
+  const blogPostingLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    '@id': `${postUrl}#article`,
+    headline: post.title[isEn ? 'en' : 'es'],
+    description: post.excerpt[isEn ? 'en' : 'es'],
+    image: post.coverImage,
+    url: postUrl,
+    datePublished: post.publishedAt,
+    dateModified: post.publishedAt,
+    author: { '@type': 'Organization', name: 'Mudate', url: BASE },
+    publisher: { '@type': 'Organization', name: 'Mudate', url: BASE, '@id': `${BASE}/#organization` },
+    keywords: post.tags.join(', '),
+    inLanguage: isEn ? 'en' : 'es-AR',
+    wordCount: post.readTime * 200,
+    articleSection: clusterSection,
+    mainEntityOfPage: { '@type': 'WebPage', '@id': postUrl },
+  };
+  const breadcrumbLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: isEn ? 'Home' : 'Inicio', item: BASE },
+      { '@type': 'ListItem', position: 2, name: 'Blog', item: `${BASE}/blog` },
+      { '@type': 'ListItem', position: 3, name: post.title[isEn ? 'en' : 'es'], item: postUrl },
+    ],
+  };
+
   return (
     <div style={{ background: 'var(--background)' }}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(blogPostingLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
+      {howToLd && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToLd) }} />}
       {/* Hero */}
       <div className="relative h-72 md:h-96">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={post.coverImage} alt={post.title[isEn ? 'en' : 'es']} className="w-full h-full object-cover" />
+        <Image src={post.coverImage} alt={post.title[isEn ? 'en' : 'es']} fill priority className="object-cover" sizes="100vw" />
         <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, rgba(19,78,74,0.3) 0%, rgba(19,78,74,0.85) 100%)' }} />
         <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10 max-w-4xl mx-auto">
           {/* Breadcrumb */}
@@ -531,6 +331,36 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
             <div className="prose-custom">
               {renderContent(post.content[isEn ? 'en' : 'es'])}
             </div>
+            {/* Ver también */}
+            {related.length > 0 && (
+              <div className="mt-10 pt-8" style={{ borderTop: '1px solid var(--border)' }}>
+                <p className="text-xs font-light mb-4" style={{ color: 'var(--primary)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
+                  {isEn ? 'See also' : 'Ver también'}
+                </p>
+                <div className="flex flex-col gap-3">
+                  {related.slice(0, 3).map((p) => (
+                    <Link
+                      key={p.slug}
+                      href={`/blog/${p.slug}`}
+                      className="flex items-start gap-3 rounded-xl p-4 hover:-translate-y-0.5 transition-all"
+                      style={{ background: 'var(--muted)', border: '1px solid var(--border)' }}
+                    >
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={p.coverImage} alt={p.title[isEn ? 'en' : 'es']} className="w-16 h-16 object-cover rounded-lg flex-shrink-0" />
+                      <div>
+                        <p className="text-xs font-semibold leading-snug mb-1" style={{ fontFamily: 'Cinzel, serif', color: 'var(--foreground)' }}>
+                          {p.title[isEn ? 'en' : 'es']}
+                        </p>
+                        <p className="text-xs font-light leading-relaxed" style={{ color: 'var(--muted-foreground)' }}>
+                          {p.excerpt[isEn ? 'en' : 'es'].slice(0, 100)}…
+                        </p>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            )}
+
             {/* Tags */}
             <div className="flex flex-wrap gap-2 mt-8 pt-6" style={{ borderTop: '1px solid var(--border)' }}>
               {post.tags.map((tag) => (
@@ -564,6 +394,28 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
               </Link>
             </div>
 
+            {/* City hub link */}
+            {post.ciudad && (
+              <div className="rounded-2xl p-5" style={{ background: 'var(--muted)', border: '1px solid var(--border)' }}>
+                <div className="flex items-center gap-2 mb-2">
+                  <MapPin size={14} style={{ color: 'var(--primary)' }} />
+                  <p className="text-xs font-light" style={{ color: 'var(--primary)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
+                    {isEn ? 'City hub' : 'Hub de ciudad'}
+                  </p>
+                </div>
+                <p className="text-sm font-semibold mb-3" style={{ fontFamily: 'Cinzel, serif', color: 'var(--foreground)' }}>
+                  {isEn ? `Invest in ${post.ciudad}` : `Invertir en ${post.ciudad}`}
+                </p>
+                <Link
+                  href={`/${post.ciudad.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/\s+/g, '-')}`}
+                  className="block w-full text-center py-2 rounded-lg text-xs font-semibold text-white"
+                  style={{ background: 'var(--primary)' }}
+                >
+                  {isEn ? `View ${post.ciudad} hub` : `Ver hub ${post.ciudad}`}
+                </Link>
+              </div>
+            )}
+
             {/* Related */}
             {related.length > 0 && (
               <div>
@@ -587,29 +439,6 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
         </div>
       </div>
 
-      {/* JSON-LD BlogPosting */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'BlogPosting',
-            headline: post.title[isEn ? 'en' : 'es'],
-            description: post.excerpt[isEn ? 'en' : 'es'],
-            image: post.coverImage,
-            author: { '@type': 'Organization', name: 'Mudate' },
-            publisher: {
-              '@type': 'Organization',
-              name: 'Mudate',
-              url: 'https://mudateargentina.com',
-            },
-            datePublished: post.publishedAt,
-            url: `https://mudateargentina.com${isEn ? '/en' : ''}/blog/${post.slug}`,
-            inLanguage: isEn ? 'en' : 'es-AR',
-            keywords: post.tags.join(', '),
-          }),
-        }}
-      />
     </div>
   );
 }

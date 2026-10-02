@@ -2,10 +2,45 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { TrendingUp, Home, MapPin, ArrowRight } from 'lucide-react';
 
-export const metadata: Metadata = {
-  title: 'Tasación Online de Propiedades en Córdoba — Mudate Argentina',
-  description: 'Estimá el valor de tu propiedad en Córdoba, Villa María y toda Argentina. Referencia de precios por m² por zona y tipo de propiedad.',
-};
+const base = 'https://mudateargentina.com';
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  const isEn = locale === 'en';
+  const path = 'tasacion';
+  const url = isEn ? `${base}/en/${path}` : `${base}/${path}`;
+  return {
+    title: isEn
+      ? 'Property Valuation in Argentina — Price Reference by Zone | Mudate'
+      : 'Tasación de Propiedades en Argentina — Referencia de Precios por Zona | Mudate',
+    description: isEn
+      ? 'Estimate the value of your property in Argentina. Reference prices per m² for Córdoba, Buenos Aires, Rosario, Mendoza and more. Updated 2025 data.'
+      : 'Estimá el valor de tu propiedad en Córdoba, Villa María y toda Argentina. Referencia de precios por m² por zona y tipo de propiedad. Datos 2025.',
+    keywords: isEn
+      ? ['property valuation argentina', 'price per m2 cordoba', 'real estate appraisal argentina', 'property value estimate 2025']
+      : ['tasación de propiedades argentina', 'precio m2 córdoba', 'valor inmueble argentina', 'tasación gratuita', 'precio por metro cuadrado argentina'],
+    alternates: {
+      canonical: url,
+      languages: { 'es': `${base}/${path}`, 'en': `${base}/en/${path}`, 'x-default': `${base}/${path}` },
+    },
+    openGraph: {
+      siteName: 'Mudate Argentina',
+      title: isEn ? 'Property Valuation in Argentina | Mudate' : 'Tasación de Propiedades en Argentina | Mudate',
+      description: isEn
+        ? 'Reference prices per m² for Córdoba, Buenos Aires, Rosario and all Argentina.'
+        : 'Referencia de precios por m² en Córdoba, Buenos Aires, Rosario y toda Argentina.',
+      url,
+      type: 'website',
+      images: [{ url: `${base}/opengraph-image`, width: 1200, height: 630, alt: 'Mudate Argentina — Tasación de Propiedades' }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: isEn ? 'Property Valuation in Argentina | Mudate' : 'Tasación de Propiedades en Argentina | Mudate',
+      description: isEn ? 'Reference prices per m² for Córdoba, Buenos Aires and all Argentina.' : 'Referencia de precios por m² en Córdoba, Buenos Aires y toda Argentina.',
+      images: [`${base}/opengraph-image`],
+    },
+  };
+}
 
 const preciosPorZona = [
   { zona: 'Nueva Córdoba', tipo: 'Departamento', min: 1200, max: 1600, moneda: 'USD/m²' },
@@ -29,11 +64,67 @@ const factores = [
   { icon: '📈', title: 'Tendencia de la zona', desc: 'Zonas en valorización tienen mejor retorno a largo plazo.' },
 ];
 
+const faqsTasacion = [
+  {
+    q: '¿Cuánto vale el metro cuadrado en Córdoba Capital en 2025?',
+    a: 'El precio promedio del m² en Córdoba Capital es de USD 1.100 a USD 1.600. En Nueva Córdoba y Güemes los valores llegan a USD 1.200–1.600, mientras que barrios más alejados del centro pueden bajar a USD 900–1.100.',
+  },
+  {
+    q: '¿Cuánto cuesta tasar una propiedad en Argentina?',
+    a: 'La tasación formal a cargo de un tasador matriculado tiene un costo de entre $30.000 y $80.000 pesos o equivalente en USD, dependiendo de la complejidad y la zona. Muchas inmobiliarias ofrecen tasaciones orientativas sin costo para captar la propiedad en venta.',
+  },
+  {
+    q: '¿Qué diferencia hay entre tasación y valuación fiscal?',
+    a: 'La tasación estima el valor de mercado real de una propiedad (precio al que se vendería hoy). La valuación fiscal es el valor que el municipio o provincia asigna a efectos impositivos y suele ser inferior al valor de mercado, a veces hasta un 40–60% menos.',
+  },
+  {
+    q: '¿Cómo se calcula el valor de una propiedad en Argentina?',
+    a: 'El método más usado es la comparación de mercado: se buscan propiedades similares vendidas recientemente en la misma zona y se ajusta por superficie, antigüedad, estado y amenities. También se usa el método de costo (terreno + construcción) para propiedades sin comparables directos.',
+  },
+];
+
+const tasacionJsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Inicio', item: base },
+        { '@type': 'ListItem', position: 2, name: 'Tasación', item: `${base}/tasacion` },
+      ],
+    },
+    {
+      '@type': 'Service',
+      name: 'Tasación de propiedades en Argentina',
+      provider: {
+        '@type': 'Organization',
+        name: 'Mudate Argentina',
+        url: base,
+      },
+      areaServed: { '@type': 'Country', name: 'Argentina' },
+      description: 'Referencia de precios por m² para las principales ciudades y zonas de Argentina. Útil para estimar el valor de venta o alquiler de una propiedad.',
+      url: `${base}/tasacion`,
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: faqsTasacion.map((f) => ({
+        '@type': 'Question',
+        name: f.q,
+        acceptedAnswer: { '@type': 'Answer', text: f.a },
+      })),
+    },
+  ],
+};
+
 export default function TasacionPage() {
   return (
     <div style={{ background: 'var(--background)', minHeight: '100vh' }}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(tasacionJsonLd) }}
+      />
       {/* Hero */}
-      <div style={{ background: 'linear-gradient(135deg, #134E4A 0%, #0F766E 100%)' }} className="py-14">
+      <div style={{ background: 'linear-gradient(135deg, #061610 0%, #0A2218 100%)' }} className="py-14">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <p className="text-xs font-light mb-2" style={{ color: 'rgba(153,246,228,0.8)', letterSpacing: '0.15em', textTransform: 'uppercase' }}>
             Referencia de precios 2025
@@ -105,8 +196,21 @@ export default function TasacionPage() {
           ))}
         </div>
 
+        {/* FAQs */}
+        <h2 className="text-xl font-semibold mb-6" style={{ fontFamily: 'Cinzel, serif', color: 'var(--foreground)' }}>
+          Preguntas frecuentes sobre tasación
+        </h2>
+        <div className="flex flex-col gap-4 mb-12">
+          {faqsTasacion.map((f, i) => (
+            <div key={i} className="rounded-xl p-6" style={{ background: 'white', boxShadow: 'var(--shadow-sm)', border: '1px solid var(--border)' }}>
+              <h3 className="font-semibold mb-2 text-sm" style={{ color: 'var(--foreground)' }}>{f.q}</h3>
+              <p className="text-xs" style={{ color: 'var(--muted-foreground)', lineHeight: '1.7' }}>{f.a}</p>
+            </div>
+          ))}
+        </div>
+
         {/* CTA */}
-        <div className="rounded-2xl p-8 text-center" style={{ background: 'linear-gradient(135deg, #134E4A 0%, #0F766E 100%)' }}>
+        <div className="rounded-2xl p-8 text-center" style={{ background: 'linear-gradient(135deg, #061610 0%, #0A2218 100%)' }}>
           <Home size={28} className="mx-auto mb-3 text-white/70" />
           <h3 className="text-xl font-semibold text-white mb-2" style={{ fontFamily: 'Cinzel, serif' }}>
             ¿Querés tasar tu propiedad?

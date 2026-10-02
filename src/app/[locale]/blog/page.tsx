@@ -1,242 +1,43 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowRight, Clock, Tag } from 'lucide-react';
-
-interface BlogPost {
-  slug: string;
-  title: { es: string; en: string };
-  excerpt: { es: string; en: string };
-  cluster: 'A' | 'B' | 'C';
-  ciudad?: string;
-  readTime: number;
-  publishedAt: string;
-  coverImage: string;
-  tags: string[];
-}
-
-const posts: BlogPost[] = [
-  // Cluster A — Inversión / Investment
-  {
-    slug: 'cap-rate-cordoba-2025',
-    title: {
-      es: 'Cap Rate en Córdoba 2025: análisis por barrio y ciudad',
-      en: 'Cap Rate in Córdoba 2025: Analysis by Neighborhood and City',
-    },
-    excerpt: {
-      es: 'Calculamos el retorno real en dólares para los principales barrios de Córdoba. Nueva Córdoba, General Paz, Villa María y más.',
-      en: 'We calculated the real dollar returns for the main neighborhoods in Córdoba. Nueva Córdoba, General Paz, Villa María and more.',
-    },
-    cluster: 'A',
-    readTime: 7,
-    publishedAt: '2025-09-01',
-    coverImage: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=800&q=80',
-    tags: ['inversión', 'cap rate', 'análisis'],
-  },
-  {
-    slug: 'invertir-departamentos-cordoba-vs-caba',
-    title: {
-      es: 'Invertir en departamentos: Córdoba vs CABA — quién gana en 2025',
-      en: 'Investing in Apartments: Córdoba vs Buenos Aires — Who Wins in 2025',
-    },
-    excerpt: {
-      es: 'Comparamos precio del m², rentabilidades y perspectivas de valorización entre Córdoba Capital y Buenos Aires. Los números hablan.',
-      en: 'We compare price per m², rental yields and appreciation prospects between Córdoba and Buenos Aires. The numbers speak for themselves.',
-    },
-    cluster: 'A',
-    readTime: 9,
-    publishedAt: '2025-08-20',
-    coverImage: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80',
-    tags: ['inversión', 'comparativa', 'CABA'],
-  },
-  {
-    slug: 'retorno-alquiler-villa-carlos-paz',
-    title: {
-      es: 'Alquiler vacacional en Villa Carlos Paz: ¿cuánto se puede ganar?',
-      en: 'Vacation Rental in Villa Carlos Paz: How Much Can You Earn?',
-    },
-    excerpt: {
-      es: 'Con 3 millones de turistas por año y precios aún accesibles, Villa Carlos Paz ofrece cap rates de 7-8% USD para quien sabe dónde comprar.',
-      en: 'With 3 million tourists per year and still accessible prices, Villa Carlos Paz offers 7-8% USD cap rates for those who know where to buy.',
-    },
-    cluster: 'A',
-    readTime: 6,
-    publishedAt: '2025-08-10',
-    coverImage: 'https://images.unsplash.com/photo-1567496898669-ee935f5f647a?w=800&q=80',
-    tags: ['inversión', 'turismo', 'Villa Carlos Paz'],
-  },
-  {
-    slug: 'mejores-barrios-nueva-cordoba',
-    title: {
-      es: 'Los mejores barrios para invertir en Córdoba Capital en 2025',
-      en: 'Best Neighborhoods to Invest in Córdoba Capital in 2025',
-    },
-    excerpt: {
-      es: 'Nueva Córdoba, Güemes, General Paz, Palermo Norte: analizamos cada zona con datos reales de precio, demanda y rentabilidad.',
-      en: 'Nueva Córdoba, Güemes, General Paz, Palermo Norte: we analyze each area with real price, demand and return data.',
-    },
-    cluster: 'A',
-    readTime: 8,
-    publishedAt: '2025-07-28',
-    coverImage: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80',
-    tags: ['inversión', 'barrios', 'Córdoba Capital'],
-  },
-  // Cluster B — Villa María
-  {
-    slug: 'mercado-inmobiliario-villa-maria-2025',
-    title: {
-      es: 'Mercado inmobiliario Villa María 2025: precios, tendencias y oportunidades',
-      en: 'Villa María Real Estate Market 2025: Prices, Trends and Opportunities',
-    },
-    excerpt: {
-      es: 'Villa María consolida su posición como el mejor mercado alternativo a Córdoba Capital. Departamento promedio USD 90.721 y cap rates sobre el 6%.',
-      en: 'Villa María consolidates its position as the best alternative market to Córdoba Capital. Average apartment at USD 90,721 with cap rates above 6%.',
-    },
-    cluster: 'B',
-    ciudad: 'Villa María',
-    readTime: 7,
-    publishedAt: '2025-09-03',
-    coverImage: 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800&q=80',
-    tags: ['Villa María', 'mercado', '2025'],
-  },
-  {
-    slug: 'comprar-departamento-villa-maria',
-    title: {
-      es: 'Cómo comprar un departamento en Villa María: guía paso a paso',
-      en: 'How to Buy an Apartment in Villa María: Step-by-Step Guide',
-    },
-    excerpt: {
-      es: 'Desde la búsqueda hasta la escritura. Todo lo que tenés que saber para comprar tu primer departamento en Villa María con seguridad.',
-      en: 'From search to title deed. Everything you need to know to safely buy your first apartment in Villa María.',
-    },
-    cluster: 'B',
-    ciudad: 'Villa María',
-    readTime: 10,
-    publishedAt: '2025-08-15',
-    coverImage: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80',
-    tags: ['Villa María', 'comprar', 'guía'],
-  },
-  {
-    slug: 'barrios-villa-maria-donde-invertir',
-    title: {
-      es: 'Barrios de Villa María: ¿dónde conviene invertir según tu perfil?',
-      en: 'Neighborhoods in Villa María: Where to Invest Based on Your Profile?',
-    },
-    excerpt: {
-      es: 'Centro vs Barrio Nuevo vs Palermo vs Residencial Norte. Cada zona tiene su perfil de riesgo y retorno. Te ayudamos a elegir.',
-      en: 'Centro vs Barrio Nuevo vs Palermo vs Residencial Norte. Each area has its own risk and return profile. We help you choose.',
-    },
-    cluster: 'B',
-    ciudad: 'Villa María',
-    readTime: 6,
-    publishedAt: '2025-08-05',
-    coverImage: 'https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=800&q=80',
-    tags: ['Villa María', 'barrios', 'inversión'],
-  },
-  // Cluster C — Comprar en Argentina / Buying in Argentina
-  {
-    slug: 'como-comprar-propiedad-argentina-2025',
-    title: {
-      es: 'Cómo comprar una propiedad en Argentina siendo extranjero en 2025',
-      en: 'How to Buy Property in Argentina as a Foreigner in 2025',
-    },
-    excerpt: {
-      es: 'CUIT/CUIL para extranjeros, escritura en dólares, blanqueo de capitales. La guía completa para no residentes que quieren invertir en el mercado argentino.',
-      en: 'CUIT/CUIL for foreigners, title deeds in dollars, capital repatriation. The complete guide for non-residents looking to invest in the Argentine market.',
-    },
-    cluster: 'C',
-    readTime: 12,
-    publishedAt: '2025-09-05',
-    coverImage: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=800&q=80',
-    tags: ['extranjeros', 'comprar', 'legal'],
-  },
-  {
-    slug: 'escritura-inmueble-argentina',
-    title: {
-      es: 'Escritura de inmuebles en Argentina: todo lo que necesitás saber',
-      en: 'Property Title Deeds in Argentina: Everything You Need to Know',
-    },
-    excerpt: {
-      es: 'Gastos de escritura, impuestos, sellados, honorarios notariales. Qué paga el comprador y qué paga el vendedor según la provincia de Córdoba.',
-      en: 'Title deed costs, taxes, stamp duties, notarial fees. What the buyer pays and what the seller pays in Córdoba province.',
-    },
-    cluster: 'C',
-    readTime: 8,
-    publishedAt: '2025-08-25',
-    coverImage: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&q=80',
-    tags: ['escritura', 'legal', 'impuestos'],
-  },
-  {
-    slug: 'dolar-propiedades-argentina',
-    title: {
-      es: 'Propiedades en dólares en Argentina: ¿cómo funciona la operación?',
-      en: 'Dollar-Denominated Properties in Argentina: How Do Transactions Work?',
-    },
-    excerpt: {
-      es: 'El mercado inmobiliario argentino opera mayoritariamente en USD. Explicamos cómo se manejan los pagos, el blanqueo y la seguridad jurídica.',
-      en: 'The Argentine real estate market operates mostly in USD. We explain how payments work, capital laundering regulations and legal security.',
-    },
-    cluster: 'C',
-    readTime: 7,
-    publishedAt: '2025-08-12',
-    coverImage: 'https://images.unsplash.com/photo-1580048915913-4f8f5cb481c4?w=800&q=80',
-    tags: ['dólares', 'pago', 'legal'],
-  },
-  {
-    slug: 'hipotecas-creditos-procrear-cordoba',
-    title: {
-      es: 'Créditos hipotecarios en Córdoba 2025: Procrear y bancarios',
-      en: 'Mortgage Loans in Córdoba 2025: Procrear and Bank Options',
-    },
-    excerpt: {
-      es: 'Con la vuelta del crédito hipotecario a Argentina, analizamos las opciones disponibles para comprar tu propiedad en Córdoba con financiación.',
-      en: 'With the return of mortgage lending to Argentina, we analyze the available options for buying your property in Córdoba with financing.',
-    },
-    cluster: 'C',
-    readTime: 9,
-    publishedAt: '2025-07-20',
-    coverImage: 'https://images.unsplash.com/photo-1460472178825-e5240623afd5?w=800&q=80',
-    tags: ['crédito', 'hipoteca', 'financiación'],
-  },
-  {
-    slug: 'gastos-compraventa-inmueble-cordoba',
-    title: {
-      es: 'Gastos de compraventa en Córdoba: la guía completa 2025',
-      en: 'Property Transaction Costs in Córdoba: The Complete 2025 Guide',
-    },
-    excerpt: {
-      es: 'Comisiones inmobiliarias, ITI, gastos de escritura, sellados provinciales. Calculá exactamente cuánto vas a pagar además del precio de la propiedad.',
-      en: 'Real estate commissions, ITI tax, title deed costs, provincial stamp duties. Calculate exactly how much you\'ll pay on top of the property price.',
-    },
-    cluster: 'C',
-    readTime: 8,
-    publishedAt: '2025-07-10',
-    coverImage: 'https://images.unsplash.com/photo-1554224154-26032ffc0d07?w=800&q=80',
-    tags: ['gastos', 'impuestos', 'compraventa'],
-  },
-];
-
-function formatDate(dateStr: string, locale: string) {
-  const d = new Date(dateStr);
-  return d.toLocaleDateString(locale === 'en' ? 'en-US' : 'es-AR', { day: 'numeric', month: 'long', year: 'numeric' });
-}
+import { getAllPosts } from '@/data/blog';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
-  if (locale === 'en') {
-    return {
-      title: 'Real Estate Blog Argentina — Guides for Buying, Selling and Investing',
-      description: 'Guides, analysis and market insights for Argentine real estate. Cap rates, neighborhood prices, how to buy property in Argentina and more.',
-    };
-  }
+  const base = 'https://mudateargentina.com';
+  const isEn = locale === 'en';
   return {
-    title: 'Blog Inmobiliario Córdoba — Guías para Comprar, Vender e Invertir',
-    description: 'Guías, análisis y consejos del mercado inmobiliario de Córdoba Argentina. Cap rates, precios por barrio, cómo comprar un departamento en Argentina y más.',
+    title: isEn
+      ? 'Real Estate Blog Argentina — Guides for Buying, Selling and Investing'
+      : 'Blog Inmobiliario Argentina — Guías para Comprar, Vender e Invertir',
+    description: isEn
+      ? 'Guides, analysis and market insights for Argentine real estate. Cap rates, neighborhood prices, how to buy property in Argentina and more.'
+      : 'Guías, análisis y consejos del mercado inmobiliario argentino. Cap rates, precios por barrio, cómo comprar una propiedad en Argentina y más.',
+    openGraph: {
+      title: isEn ? 'Real Estate Blog Argentina — Mudate' : 'Blog Inmobiliario Argentina — Mudate',
+      description: isEn
+        ? 'Guides, analysis and market insights for Argentine real estate.'
+        : 'Guías y análisis del mercado inmobiliario argentino.',
+      url: isEn ? `${base}/en/blog` : `${base}/blog`,
+      type: 'website',
+      images: [{ url: `${base}/opengraph-image`, width: 1200, height: 630, alt: 'Blog Inmobiliario Mudate Argentina' }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      images: [`${base}/opengraph-image`],
+    },
+    alternates: {
+      canonical: isEn ? `${base}/en/blog` : `${base}/blog`,
+      languages: { es: `${base}/blog`, en: `${base}/en/blog`, 'x-default': `${base}/blog` },
+    },
   };
 }
 
 export default async function BlogPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const isEn = locale === 'en';
+  const posts = getAllPosts();
   const featured = posts[0];
   const rest = posts.slice(1);
 
@@ -252,19 +53,47 @@ export default async function BlogPage({ params }: { params: Promise<{ locale: s
         C: { label: 'Comprar en Argentina', color: '#7C3AED' },
       };
 
+  const BASE = 'https://mudateargentina.com';
+  const blogListLd = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: isEn ? 'Argentine Real Estate Blog' : 'Blog Inmobiliario Argentina',
+    description: isEn
+      ? 'Guides and analysis for buying and investing in Argentine real estate'
+      : 'Guías y análisis para comprar e invertir en inmuebles en Argentina',
+    numberOfItems: posts.length,
+    itemListElement: posts.map((p, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      url: isEn ? `${BASE}/en/blog/${p.slug}` : `${BASE}/blog/${p.slug}`,
+      name: p.title[isEn ? 'en' : 'es'],
+    })),
+  };
+
+  const breadcrumbLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Inicio', item: BASE },
+      { '@type': 'ListItem', position: 2, name: isEn ? 'Blog' : 'Blog', item: isEn ? `${BASE}/en/blog` : `${BASE}/blog` },
+    ],
+  };
+
   return (
     <div style={{ background: 'var(--background)' }}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(blogListLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
       {/* Header */}
-      <div style={{ background: 'linear-gradient(135deg, #134E4A 0%, #0F766E 100%)' }} className="py-14">
+      <div style={{ background: 'linear-gradient(135deg, #061610 0%, #0A2218 100%)' }} className="py-14">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <p className="text-xs font-light mb-2" style={{ color: 'rgba(153,246,228,0.8)', letterSpacing: '0.15em', textTransform: 'uppercase' }}>Mudate Blog</p>
           <h1 className="text-3xl md:text-5xl font-semibold text-white" style={{ fontFamily: 'Cinzel, serif' }}>
-            {isEn ? 'The Argentine Real Estate Market' : 'El mercado inmobiliario cordobés'}
+            {isEn ? 'The Argentine Real Estate Market' : 'El mercado inmobiliario argentino'}
           </h1>
           <p className="text-white/70 mt-3 font-light max-w-xl mx-auto">
             {isEn
               ? 'Analysis, guides and real data to help you make the best decisions when buying or investing in Argentina.'
-              : 'Análisis, guías y datos reales para que tomes las mejores decisiones al comprar o invertir en Córdoba.'}
+              : 'Análisis, guías y datos reales para que tomes las mejores decisiones al comprar o invertir en Argentina.'}
           </p>
         </div>
       </div>
@@ -282,6 +111,7 @@ export default async function BlogPage({ params }: { params: Promise<{ locale: s
                 src={featured.coverImage}
                 alt={featured.title[isEn ? 'en' : 'es']}
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                fetchPriority="high"
               />
             </div>
             <div className="p-6 md:p-8 flex flex-col justify-center">
@@ -323,6 +153,7 @@ export default async function BlogPage({ params }: { params: Promise<{ locale: s
                   src={post.coverImage}
                   alt={post.title[isEn ? 'en' : 'es']}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  loading="lazy"
                 />
               </div>
               <div className="p-5">

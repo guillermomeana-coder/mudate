@@ -311,9 +311,9 @@ export const PROVINCE_DESCRIPTIONS: Record<string, { es: string; en: string; sta
     stats: ['Eje exportador agroindustrial', 'Rosario: 1.3M+ habitantes', '3er mercado inmobiliario del país'],
   },
   'Salta': {
-    es: 'Salta combina un centro histórico colonial con una economía diversificada en turismo, petróleo y agro. Es una de las provincias con mayor crecimiento turístico de Argentina, lo que impulsa el mercado de propiedades de alquiler temporario y desarrollo hotelero.',
+    es: 'Salta combina un centro histórico colonial con una economía diversificada en turismo, petróleo y agro. Es una de las provincias con mayor crecimiento turístico de Argentina, lo que impulsa el mercado de propiedades de inversión vacacional y desarrollo hotelero.',
     en: 'Salta combines a colonial historic center with a diversified economy spanning tourism, oil, and agriculture. It\'s one of Argentina\'s fastest-growing tourist destinations, driving short-term rental and hotel development markets.',
-    stats: ['Centro histórico Patrimonio Nacional', 'Turismo en alza 15%/año', 'Inversión en alquiler temporario'],
+    stats: ['Centro histórico Patrimonio Nacional', 'Turismo en alza 15%/año', 'Inversión en inversión vacacional'],
   },
   'Tucumán': {
     es: 'Tucumán, la provincia más pequeña de Argentina, es también una de las más densamente pobladas. Su economía agroindustrial y su importante sistema universitario generan alta demanda de propiedades residenciales, especialmente departamentos para estudiantes en San Miguel de Tucumán.',
@@ -326,7 +326,7 @@ export const PROVINCE_DESCRIPTIONS: Record<string, { es: string; en: string; sta
     stats: ['Vaca Muerta: 2° reserva shale mundial', 'Crecimiento poblacional acelerado', 'Precios en USD en alza'],
   },
   'Río Negro': {
-    es: 'Río Negro alberga a Bariloche, el destino turístico de montaña más importante de Sudamérica. El mercado inmobiliario de Bariloche opera casi exclusivamente en dólares y presenta alta demanda de propiedades para alquiler temporario, segunda residencia e inversión hotelera.',
+    es: 'Río Negro alberga a Bariloche, el destino turístico de montaña más importante de Sudamérica. El mercado inmobiliario de Bariloche opera casi exclusivamente en dólares y presenta alta demanda de propiedades para inversión vacacional, segunda residencia e inversión hotelera.',
     en: 'Río Negro is home to Bariloche, South America\'s most important mountain tourist destination. Bariloche\'s real estate market operates almost exclusively in USD with high demand for short-term rentals, second homes, and hotel investment.',
     stats: ['Bariloche: turismo 4 estaciones', 'Mercado 100% USD', 'Revalorización histórica +8%/año'],
   },
@@ -410,7 +410,7 @@ export const PROVINCE_DESCRIPTIONS: Record<string, { es: string; en: string; sta
 // City → description
 export const CITY_DESCRIPTIONS: Record<string, { es: string; en: string; barrios?: string[] }> = {
   'Córdoba Capital': {
-    es: 'Córdoba Capital es la segunda ciudad más grande de Argentina, con más de 1.5 millones de habitantes. Es un polo universitario de primer nivel con 13 universidades que generan alta demanda de alquileres. El mercado inmobiliario es muy activo, especialmente en barrios como Nueva Córdoba, Güemes y General Paz. Es también un hub industrial y tecnológico con importante presencia de multinacionales.',
+    es: 'Córdoba Capital es la segunda ciudad más grande de Argentina, con más de 1.5 millones de habitantes. Es un polo universitario de primer nivel con 13 universidades que sostienen una altísima demanda de propiedades. El mercado inmobiliario es muy activo, especialmente en barrios como Nueva Córdoba, Güemes y General Paz. Es también un hub industrial y tecnológico con importante presencia de multinacionales.',
     en: 'Córdoba Capital is Argentina\'s second largest city, home to over 1.5 million people. It\'s a top university hub with 13 universities generating high rental demand. The real estate market is very active, especially in neighborhoods like Nueva Córdoba, Güemes, and General Paz. It\'s also an industrial and tech hub with major multinational presence.',
     barrios: ['Nueva Córdoba', 'Güemes', 'General Paz', 'Cerro de las Rosas', 'Villa Belgrano', 'Bimaco', 'Argüello', 'Jardín'],
   },
@@ -450,7 +450,7 @@ export const CITY_DESCRIPTIONS: Record<string, { es: string; en: string; barrios
     barrios: ['Centro', 'Villa Lanús', 'Itaembé Miní', 'A3 - 2000'],
   },
   'Merlo': {
-    es: 'Merlo, en las Sierras Puntanas de San Luis, es uno de los destinos de segunda residencia más buscados de Argentina. Su microclima excepcional, con 300 días de sol al año, atrae jubilados, trabajadores remotos e inversores de alquiler temporario. La demanda supera históricamente a la oferta.',
+    es: 'Merlo, en las Sierras Puntanas de San Luis, es uno de los destinos de segunda residencia más buscados de Argentina. Su microclima excepcional, con 300 días de sol al año, atrae jubilados, trabajadores remotos e inversores de inversión vacacional. La demanda supera históricamente a la oferta.',
     en: 'Merlo, in San Luis\' Puntanas Sierras, is one of Argentina\'s most sought-after second-home destinations. Its exceptional microclimate, with 300 sunny days per year, attracts retirees, remote workers, and short-term rental investors. Demand has historically exceeded supply.',
     barrios: ['Villa de Merlo', 'Los Molles', 'Carpintería', 'El Molino'],
   },
@@ -485,7 +485,7 @@ export const CITY_DESCRIPTIONS: Record<string, { es: string; en: string; barrios
     barrios: ['Morón', 'Haedo', 'Ramos Mejía', 'San Justo', 'Luján', 'Ituzaingó'],
   },
   'GBA Sur': {
-    es: 'El GBA Sur incluye Lomas de Zamora, Lanús, Avellaneda, Quilmes, Berazategui y La Plata (capital bonaerense). Zona de fuerte demanda estudiantil por la UNLP y con importante mercado de alquileres. Precios intermedios entre el norte y el oeste del conurbano.',
+    es: 'El GBA Sur incluye Lomas de Zamora, Lanús, Avellaneda, Quilmes, Berazategui y La Plata (capital bonaerense). Zona de fuerte demanda estudiantil por la UNLP y con importante mercado inmobiliario. Precios intermedios entre el norte y el oeste del conurbano.',
     en: 'Greater Buenos Aires South includes Lomas de Zamora, Lanús, Avellaneda, Quilmes, Berazategui, and La Plata (provincial capital). Area of strong student demand from UNLP and with an important rental market. Prices are intermediate between the north and west suburbs.',
     barrios: ['La Plata', 'Quilmes', 'Avellaneda', 'Lanús', 'Lomas de Zamora'],
   },
@@ -505,12 +505,12 @@ export const CITY_DESCRIPTIONS: Record<string, { es: string; en: string; barrios
     barrios: ['Centro', 'Jardín', 'Ranguelco', 'Stella Maris'],
   },
   'Villa Carlos Paz': {
-    es: 'Villa Carlos Paz, a 36 km de Córdoba sobre el lago San Roque, es el principal destino turístico de las Sierras Chicas. Con más de 70.000 habitantes permanentes y 2 millones de turistas anuales, ofrece un mercado de alquiler temporario excepcional y alta demanda de segunda residencia.',
+    es: 'Villa Carlos Paz, a 36 km de Córdoba sobre el lago San Roque, es el principal destino turístico de las Sierras Chicas. Con más de 70.000 habitantes permanentes y 2 millones de turistas anuales, ofrece un mercado de inversión vacacional excepcional y alta demanda de segunda residencia.',
     en: 'Villa Carlos Paz, 36km from Córdoba on Lake San Roque, is the main tourist destination of the Sierras Chicas. With over 70,000 permanent residents and 2 million annual tourists, it offers an exceptional short-term rental market and high second-home demand.',
     barrios: ['Centro', 'El Cóndor', 'La Cuesta', 'Las Rosas', 'San Nicolás'],
   },
   'Bariloche': {
-    es: 'Bariloche (San Carlos de Bariloche) es el destino turístico de montaña más icónico de Sudamérica. Su mercado inmobiliario opera casi exclusivamente en dólares, con demanda de alquiler temporario los 365 días (ski en invierno, trekking y lagos en verano). La oferta es históricamente escasa frente a la demanda.',
+    es: 'Bariloche (San Carlos de Bariloche) es el destino turístico de montaña más icónico de Sudamérica. Su mercado inmobiliario opera casi exclusivamente en dólares, con demanda de inversión vacacional los 365 días (ski en invierno, trekking y lagos en verano). La oferta es históricamente escasa frente a la demanda.',
     en: 'Bariloche (San Carlos de Bariloche) is South America\'s most iconic mountain tourist destination. Its real estate market operates almost exclusively in USD, with short-term rental demand 365 days a year (ski in winter, trekking and lakes in summer). Supply is historically scarce relative to demand.',
     barrios: ['Centro', 'El Mallín', 'Melipal', 'Villa Los Coihues', 'Dina Huapi'],
   },
@@ -530,7 +530,7 @@ export const CITY_DESCRIPTIONS: Record<string, { es: string; en: string; barrios
     barrios: ['Centro', 'Confluencia', 'Belgrano', 'Alta Barda', 'Parque Industrial'],
   },
   'Comodoro Rivadavia': {
-    es: 'Comodoro Rivadavia es el principal centro petrolero de la Argentina atlántica. Su mercado inmobiliario está directamente vinculado a los ciclos de la industria hidrocarburífera, con alta demanda de propiedades de alquiler para trabajadores del sector de todo el país.',
+    es: 'Comodoro Rivadavia es el principal centro petrolero de la Argentina atlántica. Su mercado inmobiliario está directamente vinculado a los ciclos de la industria hidrocarburífera, con alta demanda de propiedades por trabajadores del sector de todo el país.',
     en: 'Comodoro Rivadavia is the main oil center of Atlantic Argentina. Its real estate market is directly tied to hydrocarbon industry cycles, with high rental property demand from sector workers from across the country.',
     barrios: ['Centro', 'Rada Tilly', 'Don Bosco', 'Km 3', 'Km 8'],
   },
@@ -550,7 +550,7 @@ export const CITY_DESCRIPTIONS: Record<string, { es: string; en: string; barrios
     barrios: ['Centro', 'Madre de Ciudades', 'Villa del Parque', 'Belgrano'],
   },
   'Río Cuarto': {
-    es: 'Río Cuarto es la segunda ciudad de Córdoba y un importante polo educativo con la Universidad Nacional de Río Cuarto. Su mercado inmobiliario tiene alta demanda de alquileres por la población estudiantil y es una de las ciudades con mejor relación precio/calidad del interior cordobés.',
+    es: 'Río Cuarto es la segunda ciudad de Córdoba y un importante polo educativo con la Universidad Nacional de Río Cuarto. Su mercado inmobiliario tiene alta demanda de vivienda por la población estudiantil y es una de las ciudades con mejor relación precio/calidad del interior cordobés.',
     en: 'Río Cuarto is Córdoba\'s second city and an important educational hub with the National University of Río Cuarto. Its real estate market has high rental demand from the student population and is one of the interior cities with the best price/quality ratio.',
     barrios: ['Centro', 'Alberdi', 'Banda Norte', 'Parque Norte'],
   },
@@ -565,12 +565,12 @@ export const CITY_DESCRIPTIONS: Record<string, { es: string; en: string; barrios
     barrios: ['Centro', 'San Martín', 'Villa del Carmen', 'Los Esteros'],
   },
   'Cafayate': {
-    es: 'Cafayate es la capital vitivinícola del norte argentino, enclavada en los Valles Calchaquíes a 1.683 msnm. Sus bodegas producen el famoso Torrontés, uva insignia de Argentina. El mercado inmobiliario está en pleno auge: bodegas boutique, chalets y fincas con viñedos atraen a inversores nacionales e internacionales. Alta demanda de alquiler temporario con turistas todo el año.',
+    es: 'Cafayate es la capital vitivinícola del norte argentino, enclavada en los Valles Calchaquíes a 1.683 msnm. Sus bodegas producen el famoso Torrontés, uva insignia de Argentina. El mercado inmobiliario está en pleno auge: bodegas boutique, chalets y fincas con viñedos atraen a inversores nacionales e internacionales. Alta demanda de inversión vacacional con turistas todo el año.',
     en: 'Cafayate is northern Argentina\'s wine capital, nestled in the Calchaquí Valleys at 1,683m above sea level. Its wineries produce the famous Torrontés, Argentina\'s signature grape. The real estate market is booming: boutique wineries, chalets, and vineyard estates attract local and international investors. High year-round short-term rental demand.',
     barrios: ['Centro', 'El Divisadero', 'Chañarmuyo', 'Los Médanos'],
   },
   'Tilcara': {
-    es: 'Tilcara es una de las joyas de la Quebrada de Humahuaca, declarada Patrimonio de la Humanidad por la UNESCO en 2003. A 2.461 msnm, combina arqueología precolombina (el Pucará), naturaleza andina y una escena artística vibrante. El mercado inmobiliario crece con fuerza: turistas que se enamoran del lugar y eligen quedarse impulsan la demanda de propiedades para vivir y para alquiler temporario.',
+    es: 'Tilcara es una de las joyas de la Quebrada de Humahuaca, declarada Patrimonio de la Humanidad por la UNESCO en 2003. A 2.461 msnm, combina arqueología precolombina (el Pucará), naturaleza andina y una escena artística vibrante. El mercado inmobiliario crece con fuerza: turistas que se enamoran del lugar y eligen quedarse impulsan la demanda de propiedades para vivir y para inversión vacacional.',
     en: 'Tilcara is one of the gems of the UNESCO World Heritage Quebrada de Humahuaca. At 2,461m above sea level, it combines pre-Columbian archaeology (the Pucará), Andean nature, and a vibrant arts scene. The real estate market is growing fast: tourists who fall in love with the place and choose to stay drive demand for properties to live in and for short-term rental.',
     barrios: ['Centro', 'El Jardín', 'La Banda', 'Calle Bolívar'],
   },
@@ -580,12 +580,12 @@ export const CITY_DESCRIPTIONS: Record<string, { es: string; en: string; barrios
     barrios: ['Centro', 'Calle Los Alisos'],
   },
   'San Martín de los Andes': {
-    es: 'San Martín de los Andes, en el corazón del Parque Nacional Lanín, es considerada por muchos la ciudad más bella de la Patagonia. Con arquitectura de estilo alpino, lagos, volcanes y nieve en invierno, su mercado inmobiliario opera en dólares con demanda sostenida de segunda residencia, alquiler temporario e inversión hotelera. Alternativa más auténtica a Bariloche.',
+    es: 'San Martín de los Andes, en el corazón del Parque Nacional Lanín, es considerada por muchos la ciudad más bella de la Patagonia. Con arquitectura de estilo alpino, lagos, volcanes y nieve en invierno, su mercado inmobiliario opera en dólares con demanda sostenida de segunda residencia, inversión vacacional e inversión hotelera. Alternativa más auténtica a Bariloche.',
     en: 'San Martín de los Andes, in the heart of Lanín National Park, is considered by many the most beautiful city in Patagonia. With alpine-style architecture, lakes, volcanoes, and winter snow, its real estate market operates in USD with sustained demand for second homes, short-term rentals, and hotel investment. A more authentic alternative to Bariloche.',
     barrios: ['Centro', 'Chapelco', 'El Arenal', 'Barrio Inacayal'],
   },
   'Villa La Angostura': {
-    es: 'Villa La Angostura, en la Ruta de los Siete Lagos, es un exclusivo destino patagónico conocido como "el jardín de la Patagonia". Su entorno natural incomparable (bosque nativo, lago Nahuel Huapi, Parque Nacional Los Arrayanes) impulsa un mercado inmobiliario premium con propiedades en dólares y alta demanda de alquiler temporario de lujo.',
+    es: 'Villa La Angostura, en la Ruta de los Siete Lagos, es un exclusivo destino patagónico conocido como "el jardín de la Patagonia". Su entorno natural incomparable (bosque nativo, lago Nahuel Huapi, Parque Nacional Los Arrayanes) impulsa un mercado inmobiliario premium con propiedades en dólares y alta demanda de inversión vacacional de lujo.',
     en: 'Villa La Angostura, on the Seven Lakes Route, is an exclusive Patagonian destination known as "the garden of Patagonia". Its incomparable natural setting (native forest, Lake Nahuel Huapi, Los Arrayanes National Park) drives a premium real estate market with USD-priced properties and high luxury short-term rental demand.',
     barrios: ['Centro', 'Las Balsas', 'El Cruce', 'Barrio Norte'],
   },
@@ -600,7 +600,7 @@ export const CITY_DESCRIPTIONS: Record<string, { es: string; en: string; barrios
     barrios: ['Centro', 'El Mallín Ahogado', 'Cerro Lindo', 'El Foyel'],
   },
   'El Calafate': {
-    es: 'El Calafate es la puerta de entrada al Parque Nacional Los Glaciares y el Glaciar Perito Moreno (Patrimonio UNESCO). Con turismo internacional de altísimo nivel y temporadas marcadas (verano e invierno), su mercado inmobiliario premium opera en dólares con retornos de alquiler temporario entre los más altos de Argentina. Escasez de suelo y regulaciones limitan la oferta.',
+    es: 'El Calafate es la puerta de entrada al Parque Nacional Los Glaciares y el Glaciar Perito Moreno (Patrimonio UNESCO). Con turismo internacional de altísimo nivel y temporadas marcadas (verano e invierno), su mercado inmobiliario premium opera en dólares con retornos de inversión vacacional entre los más altos de Argentina. Escasez de suelo y regulaciones limitan la oferta.',
     en: 'El Calafate is the gateway to Los Glaciares National Park and the Perito Moreno Glacier (UNESCO Heritage). With high-level international tourism and marked seasons (summer and winter), its premium real estate market operates in USD with short-term rental returns among Argentina\'s highest. Land scarcity and regulations limit supply.',
     barrios: ['Centro', 'Barrio Aeropuerto', 'Barrio Mitre', 'La Lomita'],
   },
@@ -610,7 +610,7 @@ export const CITY_DESCRIPTIONS: Record<string, { es: string; en: string; barrios
     barrios: ['Centro', 'Barrio Lago Del Desierto'],
   },
   'Puerto Madryn': {
-    es: 'Puerto Madryn es la capital del avistaje de ballenas en Sudamérica. Su bahía alberga a la ballena franca austral entre junio y diciembre, atrayendo miles de turistas. Con una economía sólida basada en pesca, aluminio (Aluar) y turismo, su mercado inmobiliario es estable y en crecimiento. Ideal para segunda residencia costera y alquiler temporario.',
+    es: 'Puerto Madryn es la capital del avistaje de ballenas en Sudamérica. Su bahía alberga a la ballena franca austral entre junio y diciembre, atrayendo miles de turistas. Con una economía sólida basada en pesca, aluminio (Aluar) y turismo, su mercado inmobiliario es estable y en crecimiento. Ideal para segunda residencia costera y inversión vacacional.',
     en: 'Puerto Madryn is South America\'s whale watching capital. Its bay hosts the southern right whale between June and December, attracting thousands of tourists. With a solid economy based on fishing, aluminum (Aluar), and tourism, its real estate market is stable and growing. Ideal for coastal second homes and short-term rentals.',
     barrios: ['Centro', 'El Doradillo', 'Rocas Coloradas', 'Patagonia Park'],
   },
@@ -620,27 +620,27 @@ export const CITY_DESCRIPTIONS: Record<string, { es: string; en: string; barrios
     barrios: ['Centro', 'Ciudadela', 'Planta Industrial', 'Barrio San Pablo'],
   },
   'Puerto Iguazú': {
-    es: 'Puerto Iguazú, frente a las Cataratas del Iguazú (Maravilla Natural del Mundo), recibe más de 1.5 millones de turistas al año. Su mercado inmobiliario se enfoca principalmente en alojamientos turísticos, hostels, hoteles boutique y propiedades para alquiler temporario. Triple frontera (Argentina-Brasil-Paraguay) genera demanda comercial adicional.',
+    es: 'Puerto Iguazú, frente a las Cataratas del Iguazú (Maravilla Natural del Mundo), recibe más de 1.5 millones de turistas al año. Su mercado inmobiliario se enfoca principalmente en alojamientos turísticos, hostels, hoteles boutique y propiedades para inversión vacacional. Triple frontera (Argentina-Brasil-Paraguay) genera demanda comercial adicional.',
     en: 'Puerto Iguazú, facing the Iguazú Falls (Wonder of the Natural World), receives over 1.5 million tourists per year. Its real estate market focuses mainly on tourist accommodations, hostels, boutique hotels, and short-term rental properties. The Triple Frontier (Argentina-Brazil-Paraguay) generates additional commercial demand.',
     barrios: ['Centro', 'Bº Unión', 'Andresito', 'Barrio San Martín'],
   },
   'Mina Clavero': {
-    es: 'Mina Clavero, en las Sierras de Traslasierra (Córdoba), es uno de los destinos de verano más populares de Argentina. Sus ríos de agua cristalina, el Pinar (bosque de pinos único) y el turismo familiar la convierten en un mercado de segunda residencia muy activo. Alta demanda de alquiler temporario en temporada alta (diciembre-marzo).',
+    es: 'Mina Clavero, en las Sierras de Traslasierra (Córdoba), es uno de los destinos de verano más populares de Argentina. Sus ríos de agua cristalina, el Pinar (bosque de pinos único) y el turismo familiar la convierten en un mercado de segunda residencia muy activo. Alta demanda de inversión vacacional en temporada alta (diciembre-marzo).',
     en: 'Mina Clavero, in Córdoba\'s Traslasierra Sierras, is one of Argentina\'s most popular summer destinations. Its crystal-clear rivers, the Pinar (unique pine forest), and family tourism make it a very active second-home market. High short-term rental demand in peak season (December-March).',
     barrios: ['Centro', 'Villa Cura Brochero', 'Nono', 'Los Hornillos'],
   },
   'La Falda': {
-    es: 'La Falda, en las Sierras Chicas de Córdoba, es un clásico destino turístico a 80km de la capital. Conocida por el Hotel Eden (donde se hospedó Einstein) y sus paisajes serranos, ofrece propiedades residenciales y de alquiler temporario a precios más accesibles que Villa Carlos Paz.',
+    es: 'La Falda, en las Sierras Chicas de Córdoba, es un clásico destino turístico a 80km de la capital. Conocida por el Hotel Eden (donde se hospedó Einstein) y sus paisajes serranos, ofrece propiedades residenciales y de inversión vacacional a precios más accesibles que Villa Carlos Paz.',
     en: 'La Falda, in Córdoba\'s Sierras Chicas, is a classic tourist destination 80km from the capital. Known for the Hotel Eden (where Einstein stayed) and its mountain landscapes, it offers residential and short-term rental properties at more affordable prices than Villa Carlos Paz.',
     barrios: ['Centro', 'Las Jarillas', 'El Diquecito', 'Huerta Grande'],
   },
   'Cosquín': {
-    es: 'Cosquín es la capital nacional del folklore argentino, sede del famoso Festival Nacional de Folklore. A 64km de Córdoba capital, ofrece propiedades a precios accesibles con alta demanda de alquiler temporario en enero (durante el festival) y turismo serrano todo el año.',
+    es: 'Cosquín es la capital nacional del folklore argentino, sede del famoso Festival Nacional de Folklore. A 64km de Córdoba capital, ofrece propiedades a precios accesibles con alta demanda de inversión vacacional en enero (durante el festival) y turismo serrano todo el año.',
     en: 'Cosquín is Argentina\'s national folklore capital, home to the famous National Folklore Festival. 64km from Córdoba capital, it offers affordable properties with high short-term rental demand in January (during the festival) and mountain tourism year-round.',
     barrios: ['Centro', 'La Toma', 'El Empalme', 'Villa Warcalde'],
   },
   'Santa Rosa de Calamuchita': {
-    es: 'Santa Rosa de Calamuchita, a orillas del lago Los Molinos en el Valle de Calamuchita (Córdoba), es el corazón del turismo de lagos serranos. Con más de 100km de costa lacustre, atrae a familias, inversores de alquiler temporario y compradores de segunda residencia. Crecimiento inmobiliario sostenido los últimos 10 años.',
+    es: 'Santa Rosa de Calamuchita, a orillas del lago Los Molinos en el Valle de Calamuchita (Córdoba), es el corazón del turismo de lagos serranos. Con más de 100km de costa lacustre, atrae a familias, inversores de inversión vacacional y compradores de segunda residencia. Crecimiento inmobiliario sostenido los últimos 10 años.',
     en: 'Santa Rosa de Calamuchita, on the shores of Lake Los Molinos in Córdoba\'s Calamuchita Valley, is the heart of the lake and mountain tourism scene. With more than 100km of lake coast, it attracts families, short-term rental investors, and second-home buyers. Sustained real estate growth over the last 10 years.',
     barrios: ['Centro', 'Los Reartes', 'Villa General Belgrano', 'La Cumbrecita'],
   },
@@ -655,7 +655,7 @@ export const CITY_DESCRIPTIONS: Record<string, { es: string; en: string; barrios
     barrios: ['Pinamar Centro', 'Valeria del Mar', 'Ostende', 'Cariló'],
   },
   'Villa Gesell': {
-    es: 'Villa Gesell, fundada por Carlos Idaho Gesell como proyecto utópico forestal, es uno de los balnearios más populares del litoral atlántico. Con un perfil más familiar y joven que Pinamar, ofrece propiedades a precios más accesibles y alta demanda de alquiler temporario en verano. Posición ideal para el turismo masivo de enero.',
+    es: 'Villa Gesell, fundada por Carlos Idaho Gesell como proyecto utópico forestal, es uno de los balnearios más populares del litoral atlántico. Con un perfil más familiar y joven que Pinamar, ofrece propiedades a precios más accesibles y alta demanda de inversión vacacional en verano. Posición ideal para el turismo masivo de enero.',
     en: 'Villa Gesell, founded by Carlos Idaho Gesell as a utopian forestry project, is one of the most popular seaside resorts on the Atlantic coast. With a more family-friendly and youthful profile than Pinamar, it offers more affordable properties and high short-term rental demand in summer. Ideal position for mass January tourism.',
     barrios: ['Centro', 'Mar Azul', 'Mar de las Pampas', 'Las Gaviotas'],
   },

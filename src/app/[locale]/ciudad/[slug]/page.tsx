@@ -4,7 +4,6 @@ import { Suspense } from 'react';
 import { connectDB } from '@/lib/mongodb';
 import { Property } from '@/models/Property';
 import PropertyGrid from '@/components/PropertyGrid';
-import OperacionToggle from '@/components/OperacionToggle';
 import { PropertyCardData } from '@/components/PropertyCard';
 import {
   CITY_SLUG_MAP,
@@ -15,11 +14,10 @@ import {
   unslugify,
 } from '@/lib/slugify';
 
-export const dynamic = 'force-dynamic';
+export const revalidate = 3600; // ISR: revalida cada 1 hora
 
 interface PageProps {
   params: Promise<{ locale: string; slug: string }>;
-  searchParams?: Promise<{ operation?: string }>;
 }
 
 export async function generateStaticParams() {
@@ -70,8 +68,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     ? `Properties in ${cityName} | Mudate`
     : `Propiedades en ${cityName} | Mudate`;
   const desc = isEn
-    ? `Find houses, apartments and land for sale and rent in ${cityName}, Argentina. Browse all listings on Mudate.`
-    : `Encontrá casas, departamentos y terrenos en venta y alquiler en ${cityName}, Argentina. Explorá todas las propiedades en Mudate.`;
+    ? `Find houses, apartments and land for sale in ${cityName}, Argentina. Browse all listings on Mudate.`
+    : `Encontrá casas, departamentos y terrenos en venta en ${cityName}, Argentina. Explorá todas las propiedades en Mudate.`;
   const base = 'https://mudateargentina.com';
   const path = `/ciudad/${slug}`;
 
@@ -91,12 +89,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 async function getCityProperties(
   cityName: string,
-  operation?: string
 ): Promise<{ items: PropertyCardData[]; total: number }> {
   try {
     await connectDB();
-    const baseQuery: Record<string, unknown> = { ciudad: cityName, published: true };
-    if (operation) baseQuery.operation = operation;
+    const baseQuery: Record<string, unknown> = { ciudad: cityName, published: true, operation: 'venta' };
     const [items, total] = await Promise.all([
       Property.find(baseQuery)
         .sort({ featured: -1, createdAt: -1 })
@@ -111,7 +107,7 @@ async function getCityProperties(
         title: p.title,
         price: p.price,
         currency: p.currency as 'USD' | 'ARS',
-        operation: p.operation as 'venta' | 'alquiler',
+        operation: 'venta' as const,
         type: p.type,
         ciudad: p.ciudad,
         barrio: p.barrio,
@@ -128,10 +124,8 @@ async function getCityProperties(
   }
 }
 
-export default async function CiudadPage({ params, searchParams }: PageProps) {
+export default async function CiudadPage({ params }: PageProps) {
   const { locale, slug } = await params;
-  const sp = searchParams ? await searchParams : {};
-  const operation = sp.operation;
   const isEn = locale === 'en';
 
   // Primary: try hardcoded map (unchanged behavior)
@@ -164,7 +158,7 @@ export default async function CiudadPage({ params, searchParams }: PageProps) {
     );
   }
 
-  const { items: properties, total } = await getCityProperties(cityName, operation);
+  const { items: properties, total } = await getCityProperties(cityName);
   const desc = CITY_DESCRIPTIONS[cityName];
   const provinceSlug = CITY_TO_PROVINCE_SLUG[slug];
   const provinceName = provinceSlug ? PROVINCE_SLUG_MAP[provinceSlug] : undefined;
@@ -173,12 +167,39 @@ export default async function CiudadPage({ params, searchParams }: PageProps) {
   const isGBA = slug.startsWith('gba-');
   const gbaLabel = isEn ? 'Greater Buenos Aires' : 'Gran Buenos Aires';
 
+  const BASE = 'https://mudateargentina.com';
+  const breadcrumbLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Inicio', item: BASE },
+      { '@type': 'ListItem', position: 2, name: 'Propiedades', item: `${BASE}/propiedades` },
+      ...(provinceName ? [{ '@type': 'ListItem', position: 3, name: provinceName, item: `${BASE}/provincia/${provinceSlug}` }] : []),
+      { '@type': 'ListItem', position: provinceName ? 4 : 3, name: cityName, item: `${BASE}/ciudad/${slug}` },
+    ],
+  };
+
+  const itemListLd = properties.length > 0 ? {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: `Propiedades en venta en ${cityName}`,
+    numberOfItems: total,
+    itemListElement: properties.slice(0, 5).map((p, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      url: `${BASE}/propiedades/${p.slug}`,
+      name: p.title,
+    })),
+  } : null;
+
   return (
     <div style={{ background: 'var(--background)' }}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
+      {itemListLd && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListLd) }} />}
       {/* Hero */}
       <div
         style={{
-          background: 'linear-gradient(135deg, #0D3B37 0%, #0F766E 100%)',
+          background: 'linear-gradient(135deg, #061610 0%, #0A2218 100%)',
           padding: '56px 0',
           position: 'relative',
           overflow: 'hidden',
@@ -264,16 +285,6 @@ export default async function CiudadPage({ params, searchParams }: PageProps) {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-        {/* Operacion toggle */}
-        <Suspense fallback={null}>
-          <OperacionToggle
-            operation={operation}
-            labelAll={isEn ? 'All' : 'Todo'}
-            labelVenta={isEn ? 'For Sale' : 'Venta'}
-            labelAlquiler={isEn ? 'For Rent' : 'Alquiler'}
-          />
-        </Suspense>
-
         {/* Properties or empty state */}
         {properties.length === 0 ? (
           <div

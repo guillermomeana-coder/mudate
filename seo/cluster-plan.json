@@ -1,0 +1,1071 @@
+{
+  "version": "1.9.0",
+  "seed_keyword": "portal inmobiliario Argentina",
+  "created_at": "2026-09-15T00:00:00Z",
+  "site": "mudateargentina.com",
+  "strategy_note": "Ganar en contenido informacional e inversión, NO en volumen de listings. Competir donde ZonaProp/Argenprop son débiles: guías de barrios actualizadas para ciudades del interior, páginas de precio m2 con datos propios, análisis ROI por ciudad.",
+
+  "priority_attack_order": [
+    {
+      "rank": 1,
+      "city": "Neuquén",
+      "rationale": "Vaca Muerta = demanda explosiva de contenido de inversión. ZonaProp y Argenprop tienen listings pero ZERO análisis de rentabilidad por el efecto Vaca Muerta. Keyword 'invertir propiedades Neuquén Vaca Muerta' tiene alta intención comercial y competencia débil en contenido informacional. Win estimado: 60-90 días.",
+      "existing_hub": "/neuquen"
+    },
+    {
+      "rank": 2,
+      "city": "Bariloche",
+      "rationale": "Turismo + relocalización post-pandemia = alto volumen de búsquedas de 'costo de vida Bariloche', 'barrios Bariloche para vivir'. ZonaProp tiene listings pero no tiene guía de barrios detallada. Roomix.ai tiene posts pero sin datos propios. Win estimado: 45-75 días.",
+      "existing_hub": "/bariloche"
+    },
+    {
+      "rank": 3,
+      "city": "Villa Carlos Paz",
+      "rationale": "Mercado turístico con alta búsqueda de 'invertir departamento Carlos Paz alquiler temporal'. Competidores solo tienen listings. La keyword 'precio m2 Villa Carlos Paz 2025' prácticamente sin contenido editorial. Win estimado: 30-60 días.",
+      "existing_hub": "/villa-carlos-paz"
+    },
+    {
+      "rank": 4,
+      "city": "Mendoza",
+      "rationale": "Ciudad más barata para comprar = ángulo diferenciador único. ZonaProp tiene 'vivir en Mendoza' genérico. No hay análisis 'por qué Mendoza es la ciudad más barata para invertir' como artículo dedicado con datos. Win estimado: 60-90 días.",
+      "existing_hub": "/mendoza"
+    },
+    {
+      "rank": 5,
+      "city": "Salta",
+      "rationale": "Menor competencia de contenido informacional entre todas las ciudades del análisis. Argenprop y ZonaProp casi sin blog posts sobre Salta. Turismo + crecimiento urbano generan búsquedas informacionales sin satisfacer. Win estimado: 45-75 días.",
+      "existing_hub": "/salta"
+    },
+    {
+      "rank": 6,
+      "city": "Córdoba Capital",
+      "rationale": "Mayor volumen de búsqueda del interior pero también mayor competencia (MercadoLibre, Mudafy, Roomix ya tienen guías de barrios). Diferenciador: datos de precio m2 actualizados mensualmente + ángulo universitario/tecnológico para inversión. Win estimado: 90-150 días.",
+      "existing_hub": "/cordoba-capital"
+    },
+    {
+      "rank": 7,
+      "city": "Rosario",
+      "rationale": "Mercado maduro con competencia media-alta. ZonaProp tiene Index Rosario con datos de precio m2. Diferenciador: guías de barrios por perfil inversor (Puerto Norte vs Pichincha vs Fisherton). Win estimado: 90-150 días.",
+      "existing_hub": "/rosario"
+    },
+    {
+      "rank": 8,
+      "city": "Buenos Aires Capital",
+      "rationale": "Mayor competencia absoluta. ZonaProp, Argenprop, Mudafy, Roomix, LA NACION, Ambito, Infobae todos publican contenido sobre CABA. Mudate debe atacar CABA con ángulos hiperespecíficos (comparativa barrios por ROI, mudarse desde el interior a CABA) en lugar de guías generales. Win estimado: 120-180 días.",
+      "existing_hub": "/buenos-aires-capital"
+    },
+    {
+      "rank": 9,
+      "city": "Mar del Plata",
+      "rationale": "Alto potencial en alquiler temporario / inversión turística. La keyword 'invertir Mar del Plata alquiler temporal' tiene contenido débil en portales grandes. Hub aún no existe en el sitio — crear primero.",
+      "existing_hub": null
+    },
+    {
+      "rank": 10,
+      "city": "Tucumán",
+      "rationale": "Mercado emergente con poca cobertura informacional. Precio m2 bajo = oportunidad de entrada. Sin embargo, volumen de búsqueda también es bajo. Atacar como último escalón una vez validada la estrategia en ciudades anteriores.",
+      "existing_hub": null
+    }
+  ],
+
+  "content_gaps_vs_competitors": {
+    "zonaprop": {
+      "what_they_have": [
+        "ZP Index con precio m2 mensual para CABA, Córdoba, Rosario (datos propios)",
+        "Guía genérica 'vivir en Mendoza' y 'ciudad de Córdoba'",
+        "Comparativa CABA vs Rosario vs Córdoba rentabilidad (1 artículo)",
+        "Mejores barrios de Neuquén (listado básico sin datos de inversión)",
+        "Datos de listings: 500K+ propiedades"
+      ],
+      "what_they_lack": [
+        "Análisis de inversión por ciudad del interior con ROI calculado (Neuquén, Bariloche, VCP, Salta)",
+        "Comparativas precio m2 entre ciudades del interior (Mendoza vs Córdoba vs Rosario)",
+        "Guías de barrios con perfil inversor (no solo 'dónde vivir' sino 'dónde poner la plata')",
+        "Contenido sobre ciudades pequeñas: Villa Carlos Paz, Salta, Tucumán casi sin blog posts",
+        "Calculadoras de rentabilidad interactivas (tienen datos estáticos)",
+        "Contenido sobre relocalización (mudarse desde CABA al interior)",
+        "Análisis Vaca Muerta inmobiliario profundo",
+        "Costo de vida comparativo por ciudad"
+      ]
+    },
+    "argenprop": {
+      "what_they_have": [
+        "5 mejores barrios BA para invertir (solo CABA, año 2024)",
+        "Listings con filtros avanzados en CABA y GBA",
+        "App mobile nativa"
+      ],
+      "what_they_lack": [
+        "Blog posts sobre ciudades del interior (prácticamente nulos)",
+        "Análisis de mercado con datos propios para Córdoba, Mendoza, Rosario, Neuquén",
+        "Guías de inversión por ciudad turística (Bariloche, VCP, Mdp)",
+        "Contenido informacional actualizado en 2025-2026 para ciudades del interior",
+        "Cualquier análisis sobre Salta, Tucumán, Neuquén con profundidad"
+      ]
+    },
+    "mudate_unique_opportunities": [
+      "Precio m2 actualizado mensualmente para TODAS las ciudades objetivo (con datos propios de MongoDB)",
+      "Comparativa 'qué ciudad comprar según tu presupuesto' (cuadro comparativo interactivo)",
+      "Análisis ROI por ciudad + tipo de propiedad (turistico vs permanente vs universitario)",
+      "Guías de barrios para ciudades ignoradas por competidores: Salta, Neuquén, Bariloche, VCP",
+      "Relocalización: 'mudarse de Buenos Aires a [ciudad]' — intent alto, competencia baja",
+      "Vaca Muerta como cluster temático propio de inversión",
+      "Costo de vida real vs precio m2 para calcular accesibilidad",
+      "Contenido para el inversor pequeño: 'con USD 60K qué ciudad conviene más'"
+    ]
+  },
+
+  "clusters": [
+    {
+      "city": "Neuquén",
+      "pillar": {
+        "title": "Invertir en Propiedades en Neuquén: Guía Completa 2025",
+        "keyword": "invertir propiedades Neuquén",
+        "volume": "medio-alto (estimado 800-1.200 búsquedas/mes)",
+        "template": "ultimate-guide",
+        "wordCount": 3500,
+        "url": "/neuquen/invertir",
+        "status": "planned",
+        "existing_page": "/neuquen (hub general — expandir o crear subpágina)",
+        "serp_competitors": ["roomix.ai", "ambito.com", "iprofesional.com", "lanacion.com.ar"]
+      },
+      "clusters": [
+        {
+          "name": "Vaca Muerta y demanda inmobiliaria",
+          "overlap_score_internal": 6,
+          "posts": [
+            {
+              "title": "Vaca Muerta y el Boom Inmobiliario en Neuquén: Qué Zonas Comprar en 2025",
+              "keyword": "inmuebles Vaca Muerta Neuquén 2025",
+              "volume": "medio (estimado 400-700/mes)",
+              "template": "explainer",
+              "wordCount": 1500,
+              "url": "/neuquen/vaca-muerta-inmuebles",
+              "status": "planned",
+              "serp_gap": "Solo medios generalistas (Ambito, iProf, LaNacion). Ningún portal inmobiliario tiene artículo dedicado."
+            },
+            {
+              "title": "Rentabilidad de Alquiler en Neuquén Capital: El Análisis que los Portales No Hacen",
+              "keyword": "rentabilidad alquiler Neuquén capital",
+              "volume": "bajo-medio (estimado 200-400/mes)",
+              "template": "review",
+              "wordCount": 1400,
+              "url": "/neuquen/rentabilidad-alquiler",
+              "status": "planned",
+              "serp_gap": "Roomix.ai tiene un post básico. Sin análisis propio con datos."
+            }
+          ]
+        },
+        {
+          "name": "Barrios y zonas de Neuquén",
+          "overlap_score_internal": 7,
+          "posts": [
+            {
+              "title": "Los Mejores Barrios de Neuquén Capital para Vivir e Invertir en 2025",
+              "keyword": "mejores barrios Neuquén capital",
+              "volume": "medio (estimado 500-900/mes)",
+              "template": "best-of",
+              "wordCount": 1600,
+              "url": "/neuquen/mejores-barrios",
+              "status": "planned",
+              "serp_gap": "ZonaProp tiene un listado genérico sin datos de precio ni ROI por barrio."
+            },
+            {
+              "title": "Precio m2 en Neuquén 2025: Mapa por Barrios y Evolución Anual",
+              "keyword": "precio m2 Neuquén 2025",
+              "volume": "medio (estimado 300-600/mes)",
+              "template": "explainer",
+              "wordCount": 1400,
+              "url": "/neuquen/precio-m2",
+              "status": "planned",
+              "serp_gap": "Sin página dedicada en portales grandes. ZonaProp no tiene ZP Index para Neuquén."
+            }
+          ]
+        },
+        {
+          "name": "Zona de Añelo y Patagonia",
+          "overlap_score_internal": 5,
+          "posts": [
+            {
+              "title": "Invertir en Añelo: La Ciudad que Vaca Muerta Está Construyendo",
+              "keyword": "invertir Añelo Neuquén propiedades",
+              "volume": "bajo (estimado 100-250/mes)",
+              "template": "explainer",
+              "wordCount": 1300,
+              "url": "/neuquen/anelo-inversion",
+              "status": "planned",
+              "serp_gap": "Solo artículos de noticias. Ningún portal tiene guía de inversión de Añelo."
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "city": "Bariloche",
+      "pillar": {
+        "title": "Vivir e Invertir en Bariloche: La Guía Definitiva 2025",
+        "keyword": "vivir en Bariloche guía completa",
+        "volume": "medio-alto (estimado 1.000-1.800/mes)",
+        "template": "ultimate-guide",
+        "wordCount": 3500,
+        "url": "/bariloche/guia-completa",
+        "status": "planned",
+        "existing_page": "/bariloche (hub general)",
+        "serp_competitors": ["roomix.ai", "carolinamaretto.ar", "radiofueguina.com"]
+      },
+      "clusters": [
+        {
+          "name": "Costo de vida y relocalización",
+          "overlap_score_internal": 8,
+          "posts": [
+            {
+              "title": "Costo de Vida en Bariloche 2025: Todo lo que Necesitás Saber Antes de Mudarte",
+              "keyword": "costo de vida Bariloche 2025",
+              "volume": "alto (estimado 1.200-2.000/mes)",
+              "template": "ultimate-guide",
+              "wordCount": 1800,
+              "url": "/bariloche/costo-de-vida",
+              "status": "planned",
+              "serp_gap": "carolinamaretto.ar tiene un artículo personal. Ningún portal inmobiliario tiene esta página."
+            },
+            {
+              "title": "Mudarse de Buenos Aires a Bariloche: Guía Práctica con Costos Reales",
+              "keyword": "mudarse de Buenos Aires a Bariloche",
+              "volume": "medio (estimado 400-700/mes)",
+              "template": "how-to",
+              "wordCount": 1500,
+              "url": "/bariloche/mudarse-desde-buenos-aires",
+              "status": "planned",
+              "serp_gap": "Búsqueda con casi ningún resultado editorial especializado. WIN RAPIDO."
+            }
+          ]
+        },
+        {
+          "name": "Barrios y alquiler en Bariloche",
+          "overlap_score_internal": 7,
+          "posts": [
+            {
+              "title": "Barrios de Bariloche: Dónde Vivir Según tu Estilo de Vida y Presupuesto",
+              "keyword": "barrios Bariloche para vivir",
+              "volume": "medio (estimado 600-1.000/mes)",
+              "template": "best-of",
+              "wordCount": 1600,
+              "url": "/bariloche/barrios",
+              "status": "planned",
+              "serp_gap": "Roomix.ai tiene una guía de compra genérica. Sin análisis de barrios específicos con precios."
+            },
+            {
+              "title": "Precio m2 en Bariloche 2025: Cuánto Cuesta Comprar y Alquilar por Zona",
+              "keyword": "precio m2 Bariloche 2025",
+              "volume": "medio (estimado 300-500/mes)",
+              "template": "explainer",
+              "wordCount": 1400,
+              "url": "/bariloche/precio-m2",
+              "status": "planned",
+              "serp_gap": "Sin página de datos dedicada en portales. WIN FÁCIL."
+            }
+          ]
+        },
+        {
+          "name": "Inversión turística Bariloche",
+          "overlap_score_internal": 5,
+          "posts": [
+            {
+              "title": "Alquiler Turístico en Bariloche: ¿Cuánto Rinde un Departamento en 2025?",
+              "keyword": "rentabilidad alquiler turístico Bariloche",
+              "volume": "bajo-medio (estimado 250-450/mes)",
+              "template": "review",
+              "wordCount": 1400,
+              "url": "/bariloche/alquiler-turistico-rentabilidad",
+              "status": "planned",
+              "serp_gap": "Solo foros y blogs personales. Ningún portal inmobiliario con análisis de rentabilidad."
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "city": "Villa Carlos Paz",
+      "pillar": {
+        "title": "Invertir en Villa Carlos Paz: Departamentos Turísticos y Rentabilidad 2025",
+        "keyword": "invertir Villa Carlos Paz",
+        "volume": "medio (estimado 600-1.100/mes)",
+        "template": "ultimate-guide",
+        "wordCount": 3000,
+        "url": "/villa-carlos-paz/invertir",
+        "status": "planned",
+        "existing_page": "/villa-carlos-paz (hub general)",
+        "serp_competitors": ["roomix.ai", "mercadolibre.com.ar", "argenprop.com (solo listings)"]
+      },
+      "clusters": [
+        {
+          "name": "Precios y mercado en VCP",
+          "overlap_score_internal": 7,
+          "posts": [
+            {
+              "title": "Precio m2 en Villa Carlos Paz 2025: Centro vs Zonas Residenciales",
+              "keyword": "precio m2 Villa Carlos Paz 2025",
+              "volume": "bajo-medio (estimado 200-400/mes)",
+              "template": "explainer",
+              "wordCount": 1300,
+              "url": "/villa-carlos-paz/precio-m2",
+              "status": "planned",
+              "serp_gap": "Prácticamente ningún resultado editorial. Roomix tiene guía general sin datos de m2."
+            },
+            {
+              "title": "Comprar o Alquilar en Villa Carlos Paz: Qué Conviene Más en 2025",
+              "keyword": "comprar vs alquilar Villa Carlos Paz",
+              "volume": "bajo (estimado 150-300/mes)",
+              "template": "comparison",
+              "wordCount": 1400,
+              "url": "/villa-carlos-paz/comprar-vs-alquilar",
+              "status": "planned",
+              "serp_gap": "Sin página específica en ningún portal. Keyword poco contestada."
+            }
+          ]
+        },
+        {
+          "name": "Alquiler temporario turístico",
+          "overlap_score_internal": 6,
+          "posts": [
+            {
+              "title": "Alquiler Temporal en Villa Carlos Paz: ROI, Ocupación y Lo Que No Te Cuentan",
+              "keyword": "alquiler temporal Villa Carlos Paz rentabilidad",
+              "volume": "bajo-medio (estimado 200-350/mes)",
+              "template": "review",
+              "wordCount": 1400,
+              "url": "/villa-carlos-paz/alquiler-temporal",
+              "status": "planned",
+              "serp_gap": "Solo Airbnb y foros. Ningún portal inmobiliario con análisis de rentabilidad."
+            },
+            {
+              "title": "Los Mejores Barrios de Villa Carlos Paz para Invertir en Departamentos",
+              "keyword": "mejores barrios Villa Carlos Paz",
+              "volume": "bajo (estimado 150-280/mes)",
+              "template": "best-of",
+              "wordCount": 1300,
+              "url": "/villa-carlos-paz/mejores-barrios",
+              "status": "planned",
+              "serp_gap": "Sin guía de barrios con perfil inversor en ningún portal."
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "city": "Mendoza",
+      "pillar": {
+        "title": "Mercado Inmobiliario de Mendoza: La Ciudad Más Barata para Invertir en Argentina 2025",
+        "keyword": "invertir propiedades Mendoza",
+        "volume": "medio-alto (estimado 900-1.500/mes)",
+        "template": "ultimate-guide",
+        "wordCount": 3500,
+        "url": "/mendoza/invertir",
+        "status": "planned",
+        "existing_page": "/mendoza (hub general)",
+        "serp_competitors": ["zonaprop.com.ar (vivir en Mendoza — genérico)", "ambito.com", "lanacion.com.ar"]
+      },
+      "clusters": [
+        {
+          "name": "Precio m2 y datos de mercado",
+          "overlap_score_internal": 7,
+          "posts": [
+            {
+              "title": "Precio m2 en Mendoza 2025: USD 1.057 por m² — El Análisis Completo por Zona",
+              "keyword": "precio m2 Mendoza 2025",
+              "volume": "medio (estimado 500-900/mes)",
+              "template": "explainer",
+              "wordCount": 1600,
+              "url": "/mendoza/precio-m2",
+              "status": "planned",
+              "serp_gap": "ZonaProp tiene listings, no un artículo de análisis. LA NACION tiene un artículo de alquiler. Sin página de precio m2 venta dedicada."
+            },
+            {
+              "title": "¿Por Qué Mendoza es la Ciudad Más Barata de Argentina para Comprar Departamento?",
+              "keyword": "Mendoza ciudad más barata comprar departamento Argentina",
+              "volume": "medio (estimado 300-600/mes)",
+              "template": "explainer",
+              "wordCount": 1400,
+              "url": "/mendoza/por-que-mas-barata",
+              "status": "planned",
+              "serp_gap": "Ambito.com tiene nota de noticia. Sin artículo editorial profundo con datos comparativos."
+            }
+          ]
+        },
+        {
+          "name": "Barrios y zonas de Mendoza",
+          "overlap_score_internal": 6,
+          "posts": [
+            {
+              "title": "Los Mejores Barrios de Mendoza para Comprar Casa o Departamento en 2025",
+              "keyword": "mejores barrios Mendoza para vivir",
+              "volume": "medio (estimado 400-700/mes)",
+              "template": "best-of",
+              "wordCount": 1500,
+              "url": "/mendoza/mejores-barrios",
+              "status": "planned",
+              "serp_gap": "ZonaProp tiene 'vivir en Mendoza' genérico. Sin guía de barrios específica con precios actualizados."
+            },
+            {
+              "title": "Chacras de Coria y Maipú: Invertir en el Corredor del Vino de Mendoza",
+              "keyword": "invertir Chacras de Coria Mendoza",
+              "volume": "bajo (estimado 150-300/mes)",
+              "template": "explainer",
+              "wordCount": 1300,
+              "url": "/mendoza/chacras-coria-maipo",
+              "status": "planned",
+              "serp_gap": "Prácticamente ningún contenido editorial dedicado. Alta intención de compra."
+            }
+          ]
+        },
+        {
+          "name": "Inversión turística y vinos",
+          "overlap_score_internal": 4,
+          "posts": [
+            {
+              "title": "Alquiler Turístico en Mendoza: Rentabilidad Real en la Tierra del Vino",
+              "keyword": "alquiler turístico Mendoza rentabilidad",
+              "volume": "bajo-medio (estimado 200-400/mes)",
+              "template": "review",
+              "wordCount": 1400,
+              "url": "/mendoza/alquiler-turistico",
+              "status": "planned",
+              "serp_gap": "Sin análisis de rentabilidad turística en portales grandes. Solo blogs de agencias locales."
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "city": "Salta",
+      "pillar": {
+        "title": "Mercado Inmobiliario de Salta: Oportunidades y Precios en 2025",
+        "keyword": "mercado inmobiliario Salta 2025",
+        "volume": "bajo-medio (estimado 400-800/mes)",
+        "template": "ultimate-guide",
+        "wordCount": 3000,
+        "url": "/salta/mercado-inmobiliario",
+        "status": "planned",
+        "existing_page": "/salta (hub general)",
+        "serp_competitors": ["communitypropiedades.com.ar (1 artículo)", "zonaprop.com.ar (solo listings)"]
+      },
+      "clusters": [
+        {
+          "name": "Precio m2 y datos Salta",
+          "overlap_score_internal": 7,
+          "posts": [
+            {
+              "title": "Precio m2 en Salta Capital 2025: Cuánto Cuesta Comprar un Departamento",
+              "keyword": "precio m2 Salta capital 2025",
+              "volume": "bajo-medio (estimado 250-500/mes)",
+              "template": "explainer",
+              "wordCount": 1400,
+              "url": "/salta/precio-m2",
+              "status": "planned",
+              "serp_gap": "Un solo artículo de communitypropiedades.com.ar. ZonaProp no tiene análisis de mercado para Salta. WIN FACIL."
+            },
+            {
+              "title": "¿Conviene Invertir en Salta? Análisis del Mercado con Datos Reales 2025",
+              "keyword": "invertir propiedades Salta Argentina",
+              "volume": "bajo (estimado 200-380/mes)",
+              "template": "review",
+              "wordCount": 1400,
+              "url": "/salta/invertir",
+              "status": "planned",
+              "serp_gap": "Sin análisis de inversión dedicado. Solo listados de portales."
+            }
+          ]
+        },
+        {
+          "name": "Barrios y zonas Salta",
+          "overlap_score_internal": 6,
+          "posts": [
+            {
+              "title": "Los Mejores Barrios de Salta Capital para Vivir e Invertir en 2025",
+              "keyword": "mejores barrios Salta capital",
+              "volume": "bajo-medio (estimado 300-550/mes)",
+              "template": "best-of",
+              "wordCount": 1500,
+              "url": "/salta/mejores-barrios",
+              "status": "planned",
+              "serp_gap": "Sin guía de barrios de Salta en ningún portal grande. WIN DIRECTO."
+            },
+            {
+              "title": "Turismo e Inmuebles en Salta: Oportunidades en el Norte Argentino",
+              "keyword": "invertir inmuebles turísticos Salta",
+              "volume": "bajo (estimado 150-280/mes)",
+              "template": "explainer",
+              "wordCount": 1300,
+              "url": "/salta/turismo-inmobiliario",
+              "status": "planned",
+              "serp_gap": "Zero contenido editorial. Keyword completamente libre."
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "city": "Córdoba Capital",
+      "pillar": {
+        "title": "Invertir en Córdoba Capital: Guía Completa del Mercado Inmobiliario 2025",
+        "keyword": "invertir propiedades Córdoba Capital",
+        "volume": "alto (estimado 1.500-2.500/mes)",
+        "template": "ultimate-guide",
+        "wordCount": 4000,
+        "url": "/cordoba-capital/invertir",
+        "status": "planned",
+        "existing_page": "/cordoba-capital (hub general)",
+        "serp_competitors": ["zonaprop.com.ar", "mercadolibre.com.ar", "mudafy.com.ar", "remaxmediterranea.com.ar"]
+      },
+      "clusters": [
+        {
+          "name": "Precio m2 Córdoba",
+          "overlap_score_internal": 8,
+          "posts": [
+            {
+              "title": "Precio m2 en Córdoba Capital 2025: USD 1.474 por m² — Evolución y Proyección",
+              "keyword": "precio m2 Córdoba Capital 2025",
+              "volume": "alto (estimado 800-1.400/mes)",
+              "template": "explainer",
+              "wordCount": 1600,
+              "url": "/cordoba-capital/precio-m2",
+              "status": "planned",
+              "serp_gap": "ZonaProp tiene ZP Index Córdoba (datos de listings). Mudate puede hacer análisis editorial con interpretación + comparativas."
+            },
+            {
+              "title": "Córdoba vs Buenos Aires: ¿Dónde Conviene Más Invertir en Propiedades en 2025?",
+              "keyword": "Córdoba vs Buenos Aires invertir propiedades",
+              "volume": "medio (estimado 400-700/mes)",
+              "template": "comparison",
+              "wordCount": 1500,
+              "url": "/cordoba-capital/cordoba-vs-buenos-aires",
+              "status": "planned",
+              "serp_gap": "ZonaProp tiene 'CABA vs Rosario y Córdoba' (rentabilidad). Sin comparativa profunda Córdoba vs CABA desde el punto de vista del inversor."
+            }
+          ]
+        },
+        {
+          "name": "Barrios de Córdoba",
+          "overlap_score_internal": 7,
+          "posts": [
+            {
+              "title": "Los Mejores Barrios de Córdoba Capital para Invertir en 2025: ROI por Zona",
+              "keyword": "mejores barrios Córdoba Capital para invertir",
+              "volume": "alto (estimado 700-1.200/mes)",
+              "template": "best-of",
+              "wordCount": 1600,
+              "url": "/cordoba-capital/mejores-barrios-invertir",
+              "status": "planned",
+              "serp_gap": "MercadoLibre, Mudafy, Remax tienen guías de 'mejores barrios para vivir'. Sin análisis de ROI por barrio. Diferenciador clave."
+            },
+            {
+              "title": "Nueva Córdoba: El Barrio Universitario que Más Rinde para el Inversor en 2025",
+              "keyword": "Nueva Córdoba invertir departamento rentabilidad",
+              "volume": "medio (estimado 400-700/mes)",
+              "template": "review",
+              "wordCount": 1400,
+              "url": "/cordoba-capital/nueva-cordoba",
+              "status": "planned",
+              "serp_gap": "Sin análisis de inversión específico de Nueva Córdoba en portales. Solo listings."
+            }
+          ]
+        },
+        {
+          "name": "Inversión universitaria y tech",
+          "overlap_score_internal": 5,
+          "posts": [
+            {
+              "title": "Invertir en Departamentos para Estudiantes en Córdoba: La Guía del Inversor 2025",
+              "keyword": "departamentos estudiantes Córdoba invertir",
+              "volume": "medio (estimado 350-600/mes)",
+              "template": "how-to",
+              "wordCount": 1500,
+              "url": "/cordoba-capital/departamentos-estudiantes",
+              "status": "planned",
+              "serp_gap": "Sin guía dedicada al segmento universitario como inversión. WIN con ángulo diferente."
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "city": "Rosario",
+      "pillar": {
+        "title": "Mercado Inmobiliario en Rosario: Precio m2, Barrios y Oportunidades 2025",
+        "keyword": "mercado inmobiliario Rosario 2025",
+        "volume": "alto (estimado 1.200-2.000/mes)",
+        "template": "ultimate-guide",
+        "wordCount": 4000,
+        "url": "/rosario/mercado-inmobiliario",
+        "status": "planned",
+        "existing_page": "/rosario (hub general)",
+        "serp_competitors": ["zonaprop.com.ar (ZP Index Rosario)", "on24.com.ar", "properati.com.ar"]
+      },
+      "clusters": [
+        {
+          "name": "Precio m2 Rosario",
+          "overlap_score_internal": 8,
+          "posts": [
+            {
+              "title": "Precio m2 en Rosario 2025: USD 1.800 y Subiendo — Análisis por Barrio",
+              "keyword": "precio m2 Rosario 2025",
+              "volume": "alto (estimado 700-1.200/mes)",
+              "template": "explainer",
+              "wordCount": 1600,
+              "url": "/rosario/precio-m2",
+              "status": "planned",
+              "serp_gap": "ZonaProp Index Rosario tiene datos pero no análisis. ON24 tiene nota periodística. Sin guía editorial de inversión con datos de m2 por barrio."
+            },
+            {
+              "title": "Rosario Lidera el Aumento de Precios: ¿Sigue Siendo Buena Inversión en 2025?",
+              "keyword": "invertir Rosario propiedades 2025",
+              "volume": "medio (estimado 400-700/mes)",
+              "template": "review",
+              "wordCount": 1500,
+              "url": "/rosario/invertir-2025",
+              "status": "planned",
+              "serp_gap": "Análisis de inversión con contexto del 14% de aumento: ningún portal tiene esto como artículo dedicado."
+            }
+          ]
+        },
+        {
+          "name": "Barrios de Rosario",
+          "overlap_score_internal": 6,
+          "posts": [
+            {
+              "title": "Los Mejores Barrios de Rosario para Invertir en 2025: Puerto Norte, Pichincha y Más",
+              "keyword": "mejores barrios Rosario para invertir",
+              "volume": "medio (estimado 500-900/mes)",
+              "template": "best-of",
+              "wordCount": 1600,
+              "url": "/rosario/mejores-barrios",
+              "status": "planned",
+              "serp_gap": "Guías de 'mejores barrios para vivir' existen. Sin análisis de ROI por barrio con datos de m2."
+            },
+            {
+              "title": "Puerto Norte Rosario: Invertir en el Barrio que Transformó la Costanera",
+              "keyword": "invertir Puerto Norte Rosario",
+              "volume": "bajo-medio (estimado 250-450/mes)",
+              "template": "explainer",
+              "wordCount": 1300,
+              "url": "/rosario/puerto-norte",
+              "status": "planned",
+              "serp_gap": "Solo artículos de noticias. Sin análisis de inversión específico de Puerto Norte."
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "city": "Buenos Aires Capital",
+      "pillar": {
+        "title": "Invertir en Departamentos en Buenos Aires: Guía por Perfil de Inversor 2025",
+        "keyword": "invertir departamentos Buenos Aires 2025",
+        "volume": "muy alto (estimado 3.000-5.000/mes)",
+        "template": "ultimate-guide",
+        "wordCount": 4000,
+        "url": "/buenos-aires-capital/invertir",
+        "status": "planned",
+        "existing_page": "/buenos-aires-capital (hub general)",
+        "serp_competitors": ["zonaprop.com.ar", "argenprop.com", "roomix.ai", "zabalabienesraices.com.ar", "lanacion.com.ar", "deinmobiliarios.com"]
+      },
+      "clusters": [
+        {
+          "name": "Rentabilidad y ROI CABA",
+          "overlap_score_internal": 7,
+          "posts": [
+            {
+              "title": "Rentabilidad de Alquiler en CABA 2025: 5.83% Anual — Los Barrios que Más Rinden",
+              "keyword": "rentabilidad alquiler CABA 2025",
+              "volume": "alto (estimado 800-1.400/mes)",
+              "template": "best-of",
+              "wordCount": 1600,
+              "url": "/buenos-aires-capital/rentabilidad-alquiler",
+              "status": "planned",
+              "serp_gap": "Roomix, ZBR, Propio tienen versiones. Diferenciador: datos de MongoDB de Mudate + perspectiva del inversor sin experiencia previa."
+            },
+            {
+              "title": "Balvanera, Boedo y San Cristóbal: Los Barrios con Mayor Rentabilidad en CABA 2025",
+              "keyword": "barrios mayor rentabilidad CABA 2025",
+              "volume": "medio (estimado 500-900/mes)",
+              "template": "review",
+              "wordCount": 1500,
+              "url": "/buenos-aires-capital/barrios-mayor-rentabilidad",
+              "status": "planned",
+              "serp_gap": "Artículos existen pero son genéricos. Sin análisis profundo de los barrios de segunda línea (Balvanera, Boedo) con datos de precio m2 actual."
+            }
+          ]
+        },
+        {
+          "name": "Mudarse al interior desde CABA",
+          "overlap_score_internal": 4,
+          "posts": [
+            {
+              "title": "Vender en CABA y Comprar en el Interior: Cuánto Capital Liberás y Dónde Conviene",
+              "keyword": "vender departamento Buenos Aires comprar interior Argentina",
+              "volume": "medio (estimado 400-700/mes)",
+              "template": "how-to",
+              "wordCount": 1500,
+              "url": "/buenos-aires-capital/vender-comprar-interior",
+              "status": "planned",
+              "serp_gap": "Ángulo único de Mudate como portal multi-ciudad. NADIE tiene este artículo. WIN ESTRATÉGICO."
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "city": "Mar del Plata",
+      "pillar": {
+        "title": "Invertir en Mar del Plata: Departamentos Turísticos y Rentabilidad 2025",
+        "keyword": "invertir Mar del Plata propiedades",
+        "volume": "medio-alto (estimado 800-1.400/mes)",
+        "template": "ultimate-guide",
+        "wordCount": 3500,
+        "url": "/mar-del-plata/invertir",
+        "status": "planned",
+        "existing_page": null,
+        "note": "Hub /mar-del-plata todavía no existe en el sitio. Crear primero.",
+        "serp_competitors": ["0223.com.ar", "lanacion.com.ar", "roomix.ai", "remax-legado.com.ar"]
+      },
+      "clusters": [
+        {
+          "name": "Rentabilidad alquiler MdP",
+          "overlap_score_internal": 7,
+          "posts": [
+            {
+              "title": "Precio m2 en Mar del Plata 2025: El Mercado Más Barato de la Costa Argentina",
+              "keyword": "precio m2 Mar del Plata 2025",
+              "volume": "medio (estimado 500-900/mes)",
+              "template": "explainer",
+              "wordCount": 1500,
+              "url": "/mar-del-plata/precio-m2",
+              "status": "planned",
+              "serp_gap": "0223.com.ar tiene notas periodísticas. Sin página editorial dedicada de portales."
+            },
+            {
+              "title": "Estrategia Mixta en Mar del Plata: Alquiler Temporal en Verano y Permanente el Resto del Año",
+              "keyword": "alquiler temporal permanente Mar del Plata estrategia",
+              "volume": "bajo-medio (estimado 300-500/mes)",
+              "template": "how-to",
+              "wordCount": 1400,
+              "url": "/mar-del-plata/estrategia-alquiler-mixto",
+              "status": "planned",
+              "serp_gap": "Este ángulo específico no tiene artículo dedicado en ningún portal inmobiliario."
+            }
+          ]
+        },
+        {
+          "name": "Zonas y barrios MdP",
+          "overlap_score_internal": 6,
+          "posts": [
+            {
+              "title": "Los Mejores Barrios de Mar del Plata para Comprar Departamento en 2025",
+              "keyword": "mejores barrios Mar del Plata comprar departamento",
+              "volume": "medio (estimado 400-700/mes)",
+              "template": "best-of",
+              "wordCount": 1500,
+              "url": "/mar-del-plata/mejores-barrios",
+              "status": "planned",
+              "serp_gap": "Roomix tiene guía de compra 2026. Diferenciador: datos de precio m2 por barrio con análisis de ROI."
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "city": "Tucumán",
+      "pillar": {
+        "title": "Mercado Inmobiliario en Tucumán: Oportunidades para el Inversor en 2025",
+        "keyword": "mercado inmobiliario Tucumán 2025",
+        "volume": "bajo-medio (estimado 300-600/mes)",
+        "template": "ultimate-guide",
+        "wordCount": 3000,
+        "url": "/tucuman/mercado-inmobiliario",
+        "status": "planned",
+        "existing_page": null,
+        "note": "Hub /tucuman no existe aún. Crear primero.",
+        "serp_competitors": ["argenprop.com (solo listings)", "zonaprop.com.ar (solo listings)", "buscainmueble.com (solo listings)"]
+      },
+      "clusters": [
+        {
+          "name": "Precio m2 y inversión Tucumán",
+          "overlap_score_internal": 6,
+          "posts": [
+            {
+              "title": "Precio m2 en San Miguel de Tucumán 2025: USD 56K por Monoambiente, ¿Vale la Pena?",
+              "keyword": "precio m2 Tucumán 2025",
+              "volume": "bajo (estimado 150-300/mes)",
+              "template": "explainer",
+              "wordCount": 1300,
+              "url": "/tucuman/precio-m2",
+              "status": "planned",
+              "serp_gap": "Sin artículo editorial dedicado en ningún portal. Solo listings."
+            },
+            {
+              "title": "Los Mejores Barrios de Tucumán para Invertir en 2025: Barrio Norte y Plaza Urquiza",
+              "keyword": "mejores barrios Tucumán invertir",
+              "volume": "bajo (estimado 120-250/mes)",
+              "template": "best-of",
+              "wordCount": 1300,
+              "url": "/tucuman/mejores-barrios",
+              "status": "planned",
+              "serp_gap": "Zero competencia en contenido informacional. Campo abierto."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+
+  "cross_city_pillar": {
+    "title": "¿En Qué Ciudad de Argentina Conviene Invertir en Propiedades en 2025?",
+    "keyword": "mejor ciudad para invertir propiedades Argentina",
+    "volume": "alto (estimado 1.500-2.500/mes)",
+    "template": "comparison",
+    "wordCount": 4000,
+    "url": "/invertir",
+    "status": "existing (expandir desde hub /invertir actual)",
+    "note": "Este es el pillar maestro de todo el sitio. Enlaza a TODAS las ciudades. Es el artículo que puede rankear para la keyword más amplia y redirigir tráfico a los hubs de ciudad.",
+    "serp_competitors": ["inmobiliariaonline.com.ar", "roomix.ai", "mercadolibre.com.ar/blog"]
+  },
+
+  "serp_overlap_matrix": {
+    "note": "Scores estimados basados en análisis SERP real. Diagonal = 10 (self). Metodología: top 10 URLs orgánicas, sin contar Zonaprop/Argenprop/MercadoLibre como dominantes ya que aparecen en casi todos.",
+    "keywords": [
+      "invertir propiedades Neuquén",
+      "precio m2 Neuquén 2025",
+      "mejores barrios Neuquén",
+      "invertir Bariloche",
+      "costo vida Bariloche",
+      "barrios Bariloche",
+      "precio m2 Bariloche",
+      "invertir Villa Carlos Paz",
+      "precio m2 Villa Carlos Paz",
+      "invertir Mendoza propiedades",
+      "precio m2 Mendoza 2025",
+      "mejores barrios Mendoza",
+      "mercado inmobiliario Salta",
+      "precio m2 Salta 2025",
+      "invertir Córdoba Capital",
+      "precio m2 Córdoba 2025",
+      "mejores barrios Córdoba invertir",
+      "mercado inmobiliario Rosario",
+      "precio m2 Rosario 2025",
+      "mejores barrios Rosario invertir",
+      "mejor ciudad invertir Argentina"
+    ],
+    "scores": [
+      [10, 6, 5, 1, 1, 1, 1, 1, 1, 2, 1, 1, 2, 1, 2, 1, 1, 2, 1, 1, 4],
+      [6, 10, 7, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 2, 1, 3],
+      [5, 7, 10, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 2, 3],
+      [1, 1, 1, 10, 6, 7, 7, 2, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4],
+      [1, 1, 1, 6, 10, 5, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3],
+      [1, 1, 1, 7, 5, 10, 6, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2],
+      [1, 1, 1, 7, 4, 6, 10, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2],
+      [1, 1, 1, 2, 1, 1, 1, 10, 7, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4],
+      [1, 1, 1, 1, 1, 1, 1, 7, 10, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2],
+      [2, 1, 1, 2, 1, 1, 1, 2, 1, 10, 7, 6, 2, 1, 2, 3, 2, 2, 2, 2, 5],
+      [1, 1, 1, 1, 1, 1, 1, 1, 2, 7, 10, 5, 1, 2, 1, 4, 2, 2, 4, 2, 4],
+      [1, 1, 1, 1, 1, 1, 1, 1, 1, 6, 5, 10, 1, 1, 2, 2, 4, 1, 2, 3, 3],
+      [2, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 10, 7, 1, 1, 1, 1, 1, 1, 3],
+      [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 7, 10, 1, 1, 1, 1, 1, 1, 2],
+      [2, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 2, 1, 1, 10, 7, 6, 3, 2, 2, 5],
+      [1, 2, 1, 1, 1, 1, 1, 1, 1, 3, 4, 2, 1, 1, 7, 10, 6, 2, 4, 2, 5],
+      [1, 1, 2, 1, 1, 1, 1, 1, 1, 2, 2, 4, 1, 1, 6, 6, 10, 2, 2, 4, 4],
+      [2, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 1, 1, 1, 3, 2, 2, 10, 7, 5, 4],
+      [1, 2, 1, 1, 1, 1, 1, 1, 1, 2, 4, 2, 1, 1, 2, 4, 2, 7, 10, 5, 4],
+      [1, 1, 2, 1, 1, 1, 1, 1, 1, 2, 2, 3, 1, 1, 2, 2, 4, 5, 5, 10, 4],
+      [4, 3, 3, 4, 3, 2, 2, 4, 2, 5, 4, 3, 3, 2, 5, 5, 4, 4, 4, 4, 10]
+    ]
+  },
+
+  "internal_link_matrix": {
+    "mandatory": [
+      {"from": "/invertir", "to": "/neuquen/invertir", "anchor": "invertir en propiedades en Neuquén"},
+      {"from": "/invertir", "to": "/bariloche/guia-completa", "anchor": "vivir e invertir en Bariloche"},
+      {"from": "/invertir", "to": "/villa-carlos-paz/invertir", "anchor": "departamentos turísticos en Villa Carlos Paz"},
+      {"from": "/invertir", "to": "/mendoza/invertir", "anchor": "mercado inmobiliario de Mendoza"},
+      {"from": "/invertir", "to": "/salta/mercado-inmobiliario", "anchor": "oportunidades en Salta"},
+      {"from": "/invertir", "to": "/cordoba-capital/invertir", "anchor": "invertir en Córdoba Capital"},
+      {"from": "/invertir", "to": "/rosario/mercado-inmobiliario", "anchor": "mercado inmobiliario de Rosario"},
+      {"from": "/invertir", "to": "/buenos-aires-capital/invertir", "anchor": "invertir en Buenos Aires"},
+      {"from": "/invertir", "to": "/mar-del-plata/invertir", "anchor": "departamentos en Mar del Plata"},
+      {"from": "/neuquen/invertir", "to": "/neuquen/vaca-muerta-inmuebles", "anchor": "boom inmobiliario de Vaca Muerta"},
+      {"from": "/neuquen/invertir", "to": "/neuquen/rentabilidad-alquiler", "anchor": "rentabilidad de alquiler en Neuquén"},
+      {"from": "/neuquen/invertir", "to": "/neuquen/mejores-barrios", "anchor": "mejores barrios de Neuquén"},
+      {"from": "/neuquen/invertir", "to": "/neuquen/precio-m2", "anchor": "precio m2 en Neuquén"},
+      {"from": "/neuquen/invertir", "to": "/neuquen/anelo-inversion", "anchor": "invertir en Añelo"},
+      {"from": "/neuquen/vaca-muerta-inmuebles", "to": "/neuquen/invertir", "anchor": "guía completa de inversión en Neuquén"},
+      {"from": "/neuquen/rentabilidad-alquiler", "to": "/neuquen/invertir", "anchor": "invertir en Neuquén"},
+      {"from": "/neuquen/mejores-barrios", "to": "/neuquen/invertir", "anchor": "guía de inversión en Neuquén"},
+      {"from": "/neuquen/precio-m2", "to": "/neuquen/invertir", "anchor": "invertir en propiedades en Neuquén"},
+      {"from": "/neuquen/anelo-inversion", "to": "/neuquen/invertir", "anchor": "mercado inmobiliario de Neuquén"},
+      {"from": "/bariloche/guia-completa", "to": "/bariloche/costo-de-vida", "anchor": "costo de vida en Bariloche"},
+      {"from": "/bariloche/guia-completa", "to": "/bariloche/mudarse-desde-buenos-aires", "anchor": "mudarse de Buenos Aires a Bariloche"},
+      {"from": "/bariloche/guia-completa", "to": "/bariloche/barrios", "anchor": "barrios de Bariloche"},
+      {"from": "/bariloche/guia-completa", "to": "/bariloche/precio-m2", "anchor": "precio m2 en Bariloche"},
+      {"from": "/bariloche/guia-completa", "to": "/bariloche/alquiler-turistico-rentabilidad", "anchor": "alquiler turístico en Bariloche"},
+      {"from": "/bariloche/costo-de-vida", "to": "/bariloche/guia-completa", "anchor": "guía completa de Bariloche"},
+      {"from": "/bariloche/mudarse-desde-buenos-aires", "to": "/bariloche/guia-completa", "anchor": "vivir en Bariloche"},
+      {"from": "/bariloche/barrios", "to": "/bariloche/guia-completa", "anchor": "guía de inversión en Bariloche"},
+      {"from": "/bariloche/precio-m2", "to": "/bariloche/guia-completa", "anchor": "mercado inmobiliario de Bariloche"},
+      {"from": "/bariloche/alquiler-turistico-rentabilidad", "to": "/bariloche/guia-completa", "anchor": "invertir en Bariloche"},
+      {"from": "/villa-carlos-paz/invertir", "to": "/villa-carlos-paz/precio-m2", "anchor": "precio m2 en Villa Carlos Paz"},
+      {"from": "/villa-carlos-paz/invertir", "to": "/villa-carlos-paz/comprar-vs-alquilar", "anchor": "comprar vs alquilar en Carlos Paz"},
+      {"from": "/villa-carlos-paz/invertir", "to": "/villa-carlos-paz/alquiler-temporal", "anchor": "alquiler temporal en Carlos Paz"},
+      {"from": "/villa-carlos-paz/invertir", "to": "/villa-carlos-paz/mejores-barrios", "anchor": "mejores barrios de Villa Carlos Paz"},
+      {"from": "/villa-carlos-paz/precio-m2", "to": "/villa-carlos-paz/invertir", "anchor": "invertir en Villa Carlos Paz"},
+      {"from": "/villa-carlos-paz/comprar-vs-alquilar", "to": "/villa-carlos-paz/invertir", "anchor": "guía de inversión en Carlos Paz"},
+      {"from": "/villa-carlos-paz/alquiler-temporal", "to": "/villa-carlos-paz/invertir", "anchor": "invertir en departamentos en Carlos Paz"},
+      {"from": "/villa-carlos-paz/mejores-barrios", "to": "/villa-carlos-paz/invertir", "anchor": "invertir en Villa Carlos Paz"},
+      {"from": "/mendoza/invertir", "to": "/mendoza/precio-m2", "anchor": "precio m2 en Mendoza"},
+      {"from": "/mendoza/invertir", "to": "/mendoza/por-que-mas-barata", "anchor": "Mendoza la ciudad más barata para comprar"},
+      {"from": "/mendoza/invertir", "to": "/mendoza/mejores-barrios", "anchor": "mejores barrios de Mendoza"},
+      {"from": "/mendoza/invertir", "to": "/mendoza/chacras-coria-maipo", "anchor": "invertir en Chacras de Coria"},
+      {"from": "/mendoza/invertir", "to": "/mendoza/alquiler-turistico", "anchor": "alquiler turístico en Mendoza"},
+      {"from": "/mendoza/precio-m2", "to": "/mendoza/invertir", "anchor": "invertir en Mendoza"},
+      {"from": "/mendoza/por-que-mas-barata", "to": "/mendoza/invertir", "anchor": "oportunidades de inversión en Mendoza"},
+      {"from": "/mendoza/mejores-barrios", "to": "/mendoza/invertir", "anchor": "guía de inversión en Mendoza"},
+      {"from": "/mendoza/chacras-coria-maipo", "to": "/mendoza/invertir", "anchor": "mercado inmobiliario de Mendoza"},
+      {"from": "/mendoza/alquiler-turistico", "to": "/mendoza/invertir", "anchor": "invertir en propiedades en Mendoza"},
+      {"from": "/salta/mercado-inmobiliario", "to": "/salta/precio-m2", "anchor": "precio m2 en Salta"},
+      {"from": "/salta/mercado-inmobiliario", "to": "/salta/invertir", "anchor": "invertir en propiedades en Salta"},
+      {"from": "/salta/mercado-inmobiliario", "to": "/salta/mejores-barrios", "anchor": "mejores barrios de Salta"},
+      {"from": "/salta/mercado-inmobiliario", "to": "/salta/turismo-inmobiliario", "anchor": "turismo e inmuebles en Salta"},
+      {"from": "/salta/precio-m2", "to": "/salta/mercado-inmobiliario", "anchor": "mercado inmobiliario de Salta"},
+      {"from": "/salta/invertir", "to": "/salta/mercado-inmobiliario", "anchor": "guía completa Salta"},
+      {"from": "/salta/mejores-barrios", "to": "/salta/mercado-inmobiliario", "anchor": "invertir en Salta"},
+      {"from": "/salta/turismo-inmobiliario", "to": "/salta/mercado-inmobiliario", "anchor": "mercado inmobiliario de Salta"},
+      {"from": "/cordoba-capital/invertir", "to": "/cordoba-capital/precio-m2", "anchor": "precio m2 en Córdoba"},
+      {"from": "/cordoba-capital/invertir", "to": "/cordoba-capital/cordoba-vs-buenos-aires", "anchor": "Córdoba vs Buenos Aires para invertir"},
+      {"from": "/cordoba-capital/invertir", "to": "/cordoba-capital/mejores-barrios-invertir", "anchor": "mejores barrios de Córdoba para invertir"},
+      {"from": "/cordoba-capital/invertir", "to": "/cordoba-capital/nueva-cordoba", "anchor": "Nueva Córdoba para inversores"},
+      {"from": "/cordoba-capital/invertir", "to": "/cordoba-capital/departamentos-estudiantes", "anchor": "departamentos para estudiantes en Córdoba"},
+      {"from": "/cordoba-capital/precio-m2", "to": "/cordoba-capital/invertir", "anchor": "invertir en Córdoba"},
+      {"from": "/cordoba-capital/cordoba-vs-buenos-aires", "to": "/cordoba-capital/invertir", "anchor": "guía de inversión en Córdoba"},
+      {"from": "/cordoba-capital/mejores-barrios-invertir", "to": "/cordoba-capital/invertir", "anchor": "mercado inmobiliario de Córdoba"},
+      {"from": "/cordoba-capital/nueva-cordoba", "to": "/cordoba-capital/invertir", "anchor": "invertir en Córdoba Capital"},
+      {"from": "/cordoba-capital/departamentos-estudiantes", "to": "/cordoba-capital/invertir", "anchor": "invertir en Córdoba"},
+      {"from": "/rosario/mercado-inmobiliario", "to": "/rosario/precio-m2", "anchor": "precio m2 en Rosario"},
+      {"from": "/rosario/mercado-inmobiliario", "to": "/rosario/invertir-2025", "anchor": "invertir en Rosario en 2025"},
+      {"from": "/rosario/mercado-inmobiliario", "to": "/rosario/mejores-barrios", "anchor": "mejores barrios de Rosario"},
+      {"from": "/rosario/mercado-inmobiliario", "to": "/rosario/puerto-norte", "anchor": "invertir en Puerto Norte"},
+      {"from": "/rosario/precio-m2", "to": "/rosario/mercado-inmobiliario", "anchor": "mercado inmobiliario de Rosario"},
+      {"from": "/rosario/invertir-2025", "to": "/rosario/mercado-inmobiliario", "anchor": "guía de inversión en Rosario"},
+      {"from": "/rosario/mejores-barrios", "to": "/rosario/mercado-inmobiliario", "anchor": "mercado inmobiliario de Rosario"},
+      {"from": "/rosario/puerto-norte", "to": "/rosario/mercado-inmobiliario", "anchor": "invertir en Rosario"},
+      {"from": "/buenos-aires-capital/invertir", "to": "/buenos-aires-capital/rentabilidad-alquiler", "anchor": "rentabilidad de alquiler en CABA"},
+      {"from": "/buenos-aires-capital/invertir", "to": "/buenos-aires-capital/barrios-mayor-rentabilidad", "anchor": "barrios con mayor rentabilidad en CABA"},
+      {"from": "/buenos-aires-capital/invertir", "to": "/buenos-aires-capital/vender-comprar-interior", "anchor": "vender en CABA y comprar en el interior"},
+      {"from": "/buenos-aires-capital/rentabilidad-alquiler", "to": "/buenos-aires-capital/invertir", "anchor": "invertir en Buenos Aires"},
+      {"from": "/buenos-aires-capital/barrios-mayor-rentabilidad", "to": "/buenos-aires-capital/invertir", "anchor": "guía de inversión en Buenos Aires"},
+      {"from": "/buenos-aires-capital/vender-comprar-interior", "to": "/buenos-aires-capital/invertir", "anchor": "mercado inmobiliario de CABA"},
+      {"from": "/mar-del-plata/invertir", "to": "/mar-del-plata/precio-m2", "anchor": "precio m2 en Mar del Plata"},
+      {"from": "/mar-del-plata/invertir", "to": "/mar-del-plata/estrategia-alquiler-mixto", "anchor": "estrategia de alquiler mixto"},
+      {"from": "/mar-del-plata/invertir", "to": "/mar-del-plata/mejores-barrios", "anchor": "mejores barrios de Mar del Plata"},
+      {"from": "/mar-del-plata/precio-m2", "to": "/mar-del-plata/invertir", "anchor": "invertir en Mar del Plata"},
+      {"from": "/mar-del-plata/estrategia-alquiler-mixto", "to": "/mar-del-plata/invertir", "anchor": "guía de inversión en Mar del Plata"},
+      {"from": "/mar-del-plata/mejores-barrios", "to": "/mar-del-plata/invertir", "anchor": "invertir en Mar del Plata"}
+    ],
+    "recommended_cross_cluster": [
+      {"from": "/neuquen/vaca-muerta-inmuebles", "to": "/neuquen/anelo-inversion", "anchor": "invertir en Añelo"},
+      {"from": "/neuquen/mejores-barrios", "to": "/neuquen/precio-m2", "anchor": "precio m2 por barrio"},
+      {"from": "/bariloche/costo-de-vida", "to": "/bariloche/barrios", "anchor": "barrios más accesibles de Bariloche"},
+      {"from": "/bariloche/mudarse-desde-buenos-aires", "to": "/bariloche/costo-de-vida", "anchor": "costo de vida en Bariloche"},
+      {"from": "/bariloche/barrios", "to": "/bariloche/precio-m2", "anchor": "precio m2 por barrio en Bariloche"},
+      {"from": "/mendoza/precio-m2", "to": "/mendoza/por-que-mas-barata", "anchor": "por qué Mendoza es la más barata"},
+      {"from": "/mendoza/mejores-barrios", "to": "/mendoza/chacras-coria-maipo", "anchor": "zonas premium de Mendoza"},
+      {"from": "/cordoba-capital/precio-m2", "to": "/cordoba-capital/cordoba-vs-buenos-aires", "anchor": "comparar precios con Buenos Aires"},
+      {"from": "/cordoba-capital/mejores-barrios-invertir", "to": "/cordoba-capital/nueva-cordoba", "anchor": "Nueva Córdoba como inversión"},
+      {"from": "/rosario/precio-m2", "to": "/rosario/puerto-norte", "anchor": "Puerto Norte: el barrio más caro de Rosario"},
+      {"from": "/villa-carlos-paz/alquiler-temporal", "to": "/villa-carlos-paz/precio-m2", "anchor": "precios de referencia en Carlos Paz"}
+    ],
+    "strategic_cross_city": [
+      {"from": "/cordoba-capital/cordoba-vs-buenos-aires", "to": "/buenos-aires-capital/invertir", "anchor": "rentabilidad en Buenos Aires"},
+      {"from": "/buenos-aires-capital/vender-comprar-interior", "to": "/cordoba-capital/invertir", "anchor": "comprar en Córdoba"},
+      {"from": "/buenos-aires-capital/vender-comprar-interior", "to": "/mendoza/invertir", "anchor": "comprar en Mendoza"},
+      {"from": "/buenos-aires-capital/vender-comprar-interior", "to": "/neuquen/invertir", "anchor": "comprar en Neuquén"},
+      {"from": "/mendoza/por-que-mas-barata", "to": "/cordoba-capital/precio-m2", "anchor": "precio m2 en Córdoba para comparar"},
+      {"from": "/invertir", "to": "/buenos-aires-capital/vender-comprar-interior", "anchor": "comparar ciudades para invertir"},
+      {"from": "/bariloche/mudarse-desde-buenos-aires", "to": "/bariloche/alquiler-turistico-rentabilidad", "anchor": "rentabilidad del alquiler turístico"}
+    ]
+  },
+
+  "content_calendar_sprint_1": {
+    "weeks_1_2": {
+      "focus": "Quick wins — ciudades con mínima competencia editorial",
+      "posts": [
+        "/salta/precio-m2",
+        "/salta/mejores-barrios",
+        "/villa-carlos-paz/precio-m2",
+        "/neuquen/precio-m2"
+      ]
+    },
+    "weeks_3_4": {
+      "focus": "Pillar pages para ciudades prioritarias",
+      "posts": [
+        "/neuquen/invertir (pillar)",
+        "/bariloche/guia-completa (pillar)",
+        "/neuquen/vaca-muerta-inmuebles"
+      ]
+    },
+    "weeks_5_6": {
+      "focus": "Cluster Bariloche completo + VCP invertir pillar",
+      "posts": [
+        "/bariloche/costo-de-vida",
+        "/bariloche/barrios",
+        "/bariloche/precio-m2",
+        "/villa-carlos-paz/invertir (pillar)"
+      ]
+    },
+    "weeks_7_8": {
+      "focus": "Mendoza cluster + cross-city strategic piece",
+      "posts": [
+        "/mendoza/invertir (pillar)",
+        "/mendoza/precio-m2",
+        "/mendoza/por-que-mas-barata",
+        "/buenos-aires-capital/vender-comprar-interior"
+      ]
+    }
+  },
+
+  "technical_seo_notes": {
+    "url_structure": "Usar /[ciudad]/[slug] en lugar de /blog/[slug] para señales topicales más fuertes. Las páginas de ciudades con contenido informacional deben vivir bajo el hub de ciudad.",
+    "schema_per_page_type": {
+      "pillar": "Article + BreadcrumbList + ItemList (listando todos los spokes del cluster)",
+      "precio_m2_pages": "Article + BreadcrumbList + Dataset (marcar los datos de precio como Dataset structured data)",
+      "barrios_guides": "Article + BreadcrumbList + ItemList (los barrios como ListItem con descripción)",
+      "investment_analysis": "Article + BreadcrumbList + FAQPage (preguntas frecuentes del inversor al final)"
+    },
+    "update_cadence": {
+      "precio_m2_pages": "Actualizar datos mensualmente. Cambiar dateModified en el schema. Google premia las páginas de datos con actualizaciones frecuentes.",
+      "pillar_pages": "Refreshar trimestralmente.",
+      "spoke_pages": "Refreshar cuando cambien los datos de referencia (ej: nuevo informe ZP Index)."
+    },
+    "internal_link_placement": "Los links internos deben estar EN EL CUERPO del artículo, no solo en sidebars o secciones 'ver también'. Target: al menos 2 links contextuales en los primeros 500 palabras de cada spoke.",
+    "existing_hub_pages": "Los hubs de ciudad (/neuquen, /bariloche, etc.) deben linkear explícitamente a TODOS los spokes de ese cluster, con anchor text contextual. Actualmente son landing pages de listings — agregar sección 'Guías de inversión' con links a los spokes."
+  },
+
+  "scorecard": {
+    "total_planned_posts": 47,
+    "pillar_pages": 10,
+    "spoke_pages": 37,
+    "cities_covered": 10,
+    "coverage_score": 0.88,
+    "orphan_pages": 0,
+    "cannibalization_risk": 0,
+    "cross_city_strategic_pieces": 1,
+    "estimated_total_words": 71000,
+    "quick_wins_identified": 8,
+    "content_gaps_vs_competitors": 14
+  }
+}

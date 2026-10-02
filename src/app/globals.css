@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Josefin+Sans:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
@@ -8,9 +7,9 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-sans);
+  --font-sans: var(--font-josefin);
   --font-mono: var(--font-geist-mono);
-  --font-heading: var(--font-sans);
+  --font-heading: var(--font-cinzel);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -50,47 +49,50 @@
 }
 
 :root {
-  /* Mudate Design System — Liquid Glass / Teal Premium */
-  --background: #F0FDFA;
-  --foreground: #134E4A;
+  /* Mudate Design System — Deep Forest + Warm Ivory */
+  --background: #FDFCF7;
+  --foreground: #0A1F14;
   --card: #FFFFFF;
-  --card-foreground: #134E4A;
+  --card-foreground: #0A1F14;
   --popover: #FFFFFF;
-  --popover-foreground: #134E4A;
-  --primary: #0F766E;
+  --popover-foreground: #0A1F14;
+  --primary: #047857;
   --primary-foreground: #FFFFFF;
-  --secondary: #14B8A6;
-  --secondary-foreground: #134E4A;
-  --muted: #E8F0F3;
-  --muted-foreground: #4A7C78;
-  --accent: #0369A1;
+  --secondary: #065F46;
+  --secondary-foreground: #FFFFFF;
+  --muted: #F0EDE5;
+  --muted-foreground: #6B7260;
+  --accent: #C49A3C;
   --accent-foreground: #FFFFFF;
   --destructive: #DC2626;
-  --border: #99F6E4;
-  --input: #E8F0F3;
-  --ring: #0F766E;
-  --chart-1: #0F766E;
-  --chart-2: #14B8A6;
-  --chart-3: #0369A1;
-  --chart-4: #99F6E4;
-  --chart-5: #134E4A;
+  --border: #D8D3C8;
+  --input: #F0EDE5;
+  --ring: #047857;
+  --chart-1: #047857;
+  --chart-2: #065F46;
+  --chart-3: #C49A3C;
+  --chart-4: #D4B86A;
+  --chart-5: #0A1F14;
   --radius: 0.75rem;
-  --sidebar: #F0FDFA;
-  --sidebar-foreground: #134E4A;
-  --sidebar-primary: #0F766E;
+  --sidebar: #FDFCF7;
+  --sidebar-foreground: #0A1F14;
+  --sidebar-primary: #047857;
   --sidebar-primary-foreground: #FFFFFF;
-  --sidebar-accent: #E8F0F3;
-  --sidebar-accent-foreground: #134E4A;
-  --sidebar-border: #99F6E4;
-  --sidebar-ring: #0F766E;
+  --sidebar-accent: #F0EDE5;
+  --sidebar-accent-foreground: #0A1F14;
+  --sidebar-border: #D8D3C8;
+  --sidebar-ring: #047857;
 
-  /* Shadows — teal-tinted for premium feel */
-  --shadow-sm: 0 1px 3px rgba(15, 118, 110, 0.08);
-  --shadow-md: 0 4px 16px rgba(15, 118, 110, 0.10);
-  --shadow-lg: 0 8px 32px rgba(15, 118, 110, 0.14);
-  --shadow-xl: 0 20px 48px rgba(15, 118, 110, 0.18);
-  --shadow-card: 0 2px 8px rgba(19, 78, 74, 0.06), 0 8px 24px rgba(15, 118, 110, 0.08);
-  --shadow-card-hover: 0 8px 24px rgba(19, 78, 74, 0.10), 0 24px 48px rgba(15, 118, 110, 0.16);
+  /* Gradients */
+  --gradient-hero: linear-gradient(135deg, #061610 0%, #0A2218 60%, #0D3424 100%);
+
+  /* Shadows — amber/gold tinted */
+  --shadow-sm: 0 1px 3px rgba(196,154,60,0.06);
+  --shadow-md: 0 4px 16px rgba(196,154,60,0.10);
+  --shadow-lg: 0 8px 32px rgba(196,154,60,0.14);
+  --shadow-xl: 0 20px 48px rgba(196,154,60,0.18);
+  --shadow-card: 0 2px 8px rgba(10,31,20,0.04), 0 8px 24px rgba(196,154,60,0.08);
+  --shadow-card-hover: 0 8px 24px rgba(10,31,20,0.08), 0 24px 48px rgba(196,154,60,0.16);
 
   /* Space scale */
   --space-1: 4px; --space-2: 8px; --space-3: 12px; --space-4: 16px;
@@ -105,23 +107,22 @@
   }
   html {
     scroll-behavior: smooth;
-    /* Custom scrollbar */
     scrollbar-width: thin;
-    scrollbar-color: #99F6E4 transparent;
+    scrollbar-color: #C49A3C transparent;
   }
   html::-webkit-scrollbar { width: 6px; }
   html::-webkit-scrollbar-track { background: transparent; }
-  html::-webkit-scrollbar-thumb { background: #99F6E4; border-radius: 3px; }
-  html::-webkit-scrollbar-thumb:hover { background: #0F766E; }
+  html::-webkit-scrollbar-thumb { background: #C49A3C; border-radius: 3px; }
+  html::-webkit-scrollbar-thumb:hover { background: #047857; }
 
   body {
     @apply bg-background text-foreground;
-    font-family: 'Josefin Sans', sans-serif;
+    font-family: var(--font-josefin), sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Cinzel', serif;
+    font-family: var(--font-cinzel), serif;
     letter-spacing: -0.01em;
   }
 }
@@ -130,13 +131,13 @@
 
   /* ── Glass ── */
   .glass {
-    background: rgba(255, 255, 255, 0.72);
+    background: rgba(255, 255, 255, 0.80);
     backdrop-filter: blur(20px) saturate(1.4);
     -webkit-backdrop-filter: blur(20px) saturate(1.4);
-    border: 1px solid rgba(153, 246, 228, 0.35);
+    border: 1px solid rgba(196, 154, 60, 0.22);
   }
   .glass-dark {
-    background: rgba(19, 78, 74, 0.55);
+    background: rgba(10, 31, 20, 0.60);
     backdrop-filter: blur(20px) saturate(1.2);
     -webkit-backdrop-filter: blur(20px) saturate(1.2);
     border: 1px solid rgba(255, 255, 255, 0.10);
@@ -144,12 +145,12 @@
 
   /* ── Section label ── */
   .section-label {
-    font-family: 'Josefin Sans', sans-serif;
+    font-family: var(--font-josefin), sans-serif;
     font-size: 0.65rem;
     letter-spacing: 0.18em;
     text-transform: uppercase;
     font-weight: 300;
-    color: var(--primary);
+    color: var(--accent);
   }
 
   /* ── Property Card ── */
@@ -166,13 +167,16 @@
     will-change: transform;
   }
   .property-card:hover {
-    transform: translateY(-6px);
+    transform: translateY(-10px) scale(1.005);
     box-shadow: var(--shadow-card-hover);
   }
   .property-card:focus-visible {
     outline: 2px solid var(--primary);
     outline-offset: 3px;
   }
+
+  /* ── Carousel nav buttons — show on card hover ── */
+  .property-card:hover .carousel-nav-btn { opacity: 1 !important; }
 
   /* ── Btn Primary ── */
   .btn-primary {
@@ -181,7 +185,7 @@
     gap: 8px;
     padding: 12px 28px;
     border-radius: 12px;
-    font-family: 'Josefin Sans', sans-serif;
+    font-family: var(--font-josefin), sans-serif;
     font-size: 0.875rem;
     font-weight: 600;
     color: #fff;
@@ -192,6 +196,24 @@
   }
   .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
 
+  /* ── Btn Gold ── */
+  .btn-gold {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 28px;
+    border-radius: 12px;
+    font-family: var(--font-josefin), sans-serif;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #fff;
+    background: var(--accent);
+    transition: opacity 180ms ease, transform 180ms ease;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  .btn-gold:hover { opacity: 0.88; transform: translateY(-1px); }
+
   /* ── Btn Ghost ── */
   .btn-ghost {
     display: inline-flex;
@@ -199,17 +221,17 @@
     gap: 8px;
     padding: 12px 28px;
     border-radius: 12px;
-    font-family: 'Josefin Sans', sans-serif;
+    font-family: var(--font-josefin), sans-serif;
     font-size: 0.875rem;
     font-weight: 600;
     color: #fff;
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.13);
     border: 1px solid rgba(255, 255, 255, 0.28);
     transition: background 180ms ease;
     cursor: pointer;
     text-decoration: none;
   }
-  .btn-ghost:hover { background: rgba(255, 255, 255, 0.25); }
+  .btn-ghost:hover { background: rgba(255, 255, 255, 0.22); }
 
   /* ── Badge ── */
   .badge {
@@ -219,7 +241,7 @@
     border-radius: 999px;
     font-size: 0.68rem;
     font-weight: 600;
-    font-family: 'Josefin Sans', sans-serif;
+    font-family: var(--font-josefin), sans-serif;
     letter-spacing: 0.05em;
     text-transform: uppercase;
   }
@@ -244,7 +266,7 @@
     border-radius: 12px;
     border: 1.5px solid var(--border);
     background: #fff;
-    font-family: 'Josefin Sans', sans-serif;
+    font-family: var(--font-josefin), sans-serif;
     font-size: 0.875rem;
     color: var(--foreground);
     outline: none;
@@ -252,10 +274,59 @@
   }
   .input-field:focus {
     border-color: var(--primary);
-    box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.12);
+    box-shadow: 0 0 0 3px rgba(4, 120, 87, 0.12);
   }
   .input-field::placeholder { color: var(--muted-foreground); }
 }
+
+/* ── Cities grid responsive ── */
+@media (max-width: 1024px) {
+  .cities-featured-grid { grid-template-columns: 1fr 1fr !important; }
+  .cities-rest-grid { grid-template-columns: repeat(3, 1fr) !important; }
+}
+@media (max-width: 640px) {
+  .cities-featured-grid { grid-template-columns: 1fr !important; }
+  .cities-rest-grid { grid-template-columns: 1fr 1fr !important; }
+  .city-card-responsive { min-height: 180px; }
+}
+
+/* ── Calculator responsive ── */
+@media (max-width: 768px) {
+  .calc-grid { grid-template-columns: 1fr !important; }
+}
+
+/* ── Testimonials ── */
+.testimonial-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 28px 24px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border);
+  transition: box-shadow 280ms ease, transform 280ms ease;
+}
+.testimonial-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-3px);
+}
+
+/* ── Newsletter ── */
+.newsletter-input {
+  flex: 1;
+  padding: 12px 16px;
+  border-radius: 12px 0 0 12px;
+  border: 1.5px solid rgba(255,255,255,0.2);
+  border-right: none;
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+  font-family: var(--font-josefin), sans-serif;
+  font-size: 0.875rem;
+  outline: none;
+}
+.newsletter-input:focus {
+  border-color: rgba(255,255,255,0.4);
+  background: rgba(255,255,255,0.12);
+}
+.newsletter-input::placeholder { color: rgba(255,255,255,0.45); }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {

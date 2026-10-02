@@ -11,7 +11,7 @@ import {
   CITY_SLUG_MAP,
 } from '@/lib/slugify';
 
-export const dynamic = 'force-dynamic';
+export const revalidate = 3600; // ISR: revalida cada 1 hora
 
 interface PageProps {
   params: Promise<{ locale: string; slug: string }>;
@@ -33,21 +33,35 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     ? `Properties in ${provinciaName} | Mudate`
     : `Propiedades en ${provinciaName} | Mudate`;
   const desc = isEn
-    ? `Find houses, apartments and land for sale and rent in ${provinciaName}, Argentina. Browse all listings on Mudate.`
-    : `Encontrá casas, departamentos y terrenos en venta y alquiler en ${provinciaName}, Argentina. Explorá todas las propiedades en Mudate.`;
+    ? `Find houses, apartments and land for sale in ${provinciaName}, Argentina. Browse all listings on Mudate.`
+    : `Encontrá casas, departamentos y terrenos en venta en ${provinciaName}, Argentina. Explorá todas las propiedades en Mudate.`;
   const base = 'https://mudateargentina.com';
   const path = `/provincia/${slug}`;
+  const canonical = isEn ? `${base}/en${path}` : `${base}${path}`;
 
   return {
     title,
     description: desc,
     alternates: {
-      canonical: isEn ? `${base}/en${path}` : `${base}${path}`,
+      canonical,
       languages: {
         es: `${base}${path}`,
         en: `${base}/en${path}`,
         'x-default': `${base}${path}`,
       },
+    },
+    openGraph: {
+      title,
+      description: desc,
+      url: canonical,
+      type: 'website',
+      images: [{ url: `${base}/opengraph-image`, width: 1200, height: 630, alt: title }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description: desc,
+      images: [`${base}/opengraph-image`],
     },
   };
 }
@@ -69,7 +83,7 @@ async function getProvinceProperties(provinciaName: string): Promise<{ items: Pr
         title: p.title,
         price: p.price,
         currency: p.currency as 'USD' | 'ARS',
-        operation: p.operation as 'venta' | 'alquiler',
+        operation: 'venta' as const,
         type: p.type,
         ciudad: p.ciudad,
         barrio: p.barrio,
@@ -109,12 +123,38 @@ export default async function ProvinciaPage({ params }: PageProps) {
   const desc = PROVINCE_DESCRIPTIONS[provinciaName];
   const citySlugsInProvince = PROVINCE_CITIES[slug] || [];
 
+  const BASE = 'https://mudateargentina.com';
+  const breadcrumbLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Inicio', item: BASE },
+      { '@type': 'ListItem', position: 2, name: 'Propiedades', item: `${BASE}/propiedades` },
+      { '@type': 'ListItem', position: 3, name: provinciaName, item: `${BASE}/provincia/${slug}` },
+    ],
+  };
+
+  const itemListLd = properties.length > 0 ? {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: `Propiedades en venta en ${provinciaName}`,
+    numberOfItems: total,
+    itemListElement: properties.slice(0, 5).map((p, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      url: `${BASE}/propiedades/${p.slug}`,
+      name: p.title,
+    })),
+  } : null;
+
   return (
     <div style={{ background: 'var(--background)' }}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
+      {itemListLd && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListLd) }} />}
       {/* Hero */}
       <div
         style={{
-          background: 'linear-gradient(135deg, #0D3B37 0%, #0F766E 100%)',
+          background: 'linear-gradient(135deg, #061610 0%, #0A2218 100%)',
           padding: '56px 0',
           position: 'relative',
           overflow: 'hidden',

@@ -1,13 +1,14 @@
 import Link from 'next/link';
-import Image from 'next/image';
 import { MapPin, BedDouble, Bath, Square } from 'lucide-react';
+import ImageCarousel from './ImageCarousel';
+import FavoriteButton from './FavoriteButton';
 
 export interface PropertyCardData {
   slug: string;
   title: string;
   price: number;
   currency: 'USD' | 'ARS';
-  operation: 'venta' | 'alquiler';
+  operation: 'venta';
   type: string;
   ciudad: string;
   barrio?: string;
@@ -17,8 +18,6 @@ export interface PropertyCardData {
   superficie_cubierta?: number;
   images: string[];
 }
-
-const FALLBACK_IMAGE = 'https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=600&q=80';
 
 function formatPrice(price: number, currency: string) {
   if (currency === 'USD') {
@@ -41,51 +40,36 @@ function capitalize(str: string) {
   return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
 }
 
-export default function PropertyCard({ property }: { property: PropertyCardData }) {
-  const img = property.images?.[0] || FALLBACK_IMAGE;
-
+export default function PropertyCard({ property, priority = false }: { property: PropertyCardData; priority?: boolean }) {
   return (
     <Link href={`/propiedades/${property.slug}`} className="property-card property-card-item group">
 
-      {/* ── Image ── */}
-      <div className="relative overflow-hidden" style={{ height: 240 }}>
-        <Image
-          src={img}
-          alt={property.title}
-          fill
-          className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.06]"
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+      {/* ── Image Carousel ── */}
+      <div style={{ position: 'relative' }}>
+        <ImageCarousel
+          images={property.images}
+          alt={`${property.title} en ${property.ciudad}`}
+          priority={priority}
         />
 
-        {/* Gradient overlay — bottom */}
-        <div
-          className="absolute inset-0"
-          style={{
-            background: 'linear-gradient(to top, rgba(19,78,74,0.75) 0%, rgba(19,78,74,0.15) 45%, transparent 70%)',
-          }}
-        />
-
-        {/* Top badges */}
-        <div className="absolute top-3 left-3 flex gap-1.5">
-          <span
-            className="badge"
-            style={{
-              background: property.operation === 'venta' ? 'var(--primary)' : 'var(--accent)',
-              color: '#fff',
-            }}
-          >
-            {property.operation === 'venta' ? 'Venta' : 'Alquiler'}
-          </span>
-          <span className="badge badge-glass">
-            {capitalize(property.type)}
-          </span>
+        {/* Top badges + favorite */}
+        <div className="absolute top-3 left-3 right-3 flex justify-between items-start" style={{ zIndex: 6 }}>
+          <div className="flex gap-1.5">
+            <span className="badge" style={{ background: 'var(--primary)', color: '#fff' }}>
+              Venta
+            </span>
+            <span className="badge badge-glass">
+              {capitalize(property.type)}
+            </span>
+          </div>
+          <FavoriteButton slug={property.slug} size={14} />
         </div>
 
         {/* Price — overlaid on image bottom */}
-        <div className="absolute bottom-3 left-4">
+        <div className="absolute bottom-3 left-4" style={{ zIndex: 6 }}>
           <p
             style={{
-              fontFamily: 'Cinzel, serif',
+              fontFamily: 'var(--font-heading), Cinzel, serif',
               fontSize: '1.35rem',
               fontWeight: 600,
               color: '#fff',
@@ -103,7 +87,7 @@ export default function PropertyCard({ property }: { property: PropertyCardData 
       <div style={{ padding: '16px 20px 18px' }}>
         <h3
           style={{
-            fontFamily: 'Josefin Sans, sans-serif',
+            fontFamily: 'var(--font-body), Josefin Sans, sans-serif',
             fontSize: '0.9rem',
             fontWeight: 600,
             color: 'var(--foreground)',

@@ -1,18 +1,53 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { TrendingUp, Building2, GraduationCap, MapPin, CheckCircle, ArrowRight } from 'lucide-react';
+import InvestCalculator from '@/components/InvestCalculator';
 
-export const metadata: Metadata = {
-  title: 'Invertir en Propiedades en Córdoba — Cap Rates y ROI por Zona',
-  description:
-    'Análisis completo para invertir en inmuebles en Córdoba Argentina. Cap rates 4-7% USD, comparativa por ciudad y barrio, datos del mercado 2025-2026.',
-};
+const base = 'https://mudateargentina.com';
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  const isEn = locale === 'en';
+  const path = 'invertir';
+  const url = isEn ? `${base}/en/${path}` : `${base}/${path}`;
+  return {
+    title: isEn
+      ? 'Invest in Argentine Real Estate — Cap Rates & ROI by Zone | Mudate'
+      : 'Invertir en Propiedades en Córdoba — Cap Rates y ROI por Zona | Mudate',
+    description: isEn
+      ? 'Complete guide to investing in Argentine real estate. Cap rates 4–7% USD in Córdoba, Buenos Aires, Villa María and more. 2025–2026 market data.'
+      : 'Análisis completo para invertir en inmuebles en Córdoba Argentina. Cap rates 4-7% USD, comparativa por ciudad y barrio, datos del mercado 2025-2026.',
+    keywords: isEn
+      ? ['invest argentina real estate', 'cap rate argentina', 'roi property argentina', 'cordoba investment', 'real estate returns argentina 2025']
+      : ['invertir en propiedades argentina', 'cap rate córdoba', 'rentabilidad inmobiliaria argentina', 'inversión inmuebles 2025', 'retorno inversión propiedades'],
+    alternates: {
+      canonical: url,
+      languages: { 'es': `${base}/${path}`, 'en': `${base}/en/${path}`, 'x-default': `${base}/${path}` },
+    },
+    openGraph: {
+      siteName: 'Mudate Argentina',
+      title: isEn ? 'Invest in Argentine Real Estate | Mudate' : 'Invertir en Propiedades en Córdoba | Mudate',
+      description: isEn
+        ? 'Cap rates 4–7% USD. Market data 2025–2026 for Córdoba and all Argentina.'
+        : 'Cap rates 4-7% USD. Datos del mercado 2025-2026 en Córdoba y toda Argentina.',
+      url,
+      type: 'website',
+      images: [{ url: `${base}/opengraph-image`, width: 1200, height: 630, alt: 'Mudate Argentina — Inversión Inmobiliaria' }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: isEn ? 'Invest in Argentine Real Estate | Mudate' : 'Invertir en Propiedades en Córdoba | Mudate',
+      description: isEn ? 'Cap rates 4–7% USD. Market data 2025–2026.' : 'Cap rates 4-7% USD. Datos del mercado 2025-2026.',
+      images: [`${base}/opengraph-image`],
+    },
+  };
+}
 
 const zonaData = [
   {
     ciudad: 'Nueva Córdoba',
     precioM2: 'USD 1.400',
-    alquiler: '$350.000',
+    ingresoEst: '$350.000',
     capRate: 4.5,
     capRateLabel: '4.5%',
     demanda: 5,
@@ -20,7 +55,7 @@ const zonaData = [
   {
     ciudad: 'General Paz',
     precioM2: 'USD 1.200',
-    alquiler: '$300.000',
+    ingresoEst: '$300.000',
     capRate: 5.0,
     capRateLabel: '5.0%',
     demanda: 4,
@@ -28,7 +63,7 @@ const zonaData = [
   {
     ciudad: 'Güemes',
     precioM2: 'USD 1.100',
-    alquiler: '$280.000',
+    ingresoEst: '$280.000',
     capRate: 5.2,
     capRateLabel: '5.2%',
     demanda: 4,
@@ -36,7 +71,7 @@ const zonaData = [
   {
     ciudad: 'Villa María — Centro',
     precioM2: 'USD 900',
-    alquiler: '$220.000',
+    ingresoEst: '$220.000',
     capRate: 6.5,
     capRateLabel: '6.5%',
     demanda: 4,
@@ -44,7 +79,7 @@ const zonaData = [
   {
     ciudad: 'Villa María — Norte',
     precioM2: 'USD 750',
-    alquiler: '$190.000',
+    ingresoEst: '$190.000',
     capRate: 6.8,
     capRateLabel: '6.8%',
     demanda: 3,
@@ -52,7 +87,7 @@ const zonaData = [
   {
     ciudad: 'Villa Carlos Paz',
     precioM2: 'USD 1.300',
-    alquiler: '$400.000',
+    ingresoEst: '$400.000',
     capRate: 7.2,
     capRateLabel: '7.2%',
     demanda: 5,
@@ -60,7 +95,7 @@ const zonaData = [
   {
     ciudad: 'Río Cuarto',
     precioM2: 'USD 800',
-    alquiler: '$200.000',
+    ingresoEst: '$200.000',
     capRate: 6.0,
     capRateLabel: '6.0%',
     demanda: 3,
@@ -140,6 +175,68 @@ function DemandaDots({ count }: { count: number }) {
   );
 }
 
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Inicio', item: base },
+    { '@type': 'ListItem', position: 2, name: 'Invertir en Córdoba', item: `${base}/invertir` },
+  ],
+};
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Asesoramiento en inversiones inmobiliarias — Córdoba Argentina',
+  provider: {
+    '@type': 'Organization',
+    name: 'Mudate Argentina',
+    url: base,
+  },
+  areaServed: { '@type': 'Place', name: 'Córdoba, Argentina' },
+  description: 'Análisis de cap rates, ROI y comparativa de mercado para inversiones inmobiliarias en Córdoba y toda Argentina. Datos actualizados 2025-2026.',
+  url: `${base}/invertir`,
+};
+
+const datasetSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Dataset',
+  name: 'Cap rates y rentabilidad por zona — Córdoba Argentina 2025-2026',
+  description: 'Datos de precio por m² en USD, ingreso mensual estimado y cap rate anual para 7 zonas de inversión inmobiliaria en la provincia de Córdoba, Argentina. Actualizado Q3 2025.',
+  url: `${base}/invertir`,
+  creator: {
+    '@type': 'Organization',
+    name: 'Mudate Argentina',
+    url: base,
+  },
+  temporalCoverage: '2025/2026',
+  spatialCoverage: {
+    '@type': 'Place',
+    name: 'Córdoba, Argentina',
+  },
+  variableMeasured: [
+    { '@type': 'PropertyValue', name: 'Precio por m²', unitCode: 'USD/m²' },
+    { '@type': 'PropertyValue', name: 'Cap rate anual', unitCode: 'percent' },
+    { '@type': 'PropertyValue', name: 'Ingreso mensual estimado', unitCode: 'ARS' },
+  ],
+  distribution: {
+    '@type': 'DataDownload',
+    contentUrl: `${base}/invertir`,
+    encodingFormat: 'text/html',
+  },
+};
+
+const speakableSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  '@id': 'https://mudateargentina.com/invertir#webpage',
+  speakable: {
+    '@type': 'SpeakableSpecification',
+    cssSelector: ['h1', 'h2', '.hero-text'],
+  },
+  url: 'https://mudateargentina.com/invertir',
+};
+
 const faqSchema = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
@@ -176,7 +273,23 @@ export default function InvertirPage() {
     <>
       <script
         type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(datasetSchema) }}
+      />
+      <script
+        type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(speakableSchema) }}
       />
 
       {/* ── HERO ── */}
@@ -251,7 +364,7 @@ export default function InvertirPage() {
           >
             El mercado inmobiliario de Córdoba ofrece cap rates de{' '}
             <strong style={{ color: '#99F6E4', fontWeight: 600 }}>4-7% anual en dólares</strong>,
-            con alta demanda de alquiler impulsada por{' '}
+            con alta demanda de vivienda impulsada por{' '}
             <strong style={{ color: '#99F6E4', fontWeight: 600 }}>200.000 universitarios</strong>.
           </p>
           <div style={{ display: 'flex', gap: 16, justifyContent: 'center', flexWrap: 'wrap' }}>
@@ -391,7 +504,7 @@ export default function InvertirPage() {
               fontWeight: 300,
             }}
           >
-            Cap rate estimado sobre alquiler mensual en pesos. Precios en USD actualizados a Q3 2025.
+            Cap rate estimado sobre ingreso mensual proyectado en pesos. Precios en USD actualizados a Q3 2025.
           </p>
 
           <div
@@ -412,7 +525,7 @@ export default function InvertirPage() {
                 gap: 8,
               }}
             >
-              {['Ciudad / Barrio', 'Precio m²', 'Alquiler 2amb.', 'Cap rate', 'Demanda'].map((h) => (
+              {['Ciudad / Barrio', 'Precio m²', 'Ingreso estimado', 'Cap rate', 'Demanda'].map((h) => (
                 <div
                   key={h}
                   style={{
@@ -472,7 +585,7 @@ export default function InvertirPage() {
                     fontWeight: 400,
                   }}
                 >
-                  {zona.alquiler}
+                  {zona.ingresoEst}
                 </div>
                 <div>
                   <CapRateBadge rate={zona.capRate} />
@@ -576,7 +689,7 @@ export default function InvertirPage() {
               {
                 icon: <GraduationCap size={32} color="#0F766E" />,
                 title: 'Polo universitario',
-                body: 'UNC, UTN, UCC, UCCuyo: 200.000 estudiantes activos generan demanda permanente y predecible de alquiler. Vacancia casi nula en barrios universitarios.',
+                body: 'UNC, UTN, UCC, UCCuyo: 200.000 estudiantes activos generan demanda permanente y predecible de vivienda. Valorización sostenida en barrios universitarios.',
               },
               {
                 icon: <Building2 size={32} color="#0F766E" />,
@@ -864,7 +977,7 @@ export default function InvertirPage() {
               { label: 'Cap rate zona norte', value: '6.8%' },
               { label: 'Cap rate zona centro', value: '6.5%' },
               { label: 'Precio m² mín.', value: 'USD 750' },
-              { label: 'Demanda alquiler', value: 'Alta y estable' },
+              { label: 'Demanda vivienda', value: 'Alta y estable' },
             ].map((kpi) => (
               <div
                 key={kpi.label}
@@ -928,6 +1041,9 @@ export default function InvertirPage() {
           </div>
         </div>
       </section>
+
+      {/* ── CALCULADORA DE INVERSIÓN ── */}
+      <InvestCalculator />
 
       {/* ── CTA FINAL ── */}
       <section style={{ padding: '80px 24px', background: '#FFFFFF' }}>

@@ -12,7 +12,7 @@ import { notFound } from 'next/navigation';
 
 const WA_NUMBER = process.env.NEXT_PUBLIC_WA_NUMBER || '5493512345678';
 
-export const dynamic = 'force-dynamic';
+export const revalidate = 1800; // ISR: revalida cada 30 min
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -36,7 +36,7 @@ async function getProperty(slug: string): Promise<Property | null> {
       description: doc.description || `Propiedad en ${doc.ciudad}. ${doc.superficie_cubierta ? doc.superficie_cubierta + ' m² cubiertos. ' : ''}${doc.dormitorios ? doc.dormitorios + ' dormitorios.' : ''}`,
       price: doc.price,
       currency: doc.currency as 'USD' | 'ARS',
-      operation: doc.operation as 'venta' | 'alquiler',
+      operation: 'venta' as const,
       type: doc.type,
       ciudad: doc.ciudad,
       barrio: doc.barrio,
@@ -66,7 +66,7 @@ async function getRelated(current: Property): Promise<Property[]> {
       description: doc.description || '',
       price: doc.price,
       currency: doc.currency as 'USD' | 'ARS',
-      operation: doc.operation as 'venta' | 'alquiler',
+      operation: 'venta' as const,
       type: doc.type,
       ciudad: doc.ciudad,
       barrio: doc.barrio,
@@ -80,157 +80,6 @@ async function getRelated(current: Property): Promise<Property[]> {
 }
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const _unused: Property[] = [
-  {
-    slug: 'casa-nueva-cordoba-3-dormitorios',
-    title: 'Casa moderna 3 dormitorios — Nueva Córdoba',
-    price: 185000,
-    currency: 'USD',
-    operation: 'venta',
-    type: 'casa',
-    ciudad: 'Córdoba Capital',
-    barrio: 'Nueva Córdoba',
-    ambientes: 4,
-    dormitorios: 3,
-    banos: 2,
-    superficie_cubierta: 145,
-    description:
-      'Hermosa casa moderna con tres dormitorios en suite, living comedor amplio, cocina equipada y patio con parrilla. Ideal para familia. A metros del Parque Sarmiento.',
-    images: ['https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=1200&q=80'],
-  },
-  {
-    slug: 'departamento-villa-maria-2-ambientes',
-    title: 'Departamento 2 ambientes — Centro Villa María',
-    price: 68000,
-    currency: 'USD',
-    operation: 'venta',
-    type: 'departamento',
-    ciudad: 'Villa María',
-    barrio: 'Centro',
-    ambientes: 2,
-    dormitorios: 1,
-    banos: 1,
-    superficie_cubierta: 58,
-    description:
-      'Departamento luminoso en el centro de Villa María. Segundo piso con balcón, cocina integrada, placard empotrado. Excelente estado. A pasos de la peatonal.',
-    images: ['https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=1200&q=80'],
-  },
-  {
-    slug: 'casa-villa-carlos-paz-lago',
-    title: 'Casa con vista al lago — Villa Carlos Paz',
-    price: 250000,
-    currency: 'USD',
-    operation: 'venta',
-    type: 'casa',
-    ciudad: 'Villa Carlos Paz',
-    barrio: 'Zona Centro',
-    ambientes: 5,
-    dormitorios: 4,
-    banos: 3,
-    superficie_cubierta: 220,
-    description:
-      'Espectacular casa con vista panorámica al lago San Roque. Cuatro dormitorios, tres baños, living con chimenea, terraza y galería. Piscina climatizada. El refugio perfecto en las sierras.',
-    images: ['https://images.unsplash.com/photo-1567496898669-ee935f5f647a?w=1200&q=80'],
-  },
-  {
-    slug: 'terreno-cordoba-noroeste',
-    title: 'Terreno 600 m² — Corredor Noroeste',
-    price: 45000,
-    currency: 'USD',
-    operation: 'venta',
-    type: 'terreno',
-    ciudad: 'Córdoba Capital',
-    barrio: 'Noroeste',
-    superficie_cubierta: 600,
-    description:
-      'Terreno en esquina de 600 m² en el corredor noroeste de Córdoba. Zona residencial consolidada, todos los servicios. Ideal para construcción de casa o duplex.',
-    images: ['https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1200&q=80'],
-  },
-  {
-    slug: 'departamento-alquiler-nueva-cordoba',
-    title: 'Departamento en alquiler — Nueva Córdoba',
-    price: 280000,
-    currency: 'ARS',
-    operation: 'alquiler',
-    type: 'departamento',
-    ciudad: 'Córdoba Capital',
-    barrio: 'Nueva Córdoba',
-    ambientes: 2,
-    dormitorios: 1,
-    banos: 1,
-    superficie_cubierta: 48,
-    description:
-      'Monoambiente amplio en Nueva Córdoba, el barrio más vibrante de Córdoba. Totalmente amoblado, internet incluido. Ideal para estudiantes universitarios o profesionales.',
-    images: ['https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=1200&q=80'],
-  },
-  {
-    slug: 'casa-villa-maria-barrio-privado',
-    title: 'Casa en barrio privado — Villa María',
-    price: 120000,
-    currency: 'USD',
-    operation: 'venta',
-    type: 'casa',
-    ciudad: 'Villa María',
-    barrio: 'Barrio Privado Norte',
-    ambientes: 4,
-    dormitorios: 3,
-    banos: 2,
-    superficie_cubierta: 165,
-    description:
-      'Casa en barrio privado con seguridad 24hs. Tres dormitorios en suite, living comedor con doble altura, cocina gourmet. Jardín con piscina y parrilla cubierta. Solo 2 años de antigüedad.',
-    images: ['https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80'],
-  },
-  {
-    slug: 'campo-cordoba-sierras',
-    title: 'Campo 5 hectáreas — Sierras de Córdoba',
-    price: 320000,
-    currency: 'USD',
-    operation: 'venta',
-    type: 'campo',
-    ciudad: 'Córdoba Capital',
-    barrio: 'Sierras',
-    superficie_cubierta: 50000,
-    description:
-      'Campo de 5 hectáreas en las Sierras de Córdoba. Vista 360° a las montañas. Casa principal de 3 dormitorios, galpón, corral y pozo de agua. Acceso pavimentado.',
-    images: ['https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1200&q=80'],
-  },
-  {
-    slug: 'departamento-3-ambientes-general-paz',
-    title: 'Departamento 3 ambientes — General Paz',
-    price: 95000,
-    currency: 'USD',
-    operation: 'venta',
-    type: 'departamento',
-    ciudad: 'Córdoba Capital',
-    barrio: 'General Paz',
-    ambientes: 3,
-    dormitorios: 2,
-    banos: 1,
-    superficie_cubierta: 78,
-    description:
-      'Departamento en planta baja con jardín privado en el barrio General Paz. Dos dormitorios, living comedor amplio, cocina y baño actualizados. Estacionamiento cubierto.',
-    images: ['https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=1200&q=80'],
-  },
-  {
-    slug: 'casa-rio-cuarto-3-dorm',
-    title: 'Casa 3 dormitorios — Río Cuarto',
-    price: 98000,
-    currency: 'USD',
-    operation: 'venta',
-    type: 'casa',
-    ciudad: 'Río Cuarto',
-    barrio: 'Centro',
-    ambientes: 4,
-    dormitorios: 3,
-    banos: 2,
-    superficie_cubierta: 130,
-    description:
-      'Casa familiar en Río Cuarto, la cuarta ciudad de Argentina. Tres dormitorios, dos baños, living comedor con chimenea. Patio amplio con frutales. A metros del centro comercial.',
-    images: ['https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1200&q=80'],
-  },
-];
 
 function formatPrice(price: number, currency: string): string {
   if (currency === 'ARS') return `$ ${price.toLocaleString('es-AR')}`;
@@ -281,21 +130,36 @@ export async function generateMetadata({
     };
   }
 
+  const ogTitle = `${property.title} — ${property.ciudad} | Mudate`;
+  const ogDescription = property.description;
+  const ogImage = property.images[0]
+    ? [{ url: property.images[0], width: 1200, height: 630, alt: property.title }]
+    : [{ url: `${base}/opengraph-image`, width: 1200, height: 630, alt: property.title }];
+
   return {
-    title: `${property.title} | Mudate`,
+    title: `${property.title} — ${property.ciudad} | Mudate`,
     description: property.description,
     openGraph: {
-      title: property.title,
-      description: property.description,
-      images: property.images[0] ? [{ url: property.images[0] }] : [],
-      type: 'website',
+      title: ogTitle,
+      description: ogDescription,
+      images: ogImage,
+      type: 'article',
+      siteName: 'Mudate Argentina',
       locale: locale === 'en' ? 'en_US' : 'es_AR',
+      url: locale === 'en' ? `${base}/en/propiedades/${slug}` : `${base}/propiedades/${slug}`,
+    },
+    twitter: {
+      card: 'summary_large_image' as const,
+      title: ogTitle,
+      description: ogDescription,
+      images: property.images[0] ? [property.images[0]] : [`${base}/opengraph-image`],
     },
     alternates: {
       canonical: locale === 'en' ? `${base}/en/propiedades/${slug}` : `${base}/propiedades/${slug}`,
       languages: {
         'es': `${base}/propiedades/${slug}`,
         'en': `${base}/en/propiedades/${slug}`,
+        'x-default': `${base}/propiedades/${slug}`,
       },
     },
   };
@@ -386,7 +250,7 @@ export default async function PropiedadSlugPage({
     itemListElement: [
       { '@type': 'ListItem', position: 1, name: 'Inicio', item: BASE },
       { '@type': 'ListItem', position: 2, name: 'Propiedades', item: `${BASE}/propiedades` },
-      { '@type': 'ListItem', position: 3, name: property.ciudad, item: `${BASE}/ciudad/${property.ciudad.toLowerCase().replace(/\s+/g, '-')}` },
+      { '@type': 'ListItem', position: 3, name: property.ciudad, item: `${BASE}/${property.ciudad.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/\s+/g, '-')}` },
       { '@type': 'ListItem', position: 4, name: property.title, item: pageUrl },
     ],
   };
@@ -409,7 +273,7 @@ export default async function PropiedadSlugPage({
         <div className="relative w-full" style={{ height: '480px' }}>
           <Image
             src={heroImage}
-            alt={property.title}
+            alt={`${property.title} en ${property.ciudad}`}
             fill
             priority
             className="object-cover"
@@ -438,6 +302,10 @@ export default async function PropiedadSlugPage({
               <Link href="/" className="hover:text-white transition-colors">Inicio</Link>
               <ChevronRight size={12} style={{ opacity: 0.6 }} />
               <Link href="/propiedades" className="hover:text-white transition-colors">Propiedades</Link>
+              <ChevronRight size={12} style={{ opacity: 0.6 }} />
+              <Link href={`/${property.ciudad.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/\s+/g, '-')}`} className="hover:text-white transition-colors">
+                {property.ciudad}
+              </Link>
               <ChevronRight size={12} style={{ opacity: 0.6 }} />
               <span className="text-white font-semibold truncate max-w-[200px] sm:max-w-xs">
                 {property.title}
@@ -504,11 +372,6 @@ export default async function PropiedadSlugPage({
                   style={{ fontFamily: 'Cinzel, serif', color: 'var(--primary)' }}
                 >
                   {formatPrice(property.price, property.currency)}
-                  {property.operation === 'alquiler' && (
-                    <span className="text-base font-normal ml-1" style={{ color: 'var(--muted-foreground)' }}>
-                      / mes
-                    </span>
-                  )}
                 </p>
               </div>
 
@@ -518,7 +381,7 @@ export default async function PropiedadSlugPage({
                   <div className="relative w-full rounded-2xl overflow-hidden" style={{ height: '360px' }}>
                     <Image
                       src={displayImages[0]}
-                      alt={`${property.title}`}
+                      alt={`${property.title} en ${property.ciudad}`}
                       fill
                       priority
                       className="object-cover"
@@ -531,7 +394,7 @@ export default async function PropiedadSlugPage({
                     <div className="relative rounded-2xl overflow-hidden" style={{ height: 380 }}>
                       <Image
                         src={displayImages[0]}
-                        alt={`${property.title}`}
+                        alt={`${property.title} en ${property.ciudad}`}
                         fill
                         priority
                         className="object-cover"
@@ -548,7 +411,7 @@ export default async function PropiedadSlugPage({
                         >
                           <Image
                             src={img}
-                            alt={`${property.title} — foto ${i + 2}`}
+                            alt={`${property.title} en ${property.ciudad} — foto ${i + 2}`}
                             fill
                             className="object-cover"
                             sizes="(max-width: 1024px) 50vw, 22vw"
@@ -647,7 +510,7 @@ export default async function PropiedadSlugPage({
                     className="text-xs"
                     style={{ color: 'var(--muted-foreground)', opacity: 0.7 }}
                   >
-                    {property.barrio ? `${property.barrio}, ` : ''}{property.ciudad}, Córdoba
+                    {property.barrio ? `${property.barrio}, ` : ''}{property.ciudad}{property.provincia ? `, ${property.provincia}` : ', Argentina'}
                   </p>
                 </div>
               </div>
@@ -667,15 +530,6 @@ export default async function PropiedadSlugPage({
                   >
                     {formatPrice(property.price, property.currency)}
                   </p>
-                  {property.operation === 'alquiler' && (
-                    <p
-                      className="text-xs mb-4"
-                      style={{ color: 'var(--muted-foreground)', fontFamily: 'Josefin Sans, sans-serif' }}
-                    >
-                      por mes
-                    </p>
-                  )}
-
                   <div
                     className="w-full mb-5"
                     style={{ height: '1px', background: 'rgba(15,118,110,0.1)' }}

@@ -1,158 +1,304 @@
-# Mudate — Portal Inmobiliario Argentina | Argentine Real Estate Portal
+# Mudate — Portal de Propiedades en Venta en Argentina | Argentine Real Estate for Sale
 
-> Encontrá propiedades en venta y alquiler en toda Argentina. Casas, departamentos, terrenos y más en Córdoba, Buenos Aires, Mendoza, Rosario y todo el país.
-> Find properties for sale and rent across Argentina. Houses, apartments, land and more in Córdoba, Buenos Aires, Mendoza, Rosario and beyond.
+> Encontrá propiedades en venta en toda Argentina. Casas, departamentos, terrenos y más en Córdoba, Buenos Aires, Mendoza, Rosario y todo el país.
+> Find properties for sale across Argentina. Houses, apartments, land and more in Córdoba, Buenos Aires, Mendoza, Rosario and beyond.
 
-Mudate es el portal inmobiliario especializado en el mercado de bienes raíces de Argentina. Ofrecemos datos reales de precios, análisis de rentabilidad y guías para compradores e inversores locales e internacionales.
+Mudate es el portal inmobiliario especializado en la **venta** de bienes raíces en Argentina. Ofrecemos datos reales de precios, análisis de rentabilidad y guías para compradores e inversores locales e internacionales.
 
-Mudate is an Argentine real estate portal with over 850 properties across 22+ cities. We provide real pricing data, investment analysis, and guides for both local and international buyers.
+Mudate is an Argentine real estate portal with over 5,700 properties for sale across 30+ cities. We provide real pricing data, investment analysis, and guides for both local and international buyers.
 
 ## Key Facts / Datos clave
 
-- **Properties listed / Propiedades publicadas:** 850+
-- **Cities covered / Ciudades cubiertas:** 22+ (Buenos Aires, Córdoba, Rosario, Mendoza, Salta, Neuquén, Bariloche, and more)
-- **Provinces / Provincias:** All major Argentine provinces
-- **Currency / Moneda:** USD and ARS (Argentine Peso)
-- **Operations / Operaciones:** Venta (sale) and Alquiler (rental)
-- **Languages / Idiomas:** Español (Spanish) and English
+- **Properties listed / Propiedades publicadas:** 5.700+
+- **Cities covered / Ciudades cubiertas:** 30+ (Buenos Aires, Córdoba, Rosario, Mendoza, Salta, Neuquén, Bariloche, Mar del Plata, Tucumán, Villa María, Villa Carlos Paz, y más)
+- **Provinces / Provincias:** Todas las provincias principales de Argentina
+- **Currency / Moneda:** USD y ARS (Peso argentino)
+- **Operations / Operaciones:** Venta (sale only)
+- **Languages / Idiomas:** Español y English
 - **URL:** https://mudateargentina.com
+- **Blog posts:** 38 artículos editoriales de mercado (SSG, bilingüe)
+- **City hubs:** 11 páginas por ciudad con análisis de mercado local
+- **Price per m² pages:** 11 páginas de precio/m² actualizado por ciudad
+- **Investment calculator:** Simulador interactivo de retorno por ciudad y m²
+- **Newsletter:** Suscripción semanal de oportunidades
+- **Testimonials:** 4 experiencias verificadas de compradores/inversores
 
 ## Argentine Real Estate Market Data (2025–2026)
 
 ### National Overview
-- Properties in Argentina trade primarily in USD (residential) and ARS (commercial/rental)
+- Properties in Argentina trade primarily in USD (residential)
 - Average USD price per m² in Buenos Aires Capital: USD 2,200–2,800
 - Average USD price per m² in Córdoba Capital: USD 1,200–1,400
 - Average cap rate nationally: 4–7% USD annually
 - Argentina's housing deficit: estimated 3.5 million units nationally
 - Real estate is traditionally used as a store of value against peso inflation
+- Transaction costs: 3–5% of property price (stamps, notary fees, transfer tax)
+- Typical purchase timeline: 30–60 days from reservation to title deed
 
 ### Key Markets
 
 #### Buenos Aires Capital (CABA)
 Capital federal with 3 million inhabitants. Premium market with highest prices nationally.
 - Average m² price: USD 2,400–2,800 (Palermo, Puerto Madero)
-- Cap rate: 3–4% USD annually
+- Entry level m² price: USD 1,800 (Almagro, Caballito)
 - Key neighborhoods: Palermo, Recoleta, San Telmo, Puerto Madero, Almagro
-
-#### Gran Buenos Aires (GBA)
-Three zones covering 13 million people:
-- **GBA Norte** (Tigre, San Isidro, Vicente López): USD 1,800–2,200/m²
-- **GBA Oeste** (Morón, La Matanza): USD 800–1,200/m²
-- **GBA Sur** (Quilmes, Lanús): USD 700–1,000/m²
+- Cap rate: 3.5–5% USD annual
+- 2-bed apartment price range: USD 90,000–180,000
+- Best for: liquidity, long-term appreciation, permanent demand
 
 #### Córdoba Capital
 Second city of Argentina, capital of Córdoba province. 1.4 million inhabitants.
 - Average m² price: USD 1,200–1,400
-- Cap rate: 4.5–6% USD annually
-- Key areas: Nueva Córdoba (student zone), General Paz, Güemes, Valle Escondido
-- 200,000+ university students (UNC, UTN, UCC) sustain rental demand
+- Investment cap rate: 4.5–6% USD annually
+- Key areas: Nueva Córdoba, General Paz, Güemes, Valle Escondido
+- 2-bed apartment price range: USD 60,000–90,000
+- Best for: stable investment, university demand, medium-term appreciation
 
 #### Villa María (Córdoba province)
 100,000 inhabitants, second city in Córdoba province.
 - Average m² price: USD 900–1,100
-- Cap rate: 6.5–7.5% USD (best in province)
+- Investment cap rate: 6.5–7.5% USD (best in province)
 - Strong university market (UNVM, 15,000 students)
+- Average apartment price: USD 90,721
 - 40% cheaper than Córdoba Capital with higher returns
+- 2-bed apartment price range: USD 65,000–75,000
 
 #### Villa Carlos Paz (Córdoba province)
 Top tourist destination in Argentina's interior.
 - Average m² price: USD 1,400–1,800
-- Tourist rental cap rate: 7–10% USD annually
+- Tourist investment cap rate: 7–10% USD annually
+- Annual rental cap rate: 5.5–6%
 - 3 million tourists annually, Lago San Roque
 
 #### Rosario (Santa Fe)
 Third city of Argentina. 1.2 million inhabitants.
 - Average m² price: USD 1,400–1,800
-- Cap rate: 4–5% USD annually
+- Investment cap rate: 5.5–7% USD annually
+- Key areas: Puerto Norte, Fisherton, Pichincha, Alberdi
 
 #### Mendoza
 Wine capital of South America. Gateway to Andes.
-- Average m² price: USD 1,100–1,500
+- Average m² price: USD 1,100–1,300
 - Strong foreign investment from wine/tourism industries
-- Cap rate: 5–6% USD annually
+- Cap rate: 5–7% USD. Vineyards/fincas available in Luján de Cuyo from USD 200,000
 
 #### Salta
-Colonial city in Northwest Argentina.
+Colonial city in Northwest Argentina (NOA).
 - Average m² price: USD 900–1,300
-- Growing tourism market
-- Cap rate: 5–7% USD annually
+- Growing tourism market (+22% in 2024) + lithium triangle effect
+- Tourist cap rate: 7–10% USD in Centro Histórico
+- Key areas: Tres Cerritos, San Lorenzo, Valle de Lerma
 
 #### Bariloche (Río Negro)
 Patagonian ski and lake resort.
 - Average m² price: USD 1,800–2,500
-- Strong seasonal rental demand (ski + summer)
-- Cap rate: 5–8% USD annually (highly seasonal)
+- Strong seasonal investment demand (ski + summer)
+- Tourist cap rate: 8–10% USD annual (4-season destination)
+- Supply scarce: Nahuel Huapi National Park limits urban expansion
 
 #### Neuquén
 Capital of Neuquén province, oil and gas hub (Vaca Muerta).
-- Average m² price: USD 1,200–1,600
+- Average m² price: USD 1,200–1,700
 - High demand from oil sector workers
-- Cap rate: 6–7% USD annually
+- Population growth +18% in 5 years due to Vaca Muerta
+- Cap rate: 5–7% USD residential, up to 8% corporate rentals
+
+#### Mar del Plata (Buenos Aires Province)
+Argentina's largest tourist city. 8 million visitors per year.
+- Average m² price: USD 1,200–1,800
+- Tourist cap rate: 6–9% USD annual
+- Strong retirement market (permanent residents seeking quality of life)
+- Key areas: Los Troncos, North, Punta Mogotes, Centro
+
+#### Tucumán
+Fourth city in Argentina. 1.6 million metropolitan inhabitants.
+- Average m² price: USD 800–1,200
+- Cap rate: 5–7% USD
+- 120,000 university students (Universidad Nacional de Tucumán + private)
+- Agro-industrial economy (sugar, lemon, soy) provides economic stability
+- Key areas: Yerba Buena, Norte, Centro, Las Talitas
+
+## Investment Comparison Table / Comparativa de inversión (2025–2026)
+
+| Ciudad | Precio m² (USD) | Cap rate anual | Mejor para |
+|--------|----------------|----------------|------------|
+| Buenos Aires Capital | 2.400 | 3.5–5% | Liquidez, valorización |
+| Córdoba Capital | 1.300 | 4.5–6% | Demanda estable, universitarios |
+| Villa María | 950 | 6.5–7.5% | Máxima renta, bajo capital inicial |
+| Villa Carlos Paz | 1.600 | 7–10% | Turismo, alquiler vacacional |
+| Rosario | 1.500 | 5.5–7% | Interior, tercer mercado nacional |
+| Mendoza | 1.200 | 5–7% | Vinos, extranjeros, fincas |
+| Bariloche | 2.200 | 8–10% | Ski, turismo premium, escasez de oferta |
+| Salta | 1.100 | 6–10% | NOA, litio, turismo emergente |
+| Neuquén | 1.450 | 5–8% | Petróleo, Vaca Muerta, crecimiento |
+| Mar del Plata | 1.500 | 6–9% | Turismo masivo, retiro, costa |
+| Tucumán | 950 | 5–7% | Entrada accesible, universitarios |
+
+## Proceso de compra en Argentina / Purchase Process
+
+1. **Búsqueda y oferta** — El comprador hace una oferta verbal o escrita. Se negocia precio y condiciones.
+2. **Reserva (boleto de compraventa)** — Contrato privado con seña (10–30% del precio). Vinculante para ambas partes.
+3. **Verificación de títulos** — El escribano público verifica que el inmueble esté libre de deudas, hipotecas o embargos. Tarda 15–30 días.
+4. **Escritura pública** — Firma ante notario (escribano). Se transfiere el dominio. Pago del saldo restante.
+5. **Inscripción registral** — El escribano inscribe la escritura en el Registro de la Propiedad. El comprador queda como propietario legal.
+
+**Costos totales de transacción:** 3–5% del precio de venta (sellos, honorarios escribano, impuesto de transferencia).
+**Tiempo total:** 30–60 días desde la firma del boleto hasta la escritura.
+
+## Preguntas frecuentes / Frequently Asked Questions
+
+### Inversión y precios
+
+Q: ¿En qué ciudad de Argentina conviene más invertir en inmuebles?
+A: Depende del objetivo. Para mayor rentabilidad de alquiler: Villa María (6.5–7.5%), Villa Carlos Paz (7–10% turístico), Bariloche (8–10% vacacional). Para mayor liquidez y valorización: Córdoba Capital y Buenos Aires. Para precio de entrada bajo con potencial: Salta, Tucumán, y ciudades del NOA.
+
+Q: ¿Cuánto vale el metro cuadrado en Argentina en 2025?
+A: El rango es amplio: desde USD 800/m² en Tucumán hasta USD 2,800/m² en zonas premium de Buenos Aires. Las ciudades intermedias como Córdoba Capital (USD 1,200–1,400), Mendoza (USD 1,100–1,300) y Rosario (USD 1,400–1,800) representan el segmento con mejor relación precio/rentabilidad.
+
+Q: ¿Cuánto cuesta un departamento en Córdoba?
+A: Un departamento de 2 ambientes en Córdoba Capital cuesta entre USD 60.000 y USD 90.000 según el barrio. En Nueva Córdoba (el más demandado) el precio promedio es USD 75.000–85.000. En Güemes o General Paz, USD 55.000–70.000. El precio por m² oscila entre USD 1.100 y USD 1.400.
+
+Q: ¿Cuánto cuesta un departamento en Buenos Aires?
+A: Un departamento de 2 ambientes en Buenos Aires Capital cuesta entre USD 90.000 y USD 180.000 según el barrio. En Palermo o Recoleta el precio promedio supera USD 130.000. En Almagro o Caballito ronda USD 90.000–110.000. El precio por m² varía entre USD 1.800 y USD 2.800.
+
+Q: ¿Cuánto cuesta un departamento en Villa María?
+A: Un departamento de 2 ambientes en Villa María cuesta entre USD 65.000 y USD 75.000. El precio promedio de un departamento en la ciudad es USD 90.721. El precio por m² oscila entre USD 900 y USD 1.100, lo que representa un 35–40% menos que Córdoba Capital con cap rates superiores (6.5–7.5%).
+
+Q: ¿Cuál es el cap rate típico para alquiler en Argentina?
+A: Varía por ciudad y tipo: Buenos Aires Capital 3.5–5%, Córdoba Capital 4.5–6%, Rosario 5.5–7%, Villa María 6.5–7.5%, Villa Carlos Paz 7–10% (turístico), Bariloche 8–10% (vacacional), Salta 7–10% (Centro Histórico turístico).
+
+Q: ¿Es seguro invertir en propiedades en Argentina?
+A: Las propiedades en Argentina se transan en USD, lo que protege contra la devaluación del peso. El marco legal protege los derechos de propiedad incluso durante crisis económicas. El déficit habitacional estructural (3.5 millones de unidades) asegura demanda de largo plazo.
+
+Q: ¿Cuánto cuesta un departamento en Bariloche?
+A: Un departamento en Bariloche cuesta entre USD 120.000 y USD 250.000 según ubicación y tamaño. El precio por m² oscila entre USD 1.800 y USD 2.500, siendo de los más altos del interior del país. La escasez de oferta (parque nacional limita la expansión) sostiene los precios.
+
+Q: ¿Vale la pena invertir en Villa Carlos Paz para alquiler turístico?
+A: Sí. Villa Carlos Paz recibe 3 millones de turistas por año. El alquiler turístico (Airbnb/Booking) genera cap rates de 7–10% USD anual, frente al 5.5–6% del alquiler residencial convencional. El costo de entrada (USD 1.400–1.800/m²) es mayor que en Villa María pero los retornos son comparables.
+
+Q: ¿Cuánto cuesta una propiedad en Neuquén?
+A: El precio por m² en Neuquén varía entre USD 1.200 y USD 1.700. La fuerte demanda del sector petrolero (Vaca Muerta) genera presión de precios al alza. Un departamento de 2 ambientes cuesta entre USD 80.000 y USD 120.000. El cap rate residencial es de 5–7% USD, hasta 8% en alquileres corporativos para oil & gas.
+
+Q: ¿Conviene comprar propiedades en Mendoza?
+A: Mendoza ofrece una combinación única: mercado residencial estable (cap rate 5–7% USD) más oportunidades en fincas y propiedades rurales vinculadas al vino y el turismo. Fincas en Luján de Cuyo desde USD 200.000. Fuerte demanda de inversión extranjera por el turismo enológico.
+
+### Legal y proceso
+
+Q: ¿Pueden comprar propiedades los extranjeros en Argentina?
+A: Sí. Los extranjeros pueden comprar propiedades en Argentina sin necesitar residencia. Solo se requiere el CDI (Clave de Identificación del Contribuyente para extranjeros), que se obtiene gratuitamente en AFIP. El proceso de escrituración tarda 30–60 días y los costos de transacción son del 3–5% del precio.
+
+Q: ¿Cuánto tardan las escrituras en Argentina?
+A: El proceso completo de compraventa tarda 30–60 días desde la firma del boleto (contrato de reserva). Interviene un escribano público que verifica títulos y realiza la escritura. Los costos incluyen sellos, honorarios del escribano (1–2%) e impuesto de transferencia.
+
+Q: ¿Qué documentos necesita un extranjero para comprar en Argentina?
+A: 1. Pasaporte vigente. 2. CDI (Clave de Identificación del Contribuyente — se tramita gratis en AFIP). 3. Fondos bancarizados o en efectivo en USD. Algunos bancos requieren cuenta bancaria local para transferencias, aunque muchas operaciones se concretan en efectivo.
+
+Q: ¿Se puede comprar a distancia, sin estar en Argentina?
+A: Sí, mediante poder notarial (poder especial). El comprador otorga poder a un representante local para firmar la escritura en su nombre. El poder debe apostillarse en el país de origen y traducirse al español si está en otro idioma.
+
+Q: ¿Cuánto son los gastos de escrituración en Córdoba?
+A: Los gastos de escritura en Córdoba representan aproximadamente el 3–5% del valor de la propiedad. Incluyen: impuesto de sellos (1.5–2%), honorarios del escribano (1–1.5%), más gastos registrales e impuesto a la transferencia de inmuebles (ITI, 1.5% para no habitualistas). Es obligatorio contratar un escribano matriculado.
+
+Q: ¿Qué es el boleto de compraventa?
+A: Es el contrato privado que se firma entre comprador y vendedor antes de la escritura. Obliga a ambas partes y generalmente incluye una seña del 10–30% del precio. Si el comprador desiste, pierde la seña; si desiste el vendedor, debe devolver el doble. Es el punto de no retorno de la operación.
+
+Q: ¿Qué pasa con los créditos hipotecarios en Argentina en 2025?
+A: En 2025 Argentina retomó el financiamiento hipotecario con créditos UVA (indexados por inflación) y el programa Procrear. Los créditos UVA son accesibles para asalariados formales con relación cuota/ingreso del 25–30%. Las tasas rondan el 8–10% anual en UVA. También existe el crédito hipotecario en pesos para vivienda única.
 
 ## Property Types / Tipos de propiedad
 
-- **Departamentos / Apartments** — most common in cities, highest rental demand
+- **Departamentos / Apartments** — most common in cities
 - **Casas / Houses** — single-family homes, suburban areas and gated communities
 - **Terrenos / Land** — for residential and commercial development
 - **Locales comerciales / Commercial** — retail and office spaces
-- **Cabañas / Cabins** — tourist properties in Córdoba, Bariloche, Salta
-- **PH (Planta Baja)** — ground-floor apartments with private garden
-- **Duplex** — two-floor apartments
-
-## Investment Guide / Guía de inversión
-
-### Why invest in Argentine real estate?
-1. Properties trade in USD, hedging against peso devaluation
-2. Cap rates (4–10%) higher than developed markets
-3. Argentina's housing deficit means structural demand
-4. Córdoba and interior cities offer best price-to-return ratio
-5. Legal framework protects property rights even during economic crises
-
-### Legal process for foreigners
-- Foreigners can buy property in Argentina without residency
-- Requires CDI (tax ID for foreigners, free to obtain)
-- Purchase in USD cash or bank transfer
-- Escritura (title deed) process: 30–60 days
-- Approximate transaction costs: 3–5% of purchase price (notary, taxes, agents)
-
-### Cap rate comparison (2025)
-| Zone | Price USD/m² | Monthly Rent | Cap Rate |
-|------|-------------|-------------|---------|
-| Buenos Aires Capital | 2,400 | USD 700 | 3.5% |
-| Córdoba Capital | 1,300 | USD 600 | 5.5% |
-| Villa María | 950 | USD 550 | 6.9% |
-| Villa Carlos Paz (tourist) | 1,600 | USD 1,200 (seasonal) | 9% |
-| Rosario | 1,500 | USD 600 | 4.8% |
-| Mendoza | 1,300 | USD 650 | 6% |
-| Bariloche (seasonal) | 2,200 | USD 1,500 (seasonal) | 8.2% |
+- **Campos / Rural land** — agricultural and rural properties
+- **Fincas / Estates** — wine estates and rural properties (Mendoza, Salta)
 
 ## Content / Contenido
 
-### Blog
-- Real estate market analysis
-- Investment guides by city and property type
-- Legal and tax guides for buyers
-- Financing options (Procrear mortgages, bank credits)
+### City Hubs / Hubs de ciudad (10)
+- https://mudateargentina.com/cordoba-capital — Córdoba Capital: mercado, precios y propiedades
+- https://mudateargentina.com/villa-maria — Villa María: mercado inmobiliario y oportunidades de inversión
+- https://mudateargentina.com/villa-carlos-paz — Villa Carlos Paz: inversión turística y vacacional
+- https://mudateargentina.com/buenos-aires-capital — Buenos Aires Capital: el mercado premium argentino
+- https://mudateargentina.com/rosario — Rosario: tercer mercado inmobiliario de Argentina
+- https://mudateargentina.com/mendoza — Mendoza: vinos, Andes e inversión extranjera
+- https://mudateargentina.com/bariloche — Bariloche: Patagonia, ski y turismo premium
+- https://mudateargentina.com/salta — Salta: NOA, litio y turismo emergente
+- https://mudateargentina.com/neuquen — Neuquén: Vaca Muerta y crecimiento económico
+- https://mudateargentina.com/mar-del-plata — Mar del Plata: costa atlántica y turismo masivo
+- https://mudateargentina.com/tucuman — Tucumán: mercado universitario y agroindustria
 
-### Pages / Páginas
-- /propiedades — Full property listing with filters by type, city, province, price
-- /en/propiedades — English version of property listing
-- /cordoba-capital — Córdoba Capital hub
-- /villa-maria — Villa María hub
-- /villa-carlos-paz — Villa Carlos Paz hub
-- /invertir — Investment analysis and ROI calculator
-- /blog — Market guides and analysis
-- /sitemap.xml — Full sitemap
+### Precio por m² / Price per m² Pages (11)
+- https://mudateargentina.com/cordoba-capital/precio-m2 — Precio del metro cuadrado en Córdoba Capital
+- https://mudateargentina.com/villa-maria/precio-m2 — Precio del metro cuadrado en Villa María
+- https://mudateargentina.com/villa-carlos-paz/precio-m2 — Precio del metro cuadrado en Villa Carlos Paz
+- https://mudateargentina.com/buenos-aires-capital/precio-m2 — Precio del metro cuadrado en Buenos Aires
+- https://mudateargentina.com/rosario/precio-m2 — Precio del metro cuadrado en Rosario
+- https://mudateargentina.com/mendoza/precio-m2 — Precio del metro cuadrado en Mendoza
+- https://mudateargentina.com/bariloche/precio-m2 — Precio del metro cuadrado en Bariloche
+- https://mudateargentina.com/salta/precio-m2 — Precio del metro cuadrado en Salta
+- https://mudateargentina.com/neuquen/precio-m2 — Precio del metro cuadrado en Neuquén
+- https://mudateargentina.com/mar-del-plata/precio-m2 — Precio del metro cuadrado en Mar del Plata
+- https://mudateargentina.com/tucuman/precio-m2 — Precio del metro cuadrado en Tucumán
+
+### Property Type Hubs / Tipos de propiedad
+- https://mudateargentina.com/departamentos-en-venta — Departamentos en venta en Argentina
+- https://mudateargentina.com/casas-en-venta — Casas en venta en Argentina
+- https://mudateargentina.com/terrenos-en-venta — Terrenos en venta en Argentina
+- https://mudateargentina.com/campos — Campos y propiedades rurales en venta
+
+### Main Pages / Páginas principales
+- https://mudateargentina.com/propiedades — Listado completo de propiedades con filtros
+- https://mudateargentina.com/invertir — Análisis de inversión: cap rates, ROI y datos de mercado
+- https://mudateargentina.com/blog — Blog: guías de mercado y análisis
+- https://mudateargentina.com/tasacion — Tasación online de propiedades
+- https://mudateargentina.com/contacto — Contacto y consultas
+- https://mudateargentina.com/sitemap.xml — Mapa del sitio completo
+
+### Blog Articles / Artículos del blog (25)
+
+#### Cluster A — Inversión y cap rates
+- https://mudateargentina.com/blog/cap-rate-cordoba-2025 — Cap Rate en Córdoba 2025: análisis por barrio y ciudad
+- https://mudateargentina.com/blog/mejor-ciudad-para-invertir-argentina-2025 — Mejor ciudad para invertir en inmuebles en Argentina 2025
+- https://mudateargentina.com/blog/rentabilidad-alquiler-temporal-argentina-2025 — Alquiler temporal en Argentina 2025: qué ciudades dan más rentabilidad
+- https://mudateargentina.com/blog/invertir-departamentos-cordoba-vs-caba — Invertir en departamentos: Córdoba vs CABA, el análisis definitivo
+- https://mudateargentina.com/blog/rentabilidad-villa-carlos-paz — Rentabilidad en Villa Carlos Paz: alquiler turístico vs residencial
+- https://mudateargentina.com/blog/invertir-bariloche-patagonia-rental-vacacional — Invertir en Bariloche: Patagonia, ski y rental vacacional
+- https://mudateargentina.com/blog/propiedades-mendoza-inversion-vino-andes — Propiedades en Mendoza: inversión, vino y los Andes
+- https://mudateargentina.com/blog/mercado-inmobiliario-rosario-2025 — Mercado inmobiliario Rosario 2025: precios y tendencias
+- https://mudateargentina.com/blog/invertir-salta-noa-turismo-litio — Invertir en Salta: NOA, turismo y el efecto litio
+- https://mudateargentina.com/blog/neuquen-vaca-muerta-propiedades-inversion — Neuquén y Vaca Muerta: propiedades e inversión petrolera
+- https://mudateargentina.com/blog/propiedades-mar-del-plata-inversion-vacacional — Propiedades en Mar del Plata: inversión vacacional en la costa
+- https://mudateargentina.com/blog/invertir-tucuman-argentina-mercado-universitario — Invertir en Tucumán: mercado universitario y agroindustria
+- https://mudateargentina.com/blog/vender-caba-comprar-interior-argentina — Vender en CABA y comprar en el interior: la estrategia 2025
+- https://mudateargentina.com/blog/dolar-propiedades-argentina — Dólar y propiedades en Argentina: cómo proteger tu capital
+
+#### Cluster B — Villa María
+- https://mudateargentina.com/blog/mercado-inmobiliario-villa-maria-2025 — Mercado inmobiliario Villa María 2025: precios, tendencias y oportunidades
+- https://mudateargentina.com/blog/comprar-departamento-villa-maria — Cómo comprar un departamento en Villa María: guía completa
+- https://mudateargentina.com/blog/mejores-barrios-nueva-cordoba — Mejores barrios de Nueva Córdoba para invertir
+- https://mudateargentina.com/blog/barrios-villa-maria-donde-invertir — Barrios de Villa María: dónde invertir según tu perfil
+
+#### Cluster C — Comprar en Argentina
+- https://mudateargentina.com/blog/como-comprar-propiedad-argentina-2025 — Cómo comprar una propiedad en Argentina: guía 2025 (canónico: /blog/como-comprar-propiedad-argentina-extranjeros)
+- https://mudateargentina.com/blog/como-comprar-propiedad-argentina-extranjeros — Cómo comprar una propiedad en Argentina siendo extranjero
+- https://mudateargentina.com/blog/mercado-inmobiliario-buenos-aires-2025 — Mercado inmobiliario Buenos Aires 2025: barrios y precios
+- https://mudateargentina.com/blog/escritura-inmueble-argentina — Escritura de inmuebles en Argentina: guía paso a paso
+- https://mudateargentina.com/blog/hipotecas-creditos-procrear-cordoba — Hipotecas y créditos Procrear en Córdoba: todo lo que necesitás saber
+- https://mudateargentina.com/blog/gastos-compraventa-inmueble-cordoba — Gastos de compraventa de inmuebles en Córdoba: desglose completo
+- https://mudateargentina.com/blog/primer-propiedad-argentina-guia-2026 — Cómo comprar tu primera propiedad en Argentina: guía completa 2026
 
 ## About Mudate / Sobre Mudate
 
 Mudate (Spanish for "move/relocate") was founded to fill a gap in the Argentine real estate market: no portal combined quality editorial data, investment analysis, and modern technology for the interior of the country.
 
-Initial focus on Córdoba (best price-to-return ratio in Argentina), now expanded to cover all major Argentine markets.
+Initial focus on Córdoba (best price-to-return ratio in Argentina), now expanded to cover all major Argentine markets with 5,700+ properties across 30+ cities.
+
+**Mudate specializes exclusively in property sales** — we do not handle rentals.
 
 Target users:
-- Argentine families looking to buy or rent
+- Argentine families looking to buy a home
 - Local investors seeking USD-denominated returns
 - International buyers (expats, diaspora) looking for Argentine real estate
 - Real estate professionals and developers
