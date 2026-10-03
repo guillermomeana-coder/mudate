@@ -79,6 +79,7 @@ async function getRuralProperties(): Promise<{ items: PropertyCardData[]; total:
         banos: p.banos,
         superficie_cubierta: p.superficie_cubierta,
         images: p.images || [],
+        categoria: p.categoria || 'standard',
       })),
     };
   } catch (e) {

@@ -72,6 +72,7 @@ async function getProperties(): Promise<{ items: PropertyCardData[]; total: numb
         banos: p.banos,
         superficie_cubierta: p.superficie_cubierta,
         images: p.images || [],
+        categoria: p.categoria || 'standard',
       })),
     };
   } catch {

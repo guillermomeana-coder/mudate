@@ -94,6 +94,7 @@ async function getVillaMariaProperties(): Promise<PropertyCardData[]> {
       banos: p.banos,
       superficie_cubierta: p.superficie_cubierta,
       images: p.images || [],
+      categoria: p.categoria || 'standard',
     }));
   } catch {
     return [];

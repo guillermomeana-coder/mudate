@@ -17,6 +17,7 @@ export interface PropertyCardData {
   banos?: number;
   superficie_cubierta?: number;
   images: string[];
+  categoria?: 'standard' | 'premium' | 'luxury';
 }
 
 function formatPrice(price: number, currency: string) {
@@ -61,6 +62,16 @@ export default function PropertyCard({ property, priority = false }: { property:
             <span className="badge badge-glass">
               {capitalize(property.type)}
             </span>
+            {property.categoria === 'luxury' && (
+              <span className="badge" style={{ background: 'linear-gradient(135deg, #B8860B, #DAA520, #FFD700)', color: '#1a1a1a', fontWeight: 700, fontSize: '0.6rem', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
+                ✦ Luxury
+              </span>
+            )}
+            {property.categoria === 'premium' && (
+              <span className="badge" style={{ background: 'linear-gradient(135deg, #1a1a2e, #16213e)', color: '#DAA520', fontWeight: 700, fontSize: '0.6rem', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
+                Premium
+              </span>
+            )}
           </div>
           <FavoriteButton slug={property.slug} size={14} />
         </div>

@@ -23,6 +23,8 @@ export async function GET(req: NextRequest) {
     if (type) query.type = type;
     if (ciudad) query.ciudad = { $regex: ciudad, $options: 'i' };
     if (featured === 'true') query.featured = true;
+    const categoria = searchParams.get('categoria');
+    if (categoria) query.categoria = categoria;
     if (minPrice || maxPrice) {
       query.price = {};
       if (minPrice) query.price.$gte = parseInt(minPrice);

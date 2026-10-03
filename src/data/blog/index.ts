@@ -50,6 +50,9 @@ import comoTasarPropiedadArgentina from './como-tasar-propiedad-argentina.json';
 import invertirTerrenosArgentinaLotes from './invertir-terrenos-argentina-lotes.json';
 import fideicomisoInmobiliarioArgentina from './fideicomiso-inmobiliario-argentina.json';
 import villaMariaVsCordobaCapitalInversion from './villa-maria-vs-cordoba-capital-inversion.json';
+import ciudadaniaPorInversionArgentinaGoldenVisa2026 from './ciudadania-por-inversion-argentina-golden-visa-2026.json';
+import goldenVisaArgentinaInvertirPropiedades2026 from './golden-visa-argentina-invertir-propiedades-2026.json';
+import pasaporteArgentinoMasPoderoso2026 from './pasaporte-argentino-mas-poderoso-latinoamerica-2026.json';
 
 const allPosts: BlogPost[] = [
   capRateCordoba2025 as BlogPost,
@@ -90,6 +93,9 @@ const allPosts: BlogPost[] = [
   invertirTerrenosArgentinaLotes as BlogPost,
   fideicomisoInmobiliarioArgentina as BlogPost,
   villaMariaVsCordobaCapitalInversion as BlogPost,
+  ciudadaniaPorInversionArgentinaGoldenVisa2026 as BlogPost,
+  goldenVisaArgentinaInvertirPropiedades2026 as BlogPost,
+  pasaporteArgentinoMasPoderoso2026 as BlogPost,
 ];
 
 /**

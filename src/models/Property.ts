@@ -20,6 +20,7 @@ export interface IProperty extends Document {
   coordinates?: { lat: number; lng: number };
   source_url?: string;
   source: 'zonaprop' | 'argenprop' | 'mercadolibre' | 'manual';
+  categoria: 'standard' | 'premium' | 'luxury';
   featured: boolean;
   published: boolean;
   createdAt: Date;
@@ -51,6 +52,7 @@ const PropertySchema = new Schema<IProperty>(
     coordinates: { lat: Number, lng: Number },
     source_url: String,
     source: { type: String, enum: ['zonaprop', 'argenprop', 'mercadolibre', 'manual'], default: 'manual' },
+    categoria: { type: String, enum: ['standard', 'premium', 'luxury'], default: 'standard' },
     featured: { type: Boolean, default: false },
     published: { type: Boolean, default: true },
   },
@@ -60,6 +62,7 @@ const PropertySchema = new Schema<IProperty>(
 PropertySchema.index({ ciudad: 1, operation: 1, type: 1 });
 PropertySchema.index({ price: 1 });
 PropertySchema.index({ featured: 1, published: 1 });
+PropertySchema.index({ categoria: 1, published: 1 });
 PropertySchema.index({ title: 'text', barrio: 'text', ciudad: 'text', description: 'text' });
 
 export const Property =

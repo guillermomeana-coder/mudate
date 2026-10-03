@@ -84,6 +84,9 @@ const blogPosts: { slug: string; date: string }[] = [
   { slug: 'invertir-terrenos-argentina-lotes', date: '2026-07-18' },
   { slug: 'fideicomiso-inmobiliario-argentina', date: '2026-08-05' },
   { slug: 'villa-maria-vs-cordoba-capital-inversion', date: '2026-09-01' },
+  { slug: 'ciudadania-por-inversion-argentina-golden-visa-2026', date: '2026-10-03' },
+  { slug: 'golden-visa-argentina-invertir-propiedades-2026', date: '2026-10-03' },
+  { slug: 'pasaporte-argentino-mas-poderoso-latinoamerica-2026', date: '2026-10-03' },
 ];
 
 const locales = ['es', 'en'] as const;

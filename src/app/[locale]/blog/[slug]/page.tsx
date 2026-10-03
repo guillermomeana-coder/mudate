@@ -115,14 +115,26 @@ function renderContent(content: string) {
     } else if (trimmed.startsWith('### ')) {
       elements.push(<h3 key={i} className="text-base font-semibold mt-5 mb-2" style={{ fontFamily: 'Cinzel, serif', color: 'var(--primary)' }}>{trimmed.slice(4)}</h3>);
     } else if (trimmed.startsWith('- ')) {
-      elements.push(<li key={i} className="ml-4 mb-1 text-sm font-light" style={{ color: 'var(--foreground)', listStyleType: 'disc' }}>{trimmed.slice(2)}</li>);
+      const liText = trimmed.slice(2);
+      const liParts = liText.split(/(\*\*[^*]+\*\*|\[[^\]]+\]\([^)]+\))/g).map((part, pi) => {
+        if (part.startsWith('**') && part.endsWith('**')) return <strong key={pi}>{part.slice(2, -2)}</strong>;
+        const lm = part.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
+        if (lm) return <a key={pi} href={lm[2]} style={{ color: 'var(--primary)', fontWeight: 600, textDecoration: 'underline', textUnderlineOffset: 3 }}>{lm[1]}</a>;
+        return part;
+      });
+      elements.push(<li key={i} className="ml-4 mb-1 text-sm font-light" style={{ color: 'var(--foreground)', listStyleType: 'disc' }}>{liParts}</li>);
     } else if (trimmed.startsWith('*Nota:') || trimmed.startsWith('*Note:')) {
       elements.push(<p key={i} className="text-xs italic my-2" style={{ color: 'var(--muted-foreground)' }}>{trimmed.replace(/\*/g, '')}</p>);
     } else if (trimmed.length > 0 && !trimmed.startsWith('|')) {
-      const parts = trimmed.split(/(\*\*[^*]+\*\*)/g);
+      // Parse bold and links
+      const parts = trimmed.split(/(\*\*[^*]+\*\*|\[[^\]]+\]\([^)]+\))/g);
       const rendered = parts.map((part, pi) => {
         if (part.startsWith('**') && part.endsWith('**')) {
           return <strong key={pi} style={{ color: 'var(--foreground)', fontWeight: 700 }}>{part.slice(2, -2)}</strong>;
+        }
+        const linkMatch = part.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
+        if (linkMatch) {
+          return <a key={pi} href={linkMatch[2]} style={{ color: 'var(--primary)', fontWeight: 600, textDecoration: 'underline', textUnderlineOffset: 3 }}>{linkMatch[1]}</a>;
         }
         return part;
       });

@@ -92,6 +92,7 @@ async function getProvinceProperties(provinciaName: string): Promise<{ items: Pr
         banos: p.banos,
         superficie_cubierta: p.superficie_cubierta,
         images: p.images || [],
+        categoria: p.categoria || 'standard',
       })),
     };
   } catch (e) {

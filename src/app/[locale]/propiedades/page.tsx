@@ -138,6 +138,7 @@ async function getProperties(filters: Filters, page: number, sort?: string): Pro
         banos: p.banos,
         superficie_cubierta: p.superficie_cubierta,
         images: p.images || [],
+        categoria: p.categoria || 'standard',
       })),
     };
   } catch (e) {
