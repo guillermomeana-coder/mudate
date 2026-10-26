@@ -187,6 +187,6 @@ export default function Footer() {
           </div>
         </div>
       </div>
-    </footer>
+    <div style={{textAlign:"center",padding:"8px 0",opacity:0.4,fontSize:"11px"}}><a href="https://orionblue.space" target="_blank" rel="noopener noreferrer" style={{color:"inherit",textDecoration:"none"}}>Built by Orion Blue</a></div></footer>
   );
 }
